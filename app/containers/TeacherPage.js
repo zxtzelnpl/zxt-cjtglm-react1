@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux'
 import * as productListActionsFromOtherFile from '../actions/productlist'
 import * as wxInfoActionsFromOtherFile from '../actions/wxinfo'
 import * as userInfoActionsFromOtherFile from '../actions/userinfo'
-
 import TeachaerBrief from '../components/TeacherBrief'
 import ScrollStock from '../components/ScrollStock'
 import DownImage from '../components/DownImage'

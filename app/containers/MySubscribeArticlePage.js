@@ -1,5 +1,5 @@
 import './MySubscribeArticlePage.less'
-
+import periods_num from '../static/js/periods'
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import * as productListActionsFromOtherFile from '../actions/productlist'
@@ -145,7 +145,7 @@ class MySubscribeArticlePage extends React.Component {
             let user_phone = this.props.userinfo.phone
             let produce_id = this.produce_id
             let produce_name = this.teacher_data.name
-            let periods = 5
+            let periods = periods_num(produce_name)
             let url = `/wx_pay/pay_Inter.aspx?openid=${openid}&money=${money}&user_id=${user_id}&user_name=${user_name}&user_phone=${user_phone}&produce_id=${produce_id}&produce_name=${produce_name}&periods=${periods}`;//获取wxJsApiParam
             fetch(url, {
                 method: 'get'

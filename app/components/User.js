@@ -14,7 +14,7 @@ class UserCenterPage extends React.Component{
         let {headimgurl,nick_name,openid} = this.props.wxinfo
         let {name,phone,account,ID_number,id} = this.props.userinfo
         let {change_name,change_id,change_account} = this.props.userInfoActions
-        let customer = '021-51572550'
+        let customer = '13524957316'
         return(
             <div className="usercenter-page">
                 <section className="head">

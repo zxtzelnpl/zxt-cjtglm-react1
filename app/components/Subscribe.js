@@ -1,18 +1,17 @@
 import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-
+import periods_num from '../static/js/periods'
 import './Subscribe.less'
+
+console.log('######')
+console.log(periods_num.toString())
+console.log('######')
 
 class Subscribe extends React.Component {
     constructor(props, context) {
         super(props, context)
-        // this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-
     }
 
-
     render() {
-
         return (
             <a className="subscribe" href="javascript:void(0);" onClick={this.getSubscribe.bind(this)}>
                 <p>￥39.00</p>
@@ -30,7 +29,8 @@ class Subscribe extends React.Component {
             let user_phone = this.props.userinfo.phone
             let produce_id = this.props.product.id
             let produce_name = this.props.product.name
-            let periods = 5
+            let periods = periods_num(this.props.product.name)
+            console.log('periods',periods)
             let url = `/wx_pay/pay_Inter.aspx?openid=${openid}&money=${money}&user_id=${user_id}&user_name=${user_name}&user_phone=${user_phone}&produce_id=${produce_id}&produce_name=${produce_name}&periods=${periods}`;//获取wxJsApiParam
             fetch(url, {
                 method: 'get'

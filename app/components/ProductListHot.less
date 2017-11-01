@@ -1,0 +1,152 @@
+.product-hot {
+    margin-bottom: .2rem;
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 .2rem;
+        height: .7rem;
+        border-bottom: 1px solid #f0f0f0;
+        background: #ffffff;
+        .word {
+            font-weight: bold;
+            font-size: .26rem;
+        }
+        .fa {
+            &:before {
+                display: block;
+                font-size: .26rem;
+            }
+        }
+    }
+    .list {
+        background: #ffffff;
+        li {
+            .box {
+                display: flex;
+                align-items: center;
+                margin: 0 .2rem;
+                height: 1.8rem;
+                .stock {
+                    width: 1.75rem;
+                    height: 1.3rem;
+                    flex-shrink: 0;
+                    color: #ffffff;
+                    text-align: center;
+                    .result {
+                        padding-top: .3rem;
+                        font-size: .36rem;
+                    }
+                    .name {
+                        padding-top: .1rem;
+                        span:nth-child(1) {
+                            font-size: .22rem;
+                            vertical-align: middle;
+                        }
+                        span:nth-child(2) {
+                            font-size: .18rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                .user {
+                    padding-left: .2rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 1.3rem;
+                    .user-info {
+                        white-space: nowrap;
+                    }
+                    .special {
+                        font-size: .2rem;
+                        font-weight: bold;
+                    }
+                    .special + span {
+                        font-size: .2rem;
+                        font-weight: bold;
+                    }
+                    .name {
+                        font-size: .22rem;
+                        color: #337bf7;
+                        font-weight: bold;
+                    }
+                    .day-count {
+                        padding-left: 1em;
+                        font-size: .2rem;
+                        font-weight: bold;
+                    }
+                    .day-count + span {
+                        font-size: .2rem;
+                        font-weight: bold;
+                    }
+                    .result {
+                        font-size: .2rem;
+                        font-weight: bold;
+                        color: #ff605d;
+                    }
+
+                    .day-send {
+                        font-size: .2rem;
+                        .key {
+                            font-weight: bold;
+                        }
+                        .key + span {
+                            font-weight: bold;
+                        }
+                    }
+                    .result_one {
+                        display: flex;
+                        align-items: center;
+                        .key {
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+                        .progress {
+                            width: 1.6rem;
+                            height: .25rem;
+                            border-radius: 20px;
+                            background: #d1d1d1;
+                            overflow: hidden;
+                            .water {
+                                display: block;
+                                height: .25rem;
+                                background: #02b0ff;
+                            }
+                        }
+                        .value {
+                            padding-left: .1rem;
+                            color: #337bf7;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                .box {
+                    border-bottom: 1px solid #f0f0f0;
+                    .stock {
+                        background: #ff605d;
+                    }
+                }
+            }
+            &:nth-child(2) {
+                .box {
+                    border-bottom: 1px solid #f0f0f0;
+                    .stock {
+                        background: #f8b243;
+                    }
+                }
+            }
+            &:nth-child(3) {
+                .box {
+                    .stock {
+                        background: #589cf7;
+                    }
+                }
+            }
+        }
+
+    }
+}

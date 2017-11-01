@@ -1,0 +1,1 @@
+export const FOOTER_CHANGE = 'FOOTER_CHANGE'

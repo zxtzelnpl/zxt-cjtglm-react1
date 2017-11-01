@@ -1,0 +1,31 @@
+@keyframes scrollText{
+    from{
+        transform:translate(0)
+    }
+    to{
+        transform:translate(-75%)
+    }
+}
+
+.scroll-text{
+    width:4.9rem;
+    overflow: hidden;
+    visibility: visible;
+    position: relative;
+    .wrap{
+        width:4.9rem * 1.5 * 4;
+        height:.6rem;
+        animation: scrollText 15s linear infinite normal;
+        span{
+            display:block;
+            float:left;
+            width:4.9rem * 1.5;
+            height:.6rem;
+            line-height:.6rem;
+            font-size:.24rem;
+            b{
+                color:red;
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+.wei-xin-0{
+    position:absolute;
+    top:0;
+    bottom:1rem;
+    .wrap{
+        box-sizing: border-box;
+        position: relative;
+        margin:0 auto;
+        width: 6.4rem;
+        height:100%;
+        padding: .2rem .6rem 1.6rem;
+        background: #ffce39;
+        .title{
+            position:absolute;
+            top: .6rem;
+            left: .2rem;
+            width: 6rem;
+            height: 1.2rem;
+            z-index: 2;
+            .wrap{
+                box-sizing: border-box;
+                display:flex;
+                justify-content: space-between;
+                padding:0 .6rem;
+                width: 6rem;
+                height: 1.2rem;
+                line-height: 1.2rem;
+                background: #ff7131;
+                .left{
+                    font-size: .4rem;
+                    font-weight: bold;
+                    color: #fff;
+                }
+                .right{
+                    font-size: .32rem;
+                    color: #fff;
+                }
+            }
+            .leftD{
+                left: 0;
+                bottom: -.4rem;
+                position: absolute;
+                border-right: .2rem solid #b8380a;
+                border-top: .2rem solid #b8380a;
+                border-left: .2rem solid transparent;
+                border-bottom: .2rem solid transparent;
+            }
+            .rightD{
+                right: 0;
+                bottom: -.4rem;
+                position: absolute;
+                border-left: .2rem solid #b8380a;
+                border-top: .2rem solid #b8380a;
+                border-right: .2rem solid transparent;
+                border-bottom: .2rem solid transparent;
+            }
+        }
+        .board{
+            position:absolute;
+            top:.2rem;
+            width:5.2rem;
+            padding-top: 2rem;
+            padding-bottom: 1rem;
+            background: url(../static/img/weixin/bg.png);
+            background-size: 100% 100%;
+            z-index:1;
+            .box{
+                margin-bottom: .4rem;
+                padding: 0 .2rem;
+                border-top: 2px dashed #ffd75d;
+                border-bottom: 2px dashed #ffd75d;
+                background: #fff2d5;
+                .up{
+                    margin: .2rem 0;
+                    span{
+                        margin-right: .2rem;
+                        font-size: .32rem;
+                        font-weight: bold;
+                        color: #e73636;
+                    }
+                }
+                .down{
+                    margin: .2rem 0;
+                    span{
+                        line-height: .5rem;
+                    }
+                    .label{
+                        font-size:.32rem;
+                        font-weight:bold;
+                    }
+                    .text{
+                        font-size: .28rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

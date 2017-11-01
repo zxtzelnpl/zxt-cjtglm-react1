@@ -1,0 +1,50 @@
+.charts{
+  margin-bottom: .2rem;
+  padding-bottom:.2rem;
+  box-shadow: 0 2px 5px 2px #ddd;
+  background: #fff;
+  .main{
+    margin:0 auto;
+    width:6rem;
+  }
+  .text{
+    box-sizing: border-box;
+    margin:0 auto;
+    padding:.2rem .15rem;
+    width:6rem;
+    border-radius:5px;
+    background:#efeded;
+    p{
+      font-size:.18rem;
+      line-height:200%;
+      span{
+        font-size:.2rem;
+        font-weight:bold;
+      }
+    }
+    .title{
+      font-size:.24rem;
+      font-weight:bold;
+    }
+  }
+  &.average-rise{
+    .main{
+      height:4rem;
+    }
+  }
+  &.max-rise{
+    .main{
+      height:5.8rem;
+    }
+  }
+  &.rise-num{
+    .main{
+      height:4.6rem;
+    }
+  }
+  &.rise-probability{
+    .main{
+      height:5rem;
+    }
+  }
+}

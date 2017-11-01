@@ -3,7 +3,6 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ReactSwipe from 'react-swipe'
 import './ScrollStock.less'
 
-
 class ScrollStock extends React.Component {
     constructor(props, context) {
         super(props, context)

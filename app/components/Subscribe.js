@@ -2,10 +2,6 @@ import React from 'react'
 import periods_num from '../static/js/periods'
 import './Subscribe.less'
 
-console.log('######')
-console.log(periods_num.toString())
-console.log('######')
-
 class Subscribe extends React.Component {
     constructor(props, context) {
         super(props, context)

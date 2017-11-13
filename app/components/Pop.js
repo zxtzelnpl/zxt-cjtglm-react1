@@ -1,5 +1,7 @@
 import React from 'react'
 import './Pop.less'
+import pop from '../static/img/pop/pop.png'
+import pop_close from '../static/img/pop/pop-close.png'
 
 class Pop extends React.Component {
     constructor(props, context) {
@@ -27,10 +29,11 @@ class Pop extends React.Component {
                 (<div className="pop-box">
                     <div className="pop-bg">
                         <div className="pop">
-                            <div className="pop-close fa fa-close" onClick={this.popClose}/>
-                            <a href="">
-
-                            </a>
+                            <div className="pop-close" onClick={this.popClose}>
+                                <img src={pop_close}/>
+                            </div>
+                            <img className="pop-img" src={pop} alt=""/>
+                            <a className="pop-link" href="http://www.jyzqsh.com/xgnr/20171111/" />
                         </div>
                     </div>
                 </div>) :

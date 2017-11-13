@@ -4,6 +4,7 @@ import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
 import maxin1 from '../img/stocks/maxin1.jpg'
 import zhouyue1 from '../img/stocks/zhouyue1.jpg'
 import zhouyue2 from '../img/stocks/zhouyue2.jpg'
+import zhouyue3 from '../img/stocks/zhouyue3.jpg'
 
 let lvxiangzhao = [{
     name: '汉王科技',
@@ -78,6 +79,15 @@ let zhoukang = [{
 
 //周煜
 let zhouyu = [
+    {
+        name: '四维图新',
+        code: '002405',
+        result: '21.68%',
+        daySend: '2017.11.02',
+        day:'7',
+        dayCount: '七日最高涨幅',
+        img:zhouyue3
+    },
     {
         name: '中国中车',
         code: '601766',

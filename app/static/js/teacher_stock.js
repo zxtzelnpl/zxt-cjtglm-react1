@@ -2,9 +2,9 @@ import shaojunjie1 from '../img/stocks/shaojunjie1.jpg'
 import wuweiwei1 from '../img/stocks/wuweiwei1.jpg'
 import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
 import maxin1 from '../img/stocks/maxin1.jpg'
+import maxin2 from '../img/stocks/maxin2.jpg'
 import zhouyue1 from '../img/stocks/zhouyue1.jpg'
 import zhouyue2 from '../img/stocks/zhouyue2.jpg'
-import zhouyue3 from '../img/stocks/zhouyue3.jpg'
 
 let lvxiangzhao = [{
     name: '汉王科技',
@@ -17,15 +17,26 @@ let lvxiangzhao = [{
 }]
 
 //马鑫
-let maxin = [{
-    name: '南卫股份',
-    code: '603880',
-    result: '19.16%',
-    daySend: '2017.10.12',
-    day: '2',
-    dayCount: '二日最高涨幅',
-    img: maxin1
-}]
+let maxin = [
+    {
+        name: '四维图新',
+        code: '002405',
+        result: '21.68%',
+        daySend: '2017.11.02',
+        day: '7',
+        dayCount: '七日最高涨幅',
+        img: maxin2
+    },
+    {
+        name: '南卫股份',
+        code: '603880',
+        result: '19.16%',
+        daySend: '2017.10.12',
+        day: '2',
+        dayCount: '二日最高涨幅',
+        img: maxin1
+    }
+]
 let suxuepeng = [{
     name: '陕西黑猫',
     code: '601015',
@@ -84,9 +95,9 @@ let zhouyu = [
         code: '002405',
         result: '21.68%',
         daySend: '2017.11.02',
-        day:'7',
+        day: '7',
         dayCount: '七日最高涨幅',
-        img:zhouyue3
+        img: zhouyue3
     },
     {
         name: '中国中车',

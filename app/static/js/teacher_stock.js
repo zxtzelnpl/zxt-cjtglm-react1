@@ -50,6 +50,15 @@ let suxuepeng = [{
 //吴伟伟
 let wuweiwei = [
     {
+        name: '世运电路',
+        code: '603920',
+        result: '14.77%',
+        daySend: '2017.11.10',
+        day:'2',
+        dayCount: '两日最高涨幅',
+        img:'wuweiwei3.jpg'
+    },
+    {
         name: '嘉诚国际',
         code: '603535',
         result: '28.95%',

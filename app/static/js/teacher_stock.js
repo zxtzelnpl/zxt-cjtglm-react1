@@ -1,6 +1,7 @@
 import shaojunjie1 from '../img/stocks/shaojunjie1.jpg'
 import wuweiwei1 from '../img/stocks/wuweiwei1.jpg'
 import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
+import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
 import maxin1 from '../img/stocks/maxin1.jpg'
 import maxin2 from '../img/stocks/maxin2.jpg'
 import zhouyue1 from '../img/stocks/zhouyue1.jpg'
@@ -56,7 +57,7 @@ let wuweiwei = [
         daySend: '2017.11.10',
         day:'2',
         dayCount: '两日最高涨幅',
-        img:'wuweiwei3.jpg'
+        img:wuweiwei3
     },
     {
         name: '嘉诚国际',

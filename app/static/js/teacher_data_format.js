@@ -20,6 +20,7 @@ export default function(products){
         product.records = records;
         product.stocks = stocks(product.name)
         product.rank = ranks(product.name)
+        product.recordNum = recordNum(product.name)
         product.lables = teacher_position(product.position)//取标签后面的3个
     })
 }

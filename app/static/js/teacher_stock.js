@@ -27,7 +27,7 @@ let maxin = [
         day: '7',
         dayCount: '七日最高涨幅',
         img: maxin2
-    },
+    }/*,
     {
         name: '南卫股份',
         code: '603880',
@@ -36,7 +36,7 @@ let maxin = [
         day: '2',
         dayCount: '二日最高涨幅',
         img: maxin1
-    }
+    }*/
 ]
 let suxuepeng = [{
     name: '陕西黑猫',
@@ -58,7 +58,7 @@ let wuweiwei = [
         day:'2',
         dayCount: '两日最高涨幅',
         img:wuweiwei3
-    },
+    }/*,
     {
         name: '嘉诚国际',
         code: '603535',
@@ -76,7 +76,7 @@ let wuweiwei = [
         day: '阶段',
         dayCount: '阶段最高涨幅',
         img: wuweiwei1
-    }
+    }*/
 ]
 
 let yuliang = [{
@@ -188,5 +188,18 @@ export function ranks(name) {
             return 3
         default:
             return 4
+    }
+}
+
+export function recordNum(name){
+    switch (name) {
+        case '吴伟伟':
+            return 1
+        case '马鑫':
+            return 0
+        case '周煜':
+            return 0
+        default:
+            return 0
     }
 }

@@ -12,7 +12,7 @@ class Product extends React.Component {
     }
 
     render() {
-        let {id, name, special, records,half_body_img,stocks} = this.props.data
+        let {id, name, special, records,half_body_img,stocks,recordNum} = this.props.data
         let stock = stocks[0]||{result:'',name:''}
         return (
             <li>
@@ -30,9 +30,9 @@ class Product extends React.Component {
                             <span className="key">推出日期</span><span>：</span><span className="value">{stock.daySend}</span>
                         </p>
                         <p className="result_one">
-                            <span className="key">{records[0].title}</span><span>：</span>
-                            <span className="progress"><b className="water" style={{width:records[0].water}}/></span>
-                            <span className="value">{records[0].result}</span>
+                            <span className="key">{records[recordNum].title}</span><span>：</span>
+                            <span className="progress"><b className="water" style={{width:records[recordNum].water}}/></span>
+                            <span className="value">{records[recordNum].result}</span>
                         </p>
                     </div>
                 </Link>

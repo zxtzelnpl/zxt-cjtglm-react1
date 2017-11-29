@@ -1,8 +1,8 @@
 import { createStore } from 'redux'
 import rootReducer from '../reducers'
 
+// 触发 redux-devtools
 let devToolsExtension = undefined
-
 if(typeof window==='object'){
     if(typeof window.devToolsExtension === 'function'){
         devToolsExtension = window.devToolsExtension()
@@ -11,7 +11,6 @@ if(typeof window==='object'){
 
 export default function configureStore(initialState) {
     const store = createStore(rootReducer, initialState,
-        // 触发 redux-devtools
         devToolsExtension
     )
     return store

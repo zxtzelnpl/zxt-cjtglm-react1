@@ -1,6 +1,12 @@
 import * as actionTypes from '../constants/userinfo'
 
-let initialState = localStorage.getItem('userinfo')?JSON.parse(localStorage.getItem('userinfo')):{}
+let initialState = {}
+
+if(typeof localStorage === 'object'){
+    if(localStorage.getItem('userinfo')){
+        initialState=JSON.parse(localStorage.getItem('userinfo'))
+    }
+}
 
 export default function userinfo(state=initialState, action) {
     let _state

@@ -27,7 +27,7 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     'style-loader',
-                    {loader: 'css-loader', options: {importLoaders: 1}},
+                    {loader: 'css-loader'},
                     'postcss-loader',
                     'less-loader'
                 ]

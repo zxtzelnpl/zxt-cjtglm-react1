@@ -7,8 +7,6 @@ import Banner from '../components/Banner'
 import ProductList from '../components/ProductList'
 import ProductListHot from '../components/ProductListHot'
 import Footer from '../components/Footer'
-import Pop from '../components/Pop'
-
 
 class ProductPage extends  React.Component{
     constructor(props,content){
@@ -28,11 +26,11 @@ class ProductPage extends  React.Component{
                 .then((json)=>{
                     this.props.productListActions.load(json)
                 })
-                // .catch((err)=>{
-                //     console.log('****err****')
-                //     console.log(err)
-                //     console.log('****err****')
-                // })
+                .catch((err)=>{
+                    console.log('****err****')
+                    console.log(err)
+                    console.log('****err****')
+                })
         }
     }
 
@@ -55,7 +53,6 @@ class ProductPage extends  React.Component{
                     <ProductListHot list={hot}/>
                     <ProductList list={normal}/>
                     <Footer footerIndex={1}/>
-                    <Pop />
                 </div>
             )
         }

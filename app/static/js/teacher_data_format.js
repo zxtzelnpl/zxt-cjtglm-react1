@@ -1,5 +1,5 @@
 import chart_format from './chart_format'
-import {stocks,ranks} from './teacher_stock'
+import {stocks,ranks,recordNum} from './teacher_stock'
 import teacher_position from './teacher_position'
 
 export default function(products){

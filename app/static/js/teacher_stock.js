@@ -4,6 +4,7 @@ import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
 import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
 import maxin1 from '../img/stocks/maxin1.jpg'
 import maxin2 from '../img/stocks/maxin2.jpg'
+import maxin3 from '../img/stocks/maxin3.jpg'
 import zhouyue1 from '../img/stocks/zhouyue1.jpg'
 import zhouyue2 from '../img/stocks/zhouyue2.jpg'
 
@@ -20,13 +21,13 @@ let lvxiangzhao = [{
 //马鑫
 let maxin = [
     {
-        name: '四维图新',
-        code: '002405',
-        result: '21.68%',
-        daySend: '2017.11.02',
-        day: '7',
-        dayCount: '七日最高涨幅',
-        img: maxin2
+        name: '世荣兆业',
+        code: '002016',
+        result: '16.29%',
+        daySend: '2017.11.20',
+        day:'5',
+        dayCount: '五日最高涨幅',
+        img: maxin3
     }/*,
     {
         name: '南卫股份',
@@ -100,15 +101,6 @@ let zhoukang = [{
 
 //周煜
 let zhouyu = [
-    {
-        name: '四维图新',
-        code: '002405',
-        result: '21.68%',
-        daySend: '2017.11.02',
-        day: '7',
-        dayCount: '七日最高涨幅',
-        img: zhouyue3
-    },
     {
         name: '中国中车',
         code: '601766',

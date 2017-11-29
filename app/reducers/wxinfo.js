@@ -1,6 +1,12 @@
 import * as actionTypes from '../constants/wxinfo'
 
-let initialState = localStorage.getItem('wxinfo')?JSON.parse(localStorage.getItem('wxinfo')):{}
+let initialState = {}
+
+if(typeof localStorage === 'object'){
+    if(localStorage.getItem('wxinfo')){
+        initialState=JSON.parse(localStorage.getItem('wxinfo'))
+    }
+}
 
 export default function wxinfo(state=initialState, action) {
     let _state = Object.assign({},state)

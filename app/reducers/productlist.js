@@ -23,7 +23,6 @@ export default function productlist(state = initialState, action) {
             action.data.forEach((item) => {
                 _state.set(item.id, item)
             })
-            console.log(_state)
             return _state
         case actionTypes.PRODUCTLIST_ADD:
             state.forEach((item) => {

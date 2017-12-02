@@ -4,15 +4,20 @@ import React from 'react'
 
 import {Link} from 'react-router-dom'
 
+const ignoreProducts=['10000000','10000003','10000006']
+// "涨停早知道"  "选股牛人"  "君银内参周报"
+
 class SubscribeList extends React.Component {
     constructor(props, context) {
         super(props, context)
     }
 
     render() {
-        let list = this.props.subscribelist;
+        let list = this.props.subscribelist.filter(item=>{
+            return (ignoreProducts.indexOf(item.produce_id)<0)
+        });
         let htmlArr = list.map((subscribe) => {
-            let {head_log,name,introduce,overplus_produces,produce_id,style} = subscribe
+            let {head_log,name,overplus_produces,produce_id,style} = subscribe
             return (
                 <Link key={produce_id} className="box" to={"/mysubscribearticle/"+produce_id+'a'+this.props.user_id}>
                     <div className="wrap">

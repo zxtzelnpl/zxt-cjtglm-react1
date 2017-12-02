@@ -7,14 +7,9 @@ import {connect} from 'react-redux'
 import SubscribeList from '../components/SubscribeList'
 import Footer from '../components/Footer'
 
-
 class MySubscribePage extends React.Component {
     constructor(props, content) {
         super(props, content)
-        this.state = {
-            initDom: false,
-            subscribelist: []
-        }
     }
 
     render() {
@@ -22,19 +17,17 @@ class MySubscribePage extends React.Component {
             <div className="subscribe-list-page">
                 <div className="content">
                     {
-                        this.state.initDom ?
+                        this.props.subscriblelist.length>0 ?
                             (<SubscribeList
                                 user_id={this.props.match.params.id}
-                                subscribelist={this.state.subscribelist}
+                                subscribelist={this.props.subscriblelist}
                             />  ) :
                             (<div className="none"/>)
                     }
-
                 </div>
                 <Footer footerIndex={2}/>
             </div>
         )
-
     }
 
     componentDidMount() {
@@ -47,19 +40,11 @@ class MySubscribePage extends React.Component {
                 return response.json()
             })
             .then((json) => {
-                console.log(json)
-                this.setState ({
-                    initDom: true,
-                    subscribelist: json
-                })
+                this.props.subscribeListActions.get(json)
             })
             .catch((err)=>{
-                alert('数据连接错误，请稍后重试')
+                console.log(err)
             })
-    }
-
-    shouldComponentUpdate(nextProp,nextState){
-        return nextState.initDom
     }
 }
 
@@ -67,9 +52,8 @@ class MySubscribePage extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        subscribelist: state.subscribelist,
+        subscriblelist: state.subscriblelist,
         userinfo: state.userinfo,
-        productlist: state.productlist
     }
 }
 

@@ -13,8 +13,8 @@ import {HashRouter} from 'react-router-dom'
 import App from './App'
 
 /**上线后一定要删除啊,别忘了啊**/
-localStorage.removeItem('wxinfo')
-localStorage.removeItem('userinfo')
+// localStorage.removeItem('wxinfo')
+// localStorage.removeItem('userinfo')
 /**上线后一定要删除啊,别忘了啊**/
 
 if (__DEV__) {

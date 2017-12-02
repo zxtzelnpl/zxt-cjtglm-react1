@@ -1,8 +1,8 @@
 import * as actionTypes from '../constants/subscriblelist'
 
-export function init(data) {
+export function get(data) {
     return {
-        type: actionTypes.SUBSCRIBLELIST_INIT,
+        type: actionTypes.SUBSCRIBLELIST_GET,
         data
     }
 }

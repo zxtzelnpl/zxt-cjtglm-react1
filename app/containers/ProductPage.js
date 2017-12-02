@@ -15,7 +15,6 @@ class ProductPage extends  React.Component{
     }
 
     componentDidMount(){
-
         if(this.props.productlist.size===0){
             fetch(this.url,{
                 method:'get'

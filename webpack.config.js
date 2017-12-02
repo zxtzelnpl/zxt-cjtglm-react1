@@ -77,6 +77,10 @@ module.exports = {
             '/ashx':{
                 target:'http://106.14.21.199:8012',
                 secure:false
+            },
+            '/txsecurities_pics':{
+                target:'http://106.14.21.199:8012',
+                secure:false
             }
         },
         contentBase:'./build',//本地服务器所加载的页面所在的目录

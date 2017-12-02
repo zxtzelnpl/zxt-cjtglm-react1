@@ -33,18 +33,20 @@ class MySubscribePage extends React.Component {
     componentDidMount() {
         let user_id = this.props.match.params.id
         let url = `/ashx/user_subscribe.ashx?user_id=${user_id}`
-        fetch(url, {
-            method: 'get'
-        })
-            .then((response) => {
-                return response.json()
+        if(this.props.subscriblelist.length === 0){
+            fetch(url, {
+                method: 'get'
             })
-            .then((json) => {
-                this.props.subscribeListActions.get(json)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
+                .then((response) => {
+                    return response.json()
+                })
+                .then((json) => {
+                    this.props.subscribeListActions.get(json)
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
+        }
     }
 }
 

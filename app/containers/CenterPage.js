@@ -50,7 +50,6 @@ class CenterPage extends React.Component {
 
     getWeiXinInfo() {
         let query = getQuery(location.search);
-        let url = 'http://zjw.jyzqsh.com/';
         if (!query.code) {
             getCode()
         } else {

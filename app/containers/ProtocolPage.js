@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import * as userInfoActionsFromOtherFile from '../actions/userinfo'
 import ProtocolPage from '../subpages/ProtocolPage'
 
-// -------------------redux react 绑定--------------------
-
 function mapStateToProps(state) {
     return {
         score:state.userinfo.score,

@@ -1,4 +1,4 @@
-import './ArticleList.less'
+import './ArticleListBox.less'
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {Link} from 'react-router-dom'
@@ -20,7 +20,7 @@ class ArticleList extends React.Component {
             )
         })
         return (
-            <div className="article-list">
+            <div className="article-list-box">
                 {list_html}
             </div>
         )

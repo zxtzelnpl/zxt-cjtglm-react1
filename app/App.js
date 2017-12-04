@@ -1,9 +1,10 @@
 'use strict'
 import React from 'react'
 import {
-    Route,
-    Redirect
+  Route,
+  Redirect
 } from 'react-router-dom'
+
 import ProductPage from './containers/ProductPage' //投顾列表页面
 import TeacherPage from './containers/TeacherPage' //投顾详情页面
 import CenterPage from './containers/CenterPage' //用户中心页面
@@ -18,21 +19,21 @@ import NotFound from './components/NotFound' //Not Found
 
 const App = () => (
     <div className="container">
-        <Route exact path="/" render={() => (<Redirect to="/center"/>)}/>
-        <Route path="/articlelist" component={ArticleListPage}/>
-        <Route path="/article/:id" component={ArticleDetailPage}/>
-        <Route path="/product" component={ProductPage}/>
-        <Route path="/teacher/:id" component={TeacherPage}/>
-        <Route path="/usercenter" component={CenterPage}/>
-        <Route path="/center" component={CenterPage}/>
-        <Route path="/protocol" component={ProtocolPage}/>
+      <Route exact path="/" render={() => (<Redirect to="/center"/>)}/>
+      <Route path="/articlelist" component={ArticleListPage}/>
+      <Route path="/article/:id" component={ArticleDetailPage}/>
+      <Route path="/product" component={ProductPage}/>
+      <Route path="/teacher/:id" component={TeacherPage}/>
+      <Route path="/usercenter" component={CenterPage}/>
+      <Route path="/center" component={CenterPage}/>
+      <Route path="/protocol" component={ProtocolPage}/>
 
-        <Route path="/mysubscirbe/:id" component={MySubscribePage}/>
-        <Route path="/mysubscribearticle/:id" component={MySubscribeArticlePage}/>
-        <Route path="/weixin0/:id" component={WeiXin0}/>
+      <Route path="/mysubscirbe/:id" component={MySubscribePage}/>
+      <Route path="/mysubscribearticle/:id" component={MySubscribeArticlePage}/>
+      <Route path="/weixin0/:id" component={WeiXin0}/>
 
-        <Route path="/notfound/:reason" component={NotFound}/>
-        <RegisterStatement/>
+      <Route path="/notfound/:reason" component={NotFound}/>
+      <RegisterStatement/>
     </div>
 )
 

@@ -14,7 +14,7 @@ import ArticleDetailPage from './containers/ArticleDetailPage' //文章列表页
 import MySubscribePage from './containers/MySubscribePage' //个人订阅列表页面
 import MySubscribeArticlePage from './containers/MySubscribeArticlePage' //个人订阅单个产品页面
 import RegisterStatement from './containers/RegisterStatement' //注册声明弹出框
-import WeiXin0 from './containers/WeiXin0' //微信模版推送
+import WeiXin0 from './containers/WeiXin0Page' //微信模版推送
 import NotFound from './components/NotFound' //Not Found
 
 const App = () => (

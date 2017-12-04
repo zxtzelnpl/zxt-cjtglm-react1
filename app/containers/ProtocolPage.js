@@ -1,35 +1,7 @@
-import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userInfoActionsFromOtherFile from '../actions/userinfo'
-import Protocol from  '../components/Protocol'
-import ProtocolDisabled from  '../components/ProtocolDisabled'
-
-import questions from '../constants/questions'
-
-class ProtocolPage extends React.Component{
-    constructor(props,context){
-        super(props,context)
-    }
-
-    render(){
-        if(this.props.score){
-            return <ProtocolDisabled
-                questions = {questions}
-                score = {this.props.score}
-            />
-        }
-        else{
-            return <Protocol
-                questions = {questions}
-                userInfomentActions = {this.props.userInfomentActions}
-                openid = {this.props.openid}
-            />
-        }
-    }
-}
-
-
+import Protocol from '../subpages/Protocol'
 
 // -------------------redux react 绑定--------------------
 
@@ -49,4 +21,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ProtocolPage)
+)(Protocol)

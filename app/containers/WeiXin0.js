@@ -82,7 +82,7 @@ class WeiXin0 extends React.Component {
                 if (err.msg) {
                     alert(err.msg)
                     if (err.reason === 'notBuy') {
-                        location.href = 'http://zjw.jyzqsh.com/#/product'
+                        location.href = 'http://new.cjtglm.com/#/product'
                     }
                 }
                 else {

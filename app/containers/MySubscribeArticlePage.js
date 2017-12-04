@@ -129,7 +129,7 @@ class MySubscribeArticlePage extends React.Component {
     getSubscribe(produce_name) {
         if (this.props.wxinfo.user_count === '1') {
             let openid = this.props.wxinfo.openid
-            let money = 1;
+            let money = 3900;
             let user_id = this.user_id
             let user_name = this.props.wxinfo.nick_name
             let user_phone = this.props.userinfo.phone

@@ -6,7 +6,6 @@ import {getQuery, getCode} from "../static/js/tools";
 class WeiXin0 extends React.Component {
   constructor(props, content) {
     super(props, content)
-    this.index = 0;
     this.state = {
       initDom: false,
       time: null,
@@ -15,8 +14,6 @@ class WeiXin0 extends React.Component {
   }
 
   render() {
-    this.index++
-    console.log(this.index)
     let stocks = this.state.stocks;
     let htmlStocks;
     if (stocks != null) {
@@ -35,7 +32,17 @@ class WeiXin0 extends React.Component {
       })
     }
     else {
-      htmlStocks = <div className="none"/>
+      htmlStocks = (
+          <div className="box">
+            <div className="up">
+              <span>******</span><span>******</span>
+            </div>
+            <div className="down">
+              <span className="label">加载中：</span>
+              <span className="text">******</span>
+            </div>
+          </div>
+      )
     }
     return (
         <div className="wei-xin-0">
@@ -46,14 +53,14 @@ class WeiXin0 extends React.Component {
                   选股策略
                 </div>
                 <div className="right">
-                  {this.state.initDom ? this.state.time : ''}
+                  {this.state.initDom ? this.state.time : '**** ** ** ** ** **'}
                 </div>
               </div>
               <div className="leftD"/>
               <div className="rightD"/>
             </div>
             <div className="board">
-              {this.state.initDom ? htmlStocks : ''}
+              {htmlStocks}
             </div>
           </div>
           <Footer footerIndex={0}/>

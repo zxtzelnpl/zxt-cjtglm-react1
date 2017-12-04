@@ -3,7 +3,7 @@ import questions from '../constants/questions'
 import Protocol from  '../components/Protocol'
 import ProtocolDisabled from  '../components/ProtocolDisabled'
 
-class Protocol extends React.Component{
+class ProtocolPage extends React.Component{
   constructor(props,context){
     super(props,context)
   }
@@ -25,4 +25,4 @@ class Protocol extends React.Component{
   }
 }
 
-export default Protocol
+export default ProtocolPage

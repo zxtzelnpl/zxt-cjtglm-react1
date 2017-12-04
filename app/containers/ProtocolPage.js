@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userInfoActionsFromOtherFile from '../actions/userinfo'
-import Protocol from '../subpages/Protocol'
+import ProtocolPage from '../subpages/ProtocolPage'
 
 // -------------------redux react 绑定--------------------
 
@@ -21,4 +21,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Protocol)
+)(ProtocolPage)

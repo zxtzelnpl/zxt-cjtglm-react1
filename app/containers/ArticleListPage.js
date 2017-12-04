@@ -1,5 +1,3 @@
-import './ArticleListPage.less'
-
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import * as articleListmentActionsFromOtherFile from '../actions/articlelist'

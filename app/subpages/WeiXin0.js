@@ -1,3 +1,4 @@
+import './WeiXin0.less'
 import React from 'react'
 import Footer from '../components/Footer'
 import {getQuery, getCode} from "../static/js/tools";

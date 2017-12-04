@@ -55,7 +55,7 @@ class MySubscribePage extends React.Component {
 function mapStateToProps(state) {
     return {
         subscriblelist: state.subscriblelist,
-        userinfo: state.userinfo,
+        userinfo: state.userinfo
     }
 }
 

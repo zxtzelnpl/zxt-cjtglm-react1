@@ -8,17 +8,30 @@ class MySubscribePage extends React.Component {
   }
 
   render() {
+    let {data,updateAt} = this.props.subscriblelist;
+    let returnHtml
+    if(!updateAt){
+      returnHtml = (
+          <div className="loading">数据加载中，请稍等</div>
+      )
+    }
+    else{
+      if(Array.isArray(data)){
+        returnHtml = (
+            <SubscribeList
+                user_id={this.props.match.params.id}
+                subscribelist={data}
+            />
+        )
+      }
+      else{
+        returnHtml = <div className="error">数据出现错误</div>
+      }
+    }
     return (
         <div className="subscribe-list-page">
           <div className="content">
-            {
-              this.props.subscriblelist.length>0 ?
-                  (<SubscribeList
-                      user_id={this.props.match.params.id}
-                      subscribelist={this.props.subscriblelist}
-                  />  ) :
-                  (<div className="none"/>)
-            }
+            {returnHtml}
           </div>
           <Footer footerIndex={2}/>
         </div>
@@ -28,7 +41,7 @@ class MySubscribePage extends React.Component {
   componentDidMount() {
     let user_id = this.props.match.params.id
     let url = `/ashx/user_subscribe.ashx?user_id=${user_id}`
-    if(this.props.subscriblelist.length === 0){
+    if(typeof this.props.subscriblelist.updateAt === 'undefined'){
       fetch(url, {
         method: 'get'
       })

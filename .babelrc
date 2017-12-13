@@ -7,6 +7,7 @@
           "browsers": [
             "> 1%",
             "last 2 versions",
+            "ios >= 7",
             "not ie <= 8"
           ]
         }

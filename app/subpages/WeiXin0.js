@@ -1,7 +1,6 @@
 import './WeiXin0.less'
 import React from 'react'
 import Footer from '../components/Footer'
-import {getQuery, getCode} from "../static/js/tools";
 
 class WeiXin0 extends React.Component {
   constructor(props, content) {
@@ -69,26 +68,39 @@ class WeiXin0 extends React.Component {
   }
 
   componentDidMount() {
-    let wxInfoPromise = this.getWeiXinInfo()
+    let userInfoPromise = this.getUserInfo()
 
-    let userInfoPromise = this.getUserInfo(wxInfoPromise)
-
-    let checkBuyPromise = this.checkBuy(userInfoPromise)
-
-    let getArticle = this.getArticle(checkBuyPromise)
-
-    Promise.all([wxInfoPromise, userInfoPromise, getArticle])
-        .then(([wxInfo, userInfo, article]) => {
+    let checkBuyPromise = userInfoPromise
+        .then(userInfo => {
+          return this.checkBuy(userInfo)
         })
-        .catch((err) => {
-          if (err.msg) {
-            alert(err.msg)
-            if (err.reason === 'notBuy') {
-              location.href = 'http://new.cjtglm.com/#/product'
-            }
+
+    let articlePromise = this.getArticle()
+
+    Promise
+        .all([checkBuyPromise, articlePromise])
+        .then(([checkBuy, article]) => {
+          let stocks = null
+          let _stocks = article[0].strategy.split('---')
+          let time = article[0].create_time.replace(/\//ig, '\-')
+          if (_stocks.length > 0) {
+            stocks = _stocks.map((stock) => {
+              let arr = stock.split(/[*]|[+]|zjw/gi)
+              return arr
+            })
           }
-          else {
-            alert('数据出现故障,请稍后再试')
+          this.setState({
+            initDom: true,
+            time: time,
+            stocks: stocks
+          })
+        })
+        .catch(err=>{
+          if(err.msg){
+            alert(err.msg)
+          }
+          else{
+            alert('数据连接错误')
           }
         })
   }
@@ -98,141 +110,75 @@ class WeiXin0 extends React.Component {
     return nextState.initDom
   }
 
-  getWeiXinInfo() {
+  getUserInfo() {
     return new Promise((resolve, reject) => {
-      if (this.props.wxinfo.openid) {
-        resolve({
-          hasLoad: true,
-          openid: this.props.wxinfo.openid
-        })
+      if (typeof this.props.userinfo.id !== 'undefined') {
+        resolve(this.props.userinfo)
+      }
+      else if (localStorage.getItem('userinfo')) {
+        resolve(JSON.parse(localStorage.getItem('userinfo')))
       }
       else {
-        let query = getQuery(location.search);
-        if (!query.code) {
-          getCode()
-        } else {
-          fetch('/ashx/wx_openid_user_is.ashx?code=' + query.code)
-              .then((res) => {
-                return res.json()
-              })
-              .then((json) => {
-                if (json.openid == null) {
-                  reject({
-                    reason: 'notSubscribe',
-                    msg: '请先关注微信公众号《君银牛人堂》，购买后可查看'
-                  })
-                }
-                else {
-                  this.props.wxInfoActions.get(json)
-                  resolve(json)
-                }
-              })
-              .catch((err) => {
-                reject({
-                  reason: 'notSubscribe',
-                  msg: '请先关注微信公众号《君银牛人堂》，购买后可查看'
-                })
-              })
-        }
-      }
-    })
-  }
-
-  getUserInfo(wxInfoPromise) {
-    return new Promise((resolve, reject) => {
-      wxInfoPromise.then((wxinfo) => {
-        if (this.props.userinfo.id) {
-          resolve(
-              Object.assign(
-                  {hasLoad: true},
-                  this.props.userinfo
-              )
-          )
-        }
-        else {
-          let openid = wxinfo.openid;
-          let url = `/ashx/users_id.ashx?openid=${openid}`
-          fetch(url)
-              .then((res) => {
-                return res.json()
-              })
-              .then((json) => {
-                if (json.length > 0&&json[0].id) {
-                  this.props.userInfoActions.load(json[0])
-                  resolve(json[0])
-                }
-                else {
-                  reject({
-                    msg: '亲，还未注册哦，注册后需购买后方可查看'
-                  })
-                }
-              })
-              .catch(() => {
+        let openid = this.props.wxinfo.openid;
+        let url = `/ashx/users_id.ashx?openid=${openid}`
+        fetch(url)
+            .then((res) => {
+              return res.json()
+            })
+            .then((json) => {
+              if (json.length > 0 && json[0].id) {
+                this.props.userInfoActions.load(json[0])
+                resolve(json[0])
+              }
+              else {
                 reject({
                   msg: '亲，还未注册哦，注册后需购买后方可查看'
                 })
+              }
+            })
+            .catch(() => {
+              reject({
+                msg: '数据出现故障,请稍后再试'
               })
-        }
-      })
+            })
+      }
     })
   }
 
-  checkBuy(userInfoPromise) {
+  checkBuy(userInfo) {
     return new Promise((resolve, reject) => {
-      userInfoPromise
-          .then((userinfo) => {
-            let user_id = userinfo.id;
-            let article_id = this.props.match.params.id
-            let url = `/ashx/Article_user_Juris.ashx?user_id=${user_id}&article_id=${article_id}`
-            fetch(url)
-                .then((res) => {
-                  return res.json()
-                })
-                .then((json) => {
-                  if (json.error === '1') {
-                    reject({
-                      reason: 'notBuy',
-                      msg: '你未购买次产品，需购买后方可查看'
-                    })
-                  }
-                  else if (json.error === '0') {
-                    resolve(json)
-                  }
-                  else {
-                    reject({
-                      msg: '数据连接错误请稍后重试'
-                    })
-                  }
-                })
+      let user_id = userInfo.id;
+      let article_id = this.props.match.params.id
+      let url = `/ashx/Article_user_Juris.ashx?user_id=${user_id}&article_id=${article_id}`
+      fetch(url)
+          .then((res) => {
+            return res.json()
+          })
+          .then((json) => {
+            if (json.error === '1') {
+              reject({
+                reason: 'notBuy',
+                msg: '你未购买次产品，需购买后方可查看'
+              })
+            }
+            else if (json.error === '0') {
+              resolve(json)
+            }
+            else {
+              reject({
+                msg: '数据连接错误请稍后重试'
+              })
+            }
           })
     })
   }
 
-  getArticle(checkBuyPromise) {
-    return checkBuyPromise
-        .then(() => {
-          let article_id = this.props.match.params.id
-          let url = `/ashx/Article_Selce.ashx?article_id=${article_id}`
-          return fetch(url)
-              .then((res) => {
-                return res.json()
-              })
-              .then((json)=>{
-                let stocks = null
-                let _stocks = json[0].strategy.split('---')
-                let time = json[0].create_time.replace(/\//ig, '\-')
-                if (_stocks.length > 0) {
-                  stocks = _stocks.map((stock) => {
-                    let arr = stock.split(/[*]|[+]|zjw/gi)
-                    return arr
-                  })
-                }
-                this.setState({
-                  initDom: true,
-                  time: time,
-                  stocks: stocks
-                })
-              })
+  getArticle() {
+    let article_id = this.props.match.params.id
+    let url = `/ashx/Article_Selce.ashx?article_id=${article_id}`
+    return fetch(url)
+        .then((res) => {
+          return res.json()
         })
   }
 }

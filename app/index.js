@@ -11,6 +11,7 @@ import configureStore from './store/configureStore'
 
 import {HashRouter} from 'react-router-dom'
 import App from './App'
+import Loading from './components/Loading'
 
 
 
@@ -31,14 +32,17 @@ if (__DEV__) {
 
 let store = configureStore()
 render(
-    <Provider store={store}>
-        <HashRouter>
-            <App/>
-        </HashRouter>
-    </Provider>
-    ,
-    document.getElementById('root')
+    <Loading/>,document.getElementById('root')
 )
+// render(
+//     <Provider store={store}>
+//         <HashRouter>
+//             <App/>
+//         </HashRouter>
+//     </Provider>
+//     ,
+//     document.getElementById('root')
+// )
 
 
 

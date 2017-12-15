@@ -14,6 +14,7 @@ import ArticleDetailPage from './containers/ArticleDetailPage' //文章列表页
 import MySubscribePage from './containers/MySubscribePage' //个人订阅列表页面
 import MySubscribeArticlePage from './containers/MySubscribeArticlePage' //个人订阅单个产品页面
 import WeiXin0Page from './containers/WeiXin0Page' //微信模版推送
+import TuiGuang from './containers/TuiGuang' //推广模版推送
 import NotFound from './components/NotFound' //Not Found
 import RegisterStatement from './containers/RegisterStatement' //注册声明弹出框
 
@@ -32,6 +33,7 @@ const App = () => (
       <Route path="/mysubscribearticle/:id" component={MySubscribeArticlePage}/>
       <Route path="/weixin0/:id" component={WeiXin0Page}/>
 
+      <Route path="/tg/:date" component={TuiGuang}/>
       <Route path="/notfound/:reason" component={NotFound}/>
       <RegisterStatement/>
     </div>

@@ -1,0 +1,20 @@
+.tuiguang{
+    position: relative;
+    width: 6.4rem;
+    height: 100%;
+    overflow: hidden;
+    img {
+        display: block;
+        width: 100%;
+        height: auto
+    }
+    a {
+        @width:5rem;
+        @left:( 6.4rem - @width ) / 2 ;
+        position: absolute;
+        left: @left;
+        display: block;
+        width: @width;
+        height: .8rem;
+    }
+}

@@ -16,25 +16,24 @@ import Loading from './components/Loading'
 import {initialState as userInitialState} from './reducers/userinfo'
 import {getCode, getQuery} from './static/js/tools'
 
-/**上线后一定要删除啊,别忘了啊**/
-// localStorage.removeItem('wxinfo')
-// localStorage.removeItem('userinfo')
-/**上线后一定要删除啊,别忘了啊**/
 
 if (__DEV__) {
-    // console.info('__DEV__是' + __DEV__ + '这里是测试环境')
-    // if(typeof localStorage === 'object'){
-    //     localStorage.setItem('wxinfo', '{"openid":"oijVfszBRm_nxYzNH6RAchSKXFxE","nick_name":"Aaron Z","province":"内蒙古","country":"中国","city":"兴安","sex":"1","headimgurl":"http://wx.qlogo.cn/mmopen/eicLiaJS1h1icicgVjuY73ysqeko4NXxYIK4qOfiaO1D8yjrAmcAISZUOoniaAvAZAuJice6YtWoicGnhals1PUbFXvY0L4jicF65r8VC/0","channel":"超级投顾订阅号","user_count":"1","erro":"OK"}')
-    // }
-    // if(typeof window === 'object'){
-    //     window.Perf = Perf
-    // }
+  /**上线后一定要删除啊,别忘了啊**/
+  localStorage.removeItem('wxinfo')
+  localStorage.removeItem('userinfo')
+  /**上线后一定要删除啊,别忘了啊**/
+  console.info('__DEV__是' + __DEV__ + '这里是测试环境')
+  if (typeof localStorage === 'object') {
+    localStorage.setItem('wxinfo', '{"openid":"oijVfszBRm_nxYzNH6RAchSKXFxE","nick_name":"Aaron Z","province":"内蒙古","country":"中国","city":"兴安","sex":"1","headimgurl":"http://wx.qlogo.cn/mmopen/eicLiaJS1h1icicgVjuY73ysqeko4NXxYIK4qOfiaO1D8yjrAmcAISZUOoniaAvAZAuJice6YtWoicGnhals1PUbFXvY0L4jicF65r8VC/0","channel":"超级投顾订阅号","user_count":"1","erro":"OK"}')
+  }
+  if (typeof window === 'object') {
+    window.Perf = Perf
+  }
 }
 
 
-
 render(
-    <Loading/>,document.getElementById('root')
+    <Loading/>, document.getElementById('root')
 )
 getInitialState()
 
@@ -54,6 +53,7 @@ function __render(wxinfo, userinfo) {
       document.getElementById('root')
   )
 }
+
 function getInitialState() {
   let userinfo = userInitialState
   if (typeof localStorage === 'object' && localStorage.getItem('userinfo')) {
@@ -103,8 +103,8 @@ function getInitialState() {
   getWxinfo.then(wxinfo => {
     __render(wxinfo, userinfo)
   })
-      .catch(err=>{
-        if(err.state){
+      .catch(err => {
+        if (err.state) {
           alert(err.info)
         }
       })

@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 
 import SubscribeArticleList from '../components/SubscribeArticleList'
 import Footer from '../components/Footer'
+import {money, periods} from '../constants/buyInfo'
 
 var wxJsApiParam
 
@@ -53,7 +54,7 @@ class MySubscribeArticlePage extends React.Component {
   render() {
     let subscribe = null
     let data = this.props.subscriblelist.data
-    if(Array.isArray(data)){
+    if (Array.isArray(data)) {
       data.forEach(item => {
         if (item.produce_id === this.produce_id) {
           subscribe = item
@@ -71,10 +72,10 @@ class MySubscribeArticlePage extends React.Component {
               </div>
             </div>
         ),
-        buyButton = (<div className="none" />)
-    if(subscribe){
+        buyButton = (<div className="none"/>)
+    if (subscribe) {
       let {head_log, name, style} = subscribe
-      headHtml=(
+      headHtml = (
           <div className="wrap">
             <img src={head_log}/>
             <div>
@@ -83,7 +84,7 @@ class MySubscribeArticlePage extends React.Component {
             </div>
           </div>
       )
-      if(this.state.canBuy){
+      if (this.state.canBuy) {
         buyButton = (<a onClick={this.getSubscribe.bind(this, name)}>续 费</a>)
       }
     }
@@ -96,11 +97,11 @@ class MySubscribeArticlePage extends React.Component {
               {headHtml}
               {buyButton}
             </div>
-            {this.state.initDom?<SubscribeArticleList
+            {this.state.initDom ? <SubscribeArticleList
                 product_id={this.produce_id}
                 user_id={this.user_id}
                 list={this.state.newslist}
-            />:<div className="loading">数据加载中，请稍等</div>}
+            /> : <div className="loading">数据加载中，请稍等</div>}
 
           </div>
           <Footer footerIndex={2}/>
@@ -144,7 +145,7 @@ class MySubscribeArticlePage extends React.Component {
             })
         })
 
-    if(typeof this.props.subscriblelist.updateAt === 'undefined'){
+    if (typeof this.props.subscriblelist.updateAt === 'undefined') {
       fetch(subscribe_url, {
         method: 'get'
       })
@@ -154,7 +155,7 @@ class MySubscribeArticlePage extends React.Component {
           .then((json) => {
             this.props.subscribeListActions.get(json)
           })
-          .catch((err)=>{
+          .catch((err) => {
             console.log(err)
           })
     }
@@ -163,12 +164,10 @@ class MySubscribeArticlePage extends React.Component {
   getSubscribe(produce_name) {
     if (this.props.wxinfo.user_count === '1') {
       let openid = this.props.wxinfo.openid
-      let money = 3900;
       let user_id = this.user_id
       let user_name = this.props.wxinfo.nick_name
       let user_phone = this.props.userinfo.phone
       let produce_id = this.produce_id
-      let periods = 5
       let url = `/wx_pay/pay_Inter.aspx?openid=${openid}&money=${money}&user_id=${user_id}&user_name=${user_name}&user_phone=${user_phone}&produce_id=${produce_id}&produce_name=${produce_name}&periods=${periods}`;//获取wxJsApiParam
       fetch(url, {
         method: 'get'

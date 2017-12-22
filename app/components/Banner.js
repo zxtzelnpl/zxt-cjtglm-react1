@@ -1,12 +1,13 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ReactSwipe from 'react-swipe'
-
+import {public_resource} from "../constants/urls";
 import './Banner.less'
 
 import banner1 from '../static/img/banner/banner1.jpg'
 import banner2 from '../static/img/banner/banner2.jpg'
 import banner3 from '../static/img/banner/banner3.jpg'
+let banner4 = `${public_resource}/christmas/banner.jpg`
 
 class Banner extends React.Component {
     constructor(props, context) {
@@ -30,7 +31,7 @@ class Banner extends React.Component {
                 }
             >
                 <div>
-                    <img src={banner1} alt=""/>
+                    <img src={banner4} alt=""/>
                 </div>
                 <div>
                     <img src={banner2} alt=""/>

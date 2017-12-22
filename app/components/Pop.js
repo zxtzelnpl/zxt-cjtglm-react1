@@ -1,7 +1,7 @@
 import React from 'react'
 import './Pop.less'
-import pop from '../static/img/pop/pop.png'
-import pop_close from '../static/img/pop/pop-close.png'
+import {public_resource} from "../constants/urls";
+
 
 class Pop extends React.Component {
     constructor(props, context) {
@@ -24,16 +24,17 @@ class Pop extends React.Component {
     }
 
     render() {
+        let pop_img = `${public_resource}/christmas/pop.png`
         return (
             this.state.show ?
                 (<div className="pop-box">
-                    <div className="pop-bg">
+                    <div className="pop-bg" onClick={this.popClose}>
                         <div className="pop">
-                            <div className="pop-close" onClick={this.popClose}>
-                                <img src={pop_close}/>
-                            </div>
-                            <img className="pop-img" src={pop} alt=""/>
-                            <a className="pop-link" href="http://www.jyzqsh.com/xgnr/20171111/" />
+{/*                            <div className="pop-close" onClick={this.popClose}>
+
+                            </div>*/}
+                            <img className="pop-img" src={pop_img} alt=""/>
+                            {/*<a className="pop-link" href="http://www.jyzqsh.com/xgnr/20171111/" />*/}
                         </div>
                     </div>
                 </div>) :

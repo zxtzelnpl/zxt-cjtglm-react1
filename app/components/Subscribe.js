@@ -3,8 +3,8 @@ import './Subscribe.less'
 import {money, periods} from '../constants/buyInfo'
 
 class Subscribe extends React.Component {
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
   }
 
   render() {

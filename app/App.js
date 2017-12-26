@@ -17,7 +17,7 @@ import WeiXin0Page from './containers/WeiXin0Page' //微信模版推送
 import TuiGuang from './containers/TuiGuang' //推广模版推送
 import NotFound from './components/NotFound' //Not Found
 import RegisterStatement from './containers/RegisterStatement' //注册声明弹出框
-import Pop from './components/Pop'
+
 
 const App = () => (
     <div className="container">
@@ -37,7 +37,6 @@ const App = () => (
       <Route path="/tg/:date" component={TuiGuang}/>
       <Route path="/notfound/:reason" component={NotFound}/>
       <RegisterStatement/>
-      <Pop/>
     </div>
 )
 

@@ -6,6 +6,7 @@ import * as productListActionsFromOtherFile from '../actions/productlist'
 import Banner from '../components/Banner'
 import ProductList from '../components/ProductList'
 import ProductListHot from '../components/ProductListHot'
+import Pop from '../components/Pop'
 import Footer from '../components/Footer'
 
 class ProductPage extends React.Component {
@@ -52,6 +53,7 @@ class ProductPage extends React.Component {
             <ProductListHot list={hot}/>
             <ProductList list={normal}/>
             <Footer footerIndex={1}/>
+            <Pop />
           </div>
       )
     }

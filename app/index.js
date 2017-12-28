@@ -16,7 +16,6 @@ import Loading from './components/Loading'
 import {initialState as userInitialState} from './reducers/userinfo'
 import {getCode, getQuery} from './static/js/tools'
 
-
 if (__DEV__) {
   /**上线后一定要删除啊,别忘了啊**/
   localStorage.removeItem('wxinfo')

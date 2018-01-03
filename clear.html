@@ -2,43 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>超级投顾缓存清除页面</title>
     <style>
-        button{
-            margin:20px auto;
+        div{
+            width:100%;
+            text-wrap:wrap;
         }
     </style>
 </head>
 <body>
+    <div id="error">
+        
+    </div>
     <div id="wxinfo">
 
     </div>
-    <button id="btn_wxinfo">清楚WXINFO数据</button>
+    <button id="btn_wxinfo">清除WXINFO数据</button>
 
     <hr />
     <div id="userinfo">
 
     </div>
-    <button id="btn_userinfo">清楚USERINFOINFO数据</button>
+    <button id="btn_userinfo">清除USERINFOINFO数据</button>
 </body>
 <script>
     let wxinfo = document.getElementById('wxinfo');
     let userinfo = document.getElementById('userinfo');
     let btn_wxinfo = document.getElementById('btn_wxinfo');
     let btn_userinfo = document.getElementById('btn_userinfo');
+    let errorBox = document.getElementById('error');
+    try{
+        wxinfo.innerHTML = localStorage.getItem('wxinfo')
+        userinfo.innerHTML = localStorage.getItem('userinfo')
+    }
+    catch(e){
+        errorBox.innerHTML='您的手机不支持localStorage'
+    }
 
-    wxinfo.innerHTML = localStorage.getItem('wxinfo')
-    userinfo.innerHTML = localStorage.getItem('userinfo')
 
     btn_wxinfo.addEventListener('click',function(){
-      localStorage.removeItem('wxinfo')
-      wxinfo.innerHTML = localStorage.getItem('wxinfo')
+        try{
+          localStorage.removeItem('wxinfo')
+          wxinfo.innerHTML = localStorage.getItem('wxinfo')
+        }
+        catch(e){
+            errorBox.innerHTML='您的手机不支持localStorage'
+        }
+
     })
 
     btn_userinfo.addEventListener('click',function(){
-      localStorage.removeItem('userinfo')
-      userinfo.innerHTML = localStorage.getItem('userinfo')
+        try{
+          localStorage.removeItem('userinfo')
+          userinfo.innerHTML = localStorage.getItem('userinfo')
+        }
+        catch(e){
+            errorBox.innerHTML='您的手机不支持localStorage'
+        }
+
     })
 </script>
 </html>

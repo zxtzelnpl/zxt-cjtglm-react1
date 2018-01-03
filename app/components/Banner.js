@@ -31,7 +31,7 @@ class Banner extends React.Component {
                 }
             >
                 <div>
-                    <img src={banner4} alt=""/>
+                    <img src={banner1} alt=""/>
                 </div>
                 <div>
                     <img src={banner2} alt=""/>

@@ -9,8 +9,8 @@ let wuweiwei = [
     code: '300654',
     result: '14.97%',
     daySend: '2017.12.18',
-    day: '5',
-    dayCount: '五日最高涨幅',
+    day: '3',
+    dayCount: '三日最高涨幅',
     img: wuweiwei2
   }
 ]

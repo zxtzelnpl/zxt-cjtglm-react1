@@ -37,7 +37,7 @@ render(
 )
 getInitialState()
 
-function __render(wxinfo, userinfo) {
+function __render (wxinfo, userinfo) {
   let store = configureStore({
     wxinfo: wxinfo,
     userinfo: userinfo
@@ -54,7 +54,7 @@ function __render(wxinfo, userinfo) {
   )
 }
 
-function getInitialState() {
+function getInitialState () {
   let userinfo = userInitialState
   if (typeof localStorage === 'object' && localStorage.getItem('userinfo')) {
     userinfo = JSON.parse(localStorage.getItem('userinfo'))

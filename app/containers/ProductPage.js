@@ -9,8 +9,8 @@ import ProductListHot from '../components/ProductListHot'
 import Footer from '../components/Footer'
 
 class ProductPage extends React.Component {
-  constructor(props, content) {
-    super(props, content)
+  constructor(props) {
+    super(props)
     this.url = '/ashx/productlist.ashx'
   }
 

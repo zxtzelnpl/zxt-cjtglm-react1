@@ -80,9 +80,8 @@ function getInitialState () {
                 })
               }
               else {
-                let wxinfo = Object.assign(
-                    {receviedAt: new Date().getTime()},
-                    json)
+                let wxinfo = json
+                wxinfo.receviedAt=new Date().getTime()
                 localStorage.setItem('wxinfo', JSON.stringify(wxinfo))
                 resolve(wxinfo)
               }

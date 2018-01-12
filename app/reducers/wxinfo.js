@@ -3,7 +3,7 @@ import * as actionTypes from '../constants/wxinfo'
 const initialState = {}
 
 export default function wxinfo(state = initialState, action) {
-  let _state = Object.assign({}, state)
+  let _state = {...state}
   switch (action.type) {
     case actionTypes.WEIXIN_GET:
       localStorage.setItem('wxinfo', JSON.stringify(action.data))

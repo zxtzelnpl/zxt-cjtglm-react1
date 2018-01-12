@@ -12,7 +12,7 @@ import configureStore from './store/configureStore'
 import {HashRouter} from 'react-router-dom'
 import App from './App'
 import Loading from './components/Loading'
-
+import ErrPage from './subpages/ErrPage'
 import {initialState as userInitialState} from './reducers/userinfo'
 import {getCode, getQuery} from './static/js/tools'
 
@@ -76,7 +76,7 @@ function getInitialState () {
               if (json.erro !== 'OK') {
                 reject({
                   state: 'noAttention',
-                  info: '您还没有关注公众号《超级投顾联盟》，请先关注后查看页面'
+                  message: '您还没有关注公众号《超级投顾联盟》，请先关注后查看页面'
                 })
               }
               else {
@@ -89,7 +89,7 @@ function getInitialState () {
             .catch(() => {
               reject({
                 state: 'net',
-                info: '网络错误，请稍后重试'
+                message: '网络错误，请稍后重试'
               })
             })
       }
@@ -103,8 +103,10 @@ function getInitialState () {
     __render(wxinfo, userinfo)
   })
       .catch(err => {
-        if (err.state) {
-          alert(err.info)
+        if (err.message) {
+          render(
+              <ErrPage message={err.message}/>, document.getElementById('root')
+          )
         }
       })
 }

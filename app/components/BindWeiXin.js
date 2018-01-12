@@ -111,7 +111,7 @@ class BindWeiXin extends React.Component {
                 .then((json) => {
                     console.log(json)
                     if(json[0].erro === '1'){
-                        let _wxinfo = Object.assign({},this.props.wxinfo)
+                        let _wxinfo = {...this.props.wxinfo}
                         _wxinfo.user_count = '1'
                         localStorage.setItem('wxinfo',JSON.stringify(_wxinfo))
                         this.props.wxInfoActions.update(_wxinfo)

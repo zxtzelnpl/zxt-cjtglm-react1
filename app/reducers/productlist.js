@@ -17,6 +17,7 @@ export default function productlist(state = initialState, action) {
     switch (action.type) {
         case actionTypes.PRODUCTLIST_LOAD:
             teacher_data_format(action.data)
+
             action.data.sort(function (a, b) {
                 return parseInt(a.rank) - parseInt(b.rank)
             })

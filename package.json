@@ -49,7 +49,8 @@
   "scripts": {
     "start": "set NODE_ENV=dev && webpack-dev-server --progress --color",
     "mock": "node ./mock/server.js",
-    "build": "rd/s/q build && set NODE_ENV=production&& webpack --config ./webpack.production.config.js --progress --colors"
+    "build": "rd/s/q build && set NODE_ENV=production&& webpack --config ./webpack.production.config.js --progress --colors",
+    "test": "rd/s/q test && set NODE_ENV=production&& webpack --config ./webpack.test.config.js --progress --colors"
   },
   "repository": {
     "type": "git",

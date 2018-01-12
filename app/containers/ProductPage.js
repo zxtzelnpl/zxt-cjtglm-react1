@@ -27,7 +27,7 @@ class ProductPage extends React.Component {
           })
           .catch((err) => {
             console.log('****err****')
-            console.log(err)
+            console(err)
             console.log('****err****')
           })
     }
@@ -37,14 +37,17 @@ class ProductPage extends React.Component {
     if (this.props.productlist.size > 0) {
       let normal = [];
       let hot = [];
-      [...this.props.productlist.values()].forEach((item) => {
-        if (item.stocks.length > 0) {
-          hot.push(item)
+      let mapIter = this.props.productlist.values()
+      let next = mapIter.next().value
+      while(next){
+        if (next.stocks.length > 0) {
+          hot.push(next)
         }
         else {
-          normal.push(item)
+          normal.push(next)
         }
-      })
+        next = mapIter.next().value
+      }
       return (
           <div className="product-page">
             <Banner/>
@@ -56,13 +59,13 @@ class ProductPage extends React.Component {
     }
     else {
       return (
-          <div className="none"/>
+          <div>页面暂无数据</div>
       )
     }
 
   }
 }
-
+// {/*<div className="none"/>*/}
 // -------------------redux react 绑定--------------------
 
 function mapStateToProps(state) {

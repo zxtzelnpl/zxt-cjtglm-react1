@@ -1,9 +1,19 @@
+import wuweiwei1 from '../img/stocks/wuweiwei1.jpg'
 import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
 import maxin2 from '../img/stocks/maxin2.jpg'
 import jiaoxiaoyi1 from '../img/stocks/jiaoxiaoyi1.jpg'
 
 //吴伟伟
 let wuweiwei = [
+  {
+    name: '财通证券',
+    code: '601108',
+    result: '涨停',
+    daySend: '2018.1.15',
+    day: '次日',
+    dayCount: '次日',
+    img: wuweiwei1
+  },
   {
     name: '世纪天鸿',
     code: '300654',

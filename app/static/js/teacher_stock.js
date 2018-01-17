@@ -1,10 +1,20 @@
 import wuweiwei1 from '../img/stocks/wuweiwei1.jpg'
 import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
+import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
 import maxin2 from '../img/stocks/maxin2.jpg'
 import jiaoxiaoyi1 from '../img/stocks/jiaoxiaoyi1.jpg'
 
 //吴伟伟
 let wuweiwei = [
+  {
+    name: '国信证券',
+    code: '002736',
+    result: '涨停',
+    daySend: '2018.1.17',
+    day: '当日',
+    dayCount: '当日',
+    img: wuweiwei3
+  },
   {
     name: '财通证券',
     code: '601108',

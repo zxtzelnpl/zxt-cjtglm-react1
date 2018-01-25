@@ -2,7 +2,7 @@ import wuweiwei1 from '../img/stocks/wuweiwei1.jpg'
 import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
 import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
 import maxin2 from '../img/stocks/maxin2.jpg'
-import jiaoxiaoyi1 from '../img/stocks/jiaoxiaoyi1.jpg'
+import zhouyue1 from '../img/stocks/zhouyue1.jpg'
 
 //吴伟伟
 let wuweiwei = [
@@ -46,52 +46,55 @@ let maxin = [
     img: maxin2
   }
 ]
-//焦晓颖
-let jiaoxiaoyi = [
+//周煜
+let zhouyue = [
   {
-    name: '万科A ',
-    code: '000002',
-    result: '24.07%',
-    daySend: '2017.12.22',
-    day: '阶段',
-    dayCount: '阶段最高涨幅',
-    img: jiaoxiaoyi1
+    name: '光线传媒 ',
+    code: '300251',
+    result: '32.16%',
+    daySend: '2018.1.18',
+    day: '5',
+    dayCount: '五日最高涨幅',
+    img: zhouyue1
   }
 ]
 
+// hotTeachers的的股票
 export function stocks (name) {
   switch (name) {
     case '吴伟伟':
       return wuweiwei
     case '马鑫':
       return maxin
-    case '焦晓颖':
-      return jiaoxiaoyi
+    case '周煜':
+      return zhouyue
     default:
       return []
   }
 }
 
+// hotTeachers的排名
 export function ranks (name) {
   switch (name) {
     case '吴伟伟':
       return 1
     case '马鑫':
       return 2
-    case '焦晓颖':
+    case '周煜':
       return 3
     default:
       return 4
   }
 }
 
+// 控制teacher具体显示的record
 export function recordNum (name) {
   switch (name) {
     case '吴伟伟':
       return 1
     case '马鑫':
       return 0
-    case '焦晓颖':
+    case '周煜':
       return 0
     default:
       return 0

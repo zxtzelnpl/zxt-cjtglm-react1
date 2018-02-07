@@ -75,12 +75,14 @@ module.exports = {
     devServer:{
         proxy:{
             '/ashx':{
-                target:'http://106.14.21.199:8012',
-                secure:false
+                target:'http://new.cjtglm.com',
+                secure:false,
+              changeOrigin: true
             },
             '/txsecurities_pics':{
-                target:'http://106.14.21.199:8012',
-                secure:false
+                target:'http://new.cjtglm.com',
+                secure:false,
+              changeOrigin: true
             }
         },
         contentBase:'./build',//本地服务器所加载的页面所在的目录

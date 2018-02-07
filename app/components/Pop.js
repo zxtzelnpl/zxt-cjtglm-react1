@@ -4,8 +4,8 @@ import {public_resource} from "../constants/urls";
 
 
 class Pop extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor() {
+        super();
         this.state = {
             show: true
         }
@@ -24,7 +24,7 @@ class Pop extends React.Component {
     }
 
     render() {
-        let pop_img = `${public_resource}/christmas/pop.png`
+        let pop_img = `${public_resource}/spring/pop.png`
         return (
             this.state.show ?
                 (<div className="pop-box">

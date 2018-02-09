@@ -35,7 +35,7 @@ class Pop extends React.Component {
 
                             </div>*/}
                             <img className="pop-img" src={pop_img} alt=""/>
-                            <a className="pop-link" href="/springbuild/index.html">
+                            <a className="pop-link" href="/buildspring/index.html">
                               <img src={button_img} alt=""/>
                             </a>
                         </div>

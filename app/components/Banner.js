@@ -26,8 +26,8 @@ class Banner extends React.Component {
             className="carousel"
             swipeOptions={
               {
+                startSlide:2,
                 speed: 400,
-                auto: 1000,
                 continuous: true,
               }
             }
@@ -39,7 +39,7 @@ class Banner extends React.Component {
             <img src={banner2} alt=""/>
           </div>
           <div>
-            <a href="http://www.baidu.com">
+            <a href="/buildspring/index.html">
               <img src={banner5} alt=""/>
             </a>
           </div>

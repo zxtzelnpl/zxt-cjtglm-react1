@@ -25,6 +25,7 @@ class Pop extends React.Component {
 
     render() {
         let pop_img = `${public_resource}/spring/pop.png`
+        let button_img = `${public_resource}/spring/button.png`
         return (
             this.state.show ?
                 (<div className="pop-box">
@@ -34,7 +35,9 @@ class Pop extends React.Component {
 
                             </div>*/}
                             <img className="pop-img" src={pop_img} alt=""/>
-                            {/*<a className="pop-link" href="http://www.jyzqsh.com/xgnr/20171111/" />*/}
+                            <a className="pop-link" href="/springbuild/index.html">
+                              <img src={button_img} alt=""/>
+                            </a>
                         </div>
                     </div>
                 </div>) :

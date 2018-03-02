@@ -7,7 +7,6 @@ import Banner from '../components/Banner'
 import ProductList from '../components/ProductList'
 import ProductListHot from '../components/ProductListHot'
 import Footer from '../components/Footer'
-import Pop from '../components/Pop'
 
 class ProductPage extends React.Component {
   constructor(props) {
@@ -35,6 +34,7 @@ class ProductPage extends React.Component {
   }
 
   render() {
+    let waiting = "页面数据正在加载中，请稍等";
     if (this.props.productlist.size > 0) {
       let normal = [];
       let hot = [];
@@ -60,7 +60,7 @@ class ProductPage extends React.Component {
     }
     else {
       return (
-          <div>页面数据正在加载中。。。</div>
+          <div>{waiting}</div>
       )
     }
 

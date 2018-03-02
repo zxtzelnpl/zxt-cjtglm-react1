@@ -39,9 +39,7 @@ class Banner extends React.Component {
             <img src={banner2} alt=""/>
           </div>
           <div>
-            <a href="/buildspring/index.html">
-              <img src={banner5} alt=""/>
-            </a>
+            <img src={banner3} alt=""/>
           </div>
         </ReactSwipe>
     );

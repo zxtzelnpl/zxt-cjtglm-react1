@@ -55,13 +55,12 @@ class ProductPage extends React.Component {
             <ProductListHot list={hot}/>
             <ProductList list={normal}/>
             <Footer footerIndex={1}/>
-            <Pop />
           </div>
       )
     }
     else {
       return (
-          <div>页面暂无数据</div>
+          <div>页面数据正在加载中。。。</div>
       )
     }
 

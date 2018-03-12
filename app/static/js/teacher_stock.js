@@ -5,6 +5,7 @@ import maxin1 from '../img/stocks/maxin1.jpg'
 import maxin2 from '../img/stocks/maxin2.jpg'
 import zhouyue1 from '../img/stocks/zhouyue1.jpg'
 import zhouyue2 from '../img/stocks/zhouyue2.jpg'
+import zhouyue3 from '../img/stocks/zhouyue3.jpg'
 
 //吴伟伟
 let wuweiwei = [
@@ -59,6 +60,15 @@ let maxin = [
 ]
 //周煜
 let zhouyue = [
+  {
+    name:'华菱精工',
+    code:'603356',
+    result:'12.62%',
+    daySend:'2018.3.9',
+    day:'次日',
+    dayCount:'次日最高涨幅',
+    img:zhouyue3
+  },
   {
     name: '中船科技 ',
     code: '600072',

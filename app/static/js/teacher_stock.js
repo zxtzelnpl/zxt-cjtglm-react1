@@ -3,6 +3,7 @@ import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
 import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
 import maxin1 from '../img/stocks/maxin1.jpg'
 import maxin2 from '../img/stocks/maxin2.jpg'
+import maxin3 from '../img/stocks/maxin3.jpg'
 import zhouyue1 from '../img/stocks/zhouyue1.jpg'
 import zhouyue2 from '../img/stocks/zhouyue2.jpg'
 import zhouyue3 from '../img/stocks/zhouyue3.jpg'
@@ -40,14 +41,15 @@ let wuweiwei = [
 //马鑫
 let maxin = [
   {
-    name: '新疆火炬',
-    code: '603080',
-    result: '14.55%',
-    daySend: '2018.03.07',
-    day: '次日',
-    dayCount: '次日最高涨幅',
-    img: maxin1
-  },
+    name: '联诚精密',
+    code: '002921',
+    result: '三连板',
+    daySend: '2018.3.12',
+    day: '6',
+    dayCount: '六日涨幅情况',
+    img: maxin3
+  }
+  ,
   {
     name: '山西焦化',
     code: '600740',
@@ -56,6 +58,15 @@ let maxin = [
     day: '5',
     dayCount: '五日最高涨幅',
     img: maxin2
+  },
+  {
+    name: '新疆火炬',
+    code: '603080',
+    result: '14.55%',
+    daySend: '2018.03.07',
+    day: '次日',
+    dayCount: '次日最高涨幅',
+    img: maxin1
   }
 ]
 //周煜

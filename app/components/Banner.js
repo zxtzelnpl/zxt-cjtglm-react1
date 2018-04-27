@@ -6,10 +6,8 @@ import './Banner.less'
 
 import banner1 from '../static/img/banner/banner1.jpg'
 import banner2 from '../static/img/banner/banner2.jpg'
-import banner3 from '../static/img/banner/banner3.jpg'
 
-let banner4 = `${public_resource}/christmas/banner.jpg`
-let banner5 = `${public_resource}/spring/banner.jpg`
+let banner6 = `${public_resource}/51huodong/banner.jpg`
 
 class Banner extends React.Component {
   constructor (props, context) {
@@ -39,7 +37,9 @@ class Banner extends React.Component {
             <img src={banner2} alt=""/>
           </div>
           <div>
-            <img src={banner3} alt=""/>
+            <a href="http://new.cjtglm.com/51huodong/src/index.html">
+              <img src={banner6} />
+            </a>
           </div>
         </ReactSwipe>
     );

@@ -1,7 +1,7 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ReactSwipe from 'react-swipe'
-import {public_resource} from "../../constants/urls";
+import {public_resource} from "../../config/urls";
 import './Banner.less'
 
 import banner1 from '../../static/img/banner/banner1.jpg'

@@ -1,6 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {ChartMaxRise} from '../../static/js/tools'
+import {ChartMaxRise} from '../../../static/js/tools'
 
 import './Charts.less'
 

@@ -1,3 +1,5 @@
 import view from './views/MySubscribeArticlePage'
+import * as actions from './actions'
+import reducer from './reducer'
 
-export {view}
+export {actions,reducer,view}

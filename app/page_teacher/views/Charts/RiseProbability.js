@@ -1,6 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {ChartRiseProbablity} from '../../static/js/tools'
+import {ChartRiseProbablity} from '../../../static/js/tools'
 
 import './Charts.less'
 

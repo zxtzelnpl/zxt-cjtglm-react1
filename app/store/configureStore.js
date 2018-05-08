@@ -1,12 +1,12 @@
 import {createStore} from 'redux'
 import {combineReducers} from 'redux'
 import {reducer as userinfo} from '../page_center'
-import {reducer as registerstatement} from './registerstatement'
-import {reducer as productlist} from './productlist'
-import {reducer as articlelist} from './articlelist'
-import {reducer as subscriblelist} from './subscriblelist'
-import {reducer as newslist} from './newslist'
-import {reducer as wxinfo} from './wxinfo'
+import {reducer as registerstatement} from '../page_register_statement'
+import {reducer as productlist} from '../page_product'
+import {reducer as articlelist} from '../page_article_list'
+import {reducer as subscriblelist} from '../page_my_subscribe'
+import {reducer as newslist} from '../page_my_subscribe_article'
+import {reducer as wxinfo} from '../page_weixin'
 
 const rootReducer = combineReducers({
   userinfo,

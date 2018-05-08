@@ -1,10 +1,10 @@
 import React from 'react'
 import './WeiXin0.less'
-import Footer from '../../components/Footer'
+import Footer from '../../component_footer'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as wxInfoActionsFromOtherFile from '../actions/wxinfo'
-import * as userInfoActionsFromOtherFile from '../actions/userinfo'
+import * as wxInfoActionsFromOtherFile from '../actions'
+import {actions as userInfoActionsFromOtherFile} from '../../page_center'
 
 
 

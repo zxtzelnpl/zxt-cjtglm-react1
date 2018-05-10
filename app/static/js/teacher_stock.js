@@ -1,15 +1,25 @@
-import wuweiwei1 from '../img/stocks/wuweiwei1.jpg'
 import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
 import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
 import maxin1 from '../img/stocks/maxin1.jpg'
-import maxin2 from '../img/stocks/maxin2.jpg'
 import maxin3 from '../img/stocks/maxin3.jpg'
-import zhouyue1 from '../img/stocks/zhouyue1.jpg'
 import zhouyue2 from '../img/stocks/zhouyue2.jpg'
 import zhouyue3 from '../img/stocks/zhouyue3.jpg'
 
+import maxin20180510 from '../img/stocks/maxin20180510.jpg'
+import wuweiwei20180510 from '../img/stocks/wuweiwei20180510.jpg'
+import zhouyue20180510 from '../img/stocks/zhouyue20180510.jpg'
+
 //吴伟伟
 let wuweiwei = [
+  {
+    name: '坤彩科技',
+    code: '603826',
+    result: '18.63%',
+    daySend: '2018.05.03',
+    day: '3',
+    dayCount: '三日最高涨幅',
+    img: wuweiwei20180510
+  },
   {
     name: '润都股份',
     code: '002923',
@@ -27,19 +37,19 @@ let wuweiwei = [
     day: '当日',
     dayCount: '当日',
     img: wuweiwei3
-  },
-  {
-    name: '财通证券',
-    code: '601108',
-    result: '涨停',
-    daySend: '2018.1.15',
-    day: '次日',
-    dayCount: '次日',
-    img: wuweiwei1
   }
 ]
 //马鑫
 let maxin = [
+  {
+    name: '宏川智慧',
+    code: '002930',
+    result: '23.68%',
+    daySend: '2018.05.08',
+    day: '2',
+    dayCount: '两日最高涨幅',
+    img: maxin20180510
+  },
   {
     name: '联诚精密',
     code: '002921',
@@ -50,15 +60,6 @@ let maxin = [
     img: maxin3
   }
   ,
-  {
-    name: '山西焦化',
-    code: '600740',
-    result: '17.04%',
-    daySend: '2017.12.29',
-    day: '5',
-    dayCount: '五日最高涨幅',
-    img: maxin2
-  },
   {
     name: '新疆火炬',
     code: '603080',
@@ -71,6 +72,15 @@ let maxin = [
 ]
 //周煜
 let zhouyue = [
+  {
+    name: '花园生物',
+    code: '300401',
+    result: '涨停！',
+    daySend: '2018.05.07',
+    day: '3',
+    dayCount: '三日',
+    img: zhouyue20180510
+  },
   {
     name:'华菱精工',
     code:'603356',
@@ -88,15 +98,6 @@ let zhouyue = [
     day: '5',
     dayCount: '五日最高涨幅',
     img: zhouyue2
-  },
-  {
-    name: '光线传媒 ',
-    code: '300251',
-    result: '32.16%',
-    daySend: '2018.1.18',
-    day: '5',
-    dayCount: '五日最高涨幅',
-    img: zhouyue1
   }
 ]
 

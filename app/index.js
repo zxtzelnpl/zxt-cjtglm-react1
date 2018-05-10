@@ -15,6 +15,7 @@ import Loading from './component_loading'
 import {view as ErrPage} from './page_err'
 import {getCode, getQuery} from './static/js/tools'
 
+/*如果是测试环境*/
 if (__DEV__) {
   /**上线后一定要删除啊,别忘了啊**/
   localStorage.removeItem('wxinfo')
@@ -29,16 +30,16 @@ if (__DEV__) {
   }
 }
 
-
+/*页面先进入Loading*/
 render(
   <Loading/>, document.getElementById('root')
 )
+
 getInitialState()
 
 function __render(wxinfo, userinfo) {
   let store = configureStore({
-    wxinfo: wxinfo,
-    userinfo: userinfo
+    wxinfo: wxinfo
   })
   console.log(store.getState())
   render(
@@ -109,6 +110,55 @@ function getInitialState() {
     })
 }
 
+function getInitialState(){
+  return new Promise((resolve,reject)=>{
+    if (typeof localStorage === 'object' && localStorage.getItem('wxinfo')) {
+      let wxinfo = JSON.parse(localStorage.getItem('wxinfo'))
+      resolve(wxinfo)
+    }
+    else{
+      let query = getQuery(location.search);
+      if (query.code) {
+        fetch('/ashx/wx_openid_user_is.ashx?code=' + query.code)
+          .then(res => res.json())
+          .then(json => {
+            if (json.erro !== 'OK') {
+              reject({
+                state: 'noAttention',
+                message: '您还没有关注公众号《超级投顾联盟》，请先关注后查看页面'
+              })
+            }
+            else {
+              json.receviedAt = new Date().getTime()
+              localStorage.setItem('wxinfo', JSON.stringify(json))
+              resolve(json)
+            }
+          })
+          .catch(() => {
+            reject({
+              state: 'net',
+              message: '网络错误，请稍后重试'
+            })
+          })
+      }
+      else {
+        getCode()
+      }
+    }
+  })
+}
+
+getInitialState()
+  .then((wxinfo)=>{
+    __render(wxinfo)
+  })
+  .catch(err => {
+    if (err.message) {
+      render(
+        <ErrPage message={err.message}/>, document.getElementById('root')
+      )
+    }
+  })
 
 
 

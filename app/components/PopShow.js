@@ -1,5 +1,9 @@
 import React from 'react';
 import './PopShow.less';
+import {public_resource} from "../constants/urls";
+
+const link = "http://new.cjtglm.com/mother_day/index.html"
+const pop_img_url = `${public_resource}/motherday/pop.png`
 
 class PopShow extends React.PureComponent {
   constructor() {
@@ -25,8 +29,8 @@ class PopShow extends React.PureComponent {
       <div className="product-pop-show" style={style}>
         <div className="pop-bg" onClick={this.popClose}>
           <div className="pop">
-            <img className="pop-img" src="http://public.jyzqsh.com/51huodong/pop.png"/>
-            <a className="pop-link" href="http://new.cjtglm.com/51huodong/src/index.html" />
+            <img className="pop-img" src={pop_img_url}/>
+            <a className="pop-link" href={link} />
           </div>
         </div>
       </div>

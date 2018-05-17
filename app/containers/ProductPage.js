@@ -56,7 +56,6 @@ class ProductPage extends React.Component {
             <ProductListHot list={hot}/>
             <ProductList list={normal}/>
             <Footer footerIndex={1}/>
-            <PopShow />
           </div>
       )
     }

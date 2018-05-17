@@ -5,9 +5,11 @@ import maxin3 from '../img/stocks/maxin3.jpg'
 import zhouyue2 from '../img/stocks/zhouyue2.jpg'
 import zhouyue3 from '../img/stocks/zhouyue3.jpg'
 
-import maxin20180510 from '../img/stocks/maxin20180510.jpg'
 import wuweiwei20180510 from '../img/stocks/wuweiwei20180510.jpg'
 import zhouyue20180510 from '../img/stocks/zhouyue20180510.jpg'
+
+import maxin20180517 from '../img/stocks/maxin20180517.jpg'
+
 
 //吴伟伟
 let wuweiwei = [
@@ -42,13 +44,13 @@ let wuweiwei = [
 //马鑫
 let maxin = [
   {
-    name: '宏川智慧',
-    code: '002930',
-    result: '23.68%',
-    daySend: '2018.05.08',
-    day: '2',
-    dayCount: '两日最高涨幅',
-    img: maxin20180510
+    name: '宏川智慧', //股票名称
+    code: '002930', //股票代码
+    result: '64.61%',//涨幅
+    daySend: '2018.05.08',//哪一天推送的
+    day: '5',// 几日涨幅
+    dayCount: '五日最高涨幅',//
+    img:maxin20180517
   },
   {
     name: '联诚精密',

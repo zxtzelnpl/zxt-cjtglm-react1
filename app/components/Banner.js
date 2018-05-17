@@ -38,9 +38,7 @@ class Banner extends React.Component {
             <img src={banner2} />
           </div>
           <div>
-            <a href="http://new.cjtglm.com/mother_day/index.html">
-              <img src={banner6} />
-            </a>
+            <img src={banner3} />
           </div>
         </ReactSwipe>
     );

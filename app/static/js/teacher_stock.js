@@ -1,18 +1,26 @@
 import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
-import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
 import maxin1 from '../img/stocks/maxin1.jpg'
 import maxin3 from '../img/stocks/maxin3.jpg'
-import zhouyue2 from '../img/stocks/zhouyue2.jpg'
 import zhouyue3 from '../img/stocks/zhouyue3.jpg'
 
 import wuweiwei20180510 from '../img/stocks/wuweiwei20180510.jpg'
 import zhouyue20180510 from '../img/stocks/zhouyue20180510.jpg'
 
-import maxin20180517 from '../img/stocks/maxin20180517.jpg'
-
+import maxin20180518 from '../img/stocks/maxin20180518.jpg'
+import wuweiwei20180518 from '../img/stocks/wuweiwei20180518.jpg'
+import zhouyue20180518 from '../img/stocks/zhouyue20180518.jpg'
 
 //吴伟伟
 let wuweiwei = [
+  {
+    name: '创业黑马',
+    code: '300688',
+    result: '16%',
+    daySend: '2018.05.16',
+    day: '2',
+    dayCount: '两日最高涨幅',
+    img: wuweiwei20180518
+  },
   {
     name: '坤彩科技',
     code: '603826',
@@ -30,15 +38,6 @@ let wuweiwei = [
     day: '3',
     dayCount: '三日最高涨幅',
     img: wuweiwei2
-  },
-  {
-    name: '国信证券',
-    code: '002736',
-    result: '涨停',
-    daySend: '2018.1.17',
-    day: '当日',
-    dayCount: '当日',
-    img: wuweiwei3
   }
 ]
 //马鑫
@@ -46,11 +45,11 @@ let maxin = [
   {
     name: '宏川智慧', //股票名称
     code: '002930', //股票代码
-    result: '64.61%',//涨幅
+    result: '81.08%',//涨幅
     daySend: '2018.05.08',//哪一天推送的
-    day: '5',// 几日涨幅
-    dayCount: '五日最高涨幅',//
-    img:maxin20180517
+    day: '7',// 几日涨幅
+    dayCount: '七日最高涨幅',//
+    img:maxin20180518
   },
   {
     name: '联诚精密',
@@ -75,6 +74,15 @@ let maxin = [
 //周煜
 let zhouyue = [
   {
+    name: '惠威科技',
+    code: '002888',
+    result: '24.92%',
+    daySend: '2018.5.15',
+    day: '3',
+    dayCount: '三日最高涨幅',
+    img: zhouyue20180518
+  },
+  {
     name: '花园生物',
     code: '300401',
     result: '涨停！',
@@ -91,15 +99,6 @@ let zhouyue = [
     day:'次日',
     dayCount:'次日最高涨幅',
     img:zhouyue3
-  },
-  {
-    name: '中船科技 ',
-    code: '600072',
-    result: '21.08%',
-    daySend: '2018.2.23',
-    day: '5',
-    dayCount: '五日最高涨幅',
-    img: zhouyue2
   }
 ]
 

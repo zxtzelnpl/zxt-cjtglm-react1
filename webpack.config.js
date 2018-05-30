@@ -1,12 +1,12 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const OpenBrowserPlugin = require('open-browser-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'app/index.js'),
   output: {
-    path: __dirname + '/build',
+    path: `${__dirname}/build`,
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -17,6 +17,12 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ['eslint-loader']
+      },
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
@@ -55,7 +61,7 @@ module.exports = {
   plugins: [
     // html 模版插件
     new HtmlWebpackPlugin({
-      template: __dirname + '/app/index.tmpl.html'
+      template: `${__dirname}/app/index.tmpl.html`
     }),
 
     // 热加载插件
@@ -85,9 +91,9 @@ module.exports = {
         changeOrigin: true
       }
     },
-    contentBase: './build',//本地服务器所加载的页面所在的目录
-    historyApiFallback: true,//不跳转
-    inline: true,//实时刷新
-    hot: true//使用热加载插件 HotModuleReplacementPlugin
+    contentBase: './build', // 本地服务器所加载的页面所在的目录
+    historyApiFallback: true, // 不跳转
+    inline: true, // 实时刷新
+    hot: true// 使用热加载插件 HotModuleReplacementPlugin
   }
-}
+};

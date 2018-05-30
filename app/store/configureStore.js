@@ -1,4 +1,4 @@
-import {createStore,applyMiddleware,compose} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import {combineReducers} from 'redux';
 import {reducer as userinfo} from '../page_center';
@@ -19,19 +19,19 @@ const rootReducer = combineReducers({
   newslist,
   wxinfo
 });
-const middleware = [ thunk ];
-let composeEnhancers  = compose
+const middleware = [thunk];
+let composeEnhancers = compose;
 
 // 触发 redux-devtools
-if (typeof __DEV__!== 'undefined'&&__DEV__) {
-  if(typeof __REDUX_DEVTOOLS_EXTENSION_COMPOSE__==='function'){
-    composeEnhancers = __REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+if (typeof __DEV__ !== 'undefined' && __DEV__) {
+  if (typeof __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function') {
+    composeEnhancers = __REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
   }
 }
 
 export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState,
     composeEnhancers(applyMiddleware(...middleware))
-  )
-  return store
+  );
+  return store;
 }

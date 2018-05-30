@@ -53,63 +53,6 @@ function __render(wxinfo, userinfo) {
   )
 }
 
-function getInitialState() {
-  let userinfo = {}
-  if (typeof localStorage === 'object' && localStorage.getItem('userinfo')) {
-    userinfo = JSON.parse(localStorage.getItem('userinfo'))
-  }
-
-  let getWxinfo = new Promise((resolve, reject) => {
-    if (typeof localStorage === 'object' && localStorage.getItem('wxinfo')) {
-      let wxinfo = JSON.parse(localStorage.getItem('wxinfo'))
-      resolve(wxinfo)
-    }
-    else {
-      let query = getQuery(location.search)
-      if (query.code) {
-        fetch('/ashx/wx_openid_user_is.ashx?code=' + query.code)
-          .then(res => {
-            return res.json()
-          })
-          .then(json => {
-            if (json.erro !== 'OK') {
-              reject({
-                state: 'noAttention',
-                message: '您还没有关注公众号《超级投顾联盟》，请先关注后查看页面'
-              })
-            }
-            else {
-              let wxinfo = json
-              wxinfo.receviedAt = new Date().getTime()
-              localStorage.setItem('wxinfo', JSON.stringify(wxinfo))
-              resolve(wxinfo)
-            }
-          })
-          .catch(() => {
-            reject({
-              state: 'net',
-              message: '网络错误，请稍后重试'
-            })
-          })
-      }
-      else {
-        getCode()
-      }
-    }
-  })
-
-  getWxinfo.then(wxinfo => {
-    __render(wxinfo, userinfo)
-  })
-    .catch(err => {
-      if (err.message) {
-        render(
-          <ErrPage message={err.message}/>, document.getElementById('root')
-        )
-      }
-    })
-}
-
 function getInitialState(){
   return new Promise((resolve,reject)=>{
     if (typeof localStorage === 'object' && localStorage.getItem('wxinfo')) {

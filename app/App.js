@@ -17,6 +17,7 @@ import {view as WeiXin0Page} from './page_weixin' //微信模版推送
 import {view as TuiGuang} from './page_tui_guang' //推广模版推送
 import {view as NotFound} from './page_not_found' //Not Found
 import {view as RegisterStatement} from './page_register_statement' //注册声明弹出框
+import {view as ErrPage} from './page_err' //错误页面
 
 
 const App = () => (
@@ -36,6 +37,8 @@ const App = () => (
 
       <Route path="/tg/:date" component={TuiGuang}/>
       <Route path="/notfound/:reason" component={NotFound}/>
+
+      <Route path="/test/errpage/:message" component={ErrPage}/>
       <RegisterStatement/>
     </div>
 )

@@ -7,8 +7,7 @@ export default class ErrPage extends React.PureComponent{
     return (
       <div className="ErrPage">
         <div className="innerWrap">
-          <h1>哎呀</h1>
-          <h2>出错啦！</h2>
+          <h1>哎呀！！！出错啦！</h1>
           <article>
             <span>可能原因：</span>
             <span>

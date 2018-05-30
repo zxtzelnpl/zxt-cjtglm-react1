@@ -1,8 +1,9 @@
+import './ArticleListPage.less'
+
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import * as articleListmentActionsFromOtherFile from '../actions'
 import {connect} from 'react-redux'
-import './ArticleList.less'
 import article_banner from '../../static/img/banner/article.jpg'
 import ArticleListBox from './ArticleListBox'
 import Footer from '../../component_footer'

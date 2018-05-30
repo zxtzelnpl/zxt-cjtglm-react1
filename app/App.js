@@ -5,12 +5,14 @@ import {
   Redirect
 } from 'react-router-dom'
 
+import {list as ArticleListPage} from './page_article' //文章列表页面
+import {detail as ArticleDetailPage} from './page_article' //文章详情页面
+
 import {view as ProductPage} from './page_product' //投顾列表页面
 import {view as TeacherPage} from './page_teacher' //投顾详情页面
 import {view as CenterPage} from './page_center' //用户中心页面
 import {view as ProtocolPage} from './page_protocol' //用户协议页面
-import {view as ArticleListPage} from './page_article_list' //文章列表页面
-import {view as ArticleDetailPage} from './page_article_detail' //文章列表页面
+
 import {view as MySubscribePage} from './page_my_subscribe' //个人订阅列表页面
 import {view as MySubscribeArticlePage} from './page_my_subscribe_article' //个人订阅单个产品页面
 import {view as WeiXin0Page} from './page_weixin' //微信模版推送

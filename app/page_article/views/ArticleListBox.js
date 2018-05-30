@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 import moment from 'moment'
 
-class ArticleList extends React.Component {
+class ArticleListBox extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
@@ -26,8 +26,7 @@ class ArticleList extends React.Component {
           {list_html}
         </div>
     )
-
   }
 }
 
-export default ArticleList
+export default ArticleListBox

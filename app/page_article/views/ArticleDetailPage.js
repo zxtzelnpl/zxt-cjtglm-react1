@@ -1,10 +1,10 @@
-import './ArticleDetail.less'
+import './ArticleDetailPage.less'
 
 import React from 'react'
 import PureRenderMixin from "react-addons-pure-render-mixin";
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {actions as articleListmentActionsFromOtherFile} from '../../page_article_list'
+import {actions as articleListmentActionsFromOtherFile} from '../../page_article'
 import Footer from '../../component_footer'
 
 

@@ -1,3 +1,3 @@
-import view from './views/TeacherPage'
+import view from './views/TeacherPage';
 
 export {view};

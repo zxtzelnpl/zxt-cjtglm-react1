@@ -1,15 +1,15 @@
-import wuweiwei1 from '../img/stocks/wuweiwei1.jpg'
-import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
-import wuweiwei3 from '../img/stocks/wuweiwei3.jpg'
-import maxin1 from '../img/stocks/maxin1.jpg'
-import maxin2 from '../img/stocks/maxin2.jpg'
-import maxin3 from '../img/stocks/maxin3.jpg'
-import zhouyue1 from '../img/stocks/zhouyue1.jpg'
-import zhouyue2 from '../img/stocks/zhouyue2.jpg'
-import zhouyue3 from '../img/stocks/zhouyue3.jpg'
+import wuweiwei1 from '../img/stocks/wuweiwei1.jpg';
+import wuweiwei2 from '../img/stocks/wuweiwei2.jpg';
+import wuweiwei3 from '../img/stocks/wuweiwei3.jpg';
+import maxin1 from '../img/stocks/maxin1.jpg';
+import maxin2 from '../img/stocks/maxin2.jpg';
+import maxin3 from '../img/stocks/maxin3.jpg';
+import zhouyue1 from '../img/stocks/zhouyue1.jpg';
+import zhouyue2 from '../img/stocks/zhouyue2.jpg';
+import zhouyue3 from '../img/stocks/zhouyue3.jpg';
 
-//吴伟伟
-let wuweiwei = [
+// 吴伟伟
+const wuweiwei = [
   {
     name: '润都股份',
     code: '002923',
@@ -37,9 +37,9 @@ let wuweiwei = [
     dayCount: '次日',
     img: wuweiwei1
   }
-]
-//马鑫
-let maxin = [
+];
+// 马鑫
+const maxin = [
   {
     name: '联诚精密',
     code: '002921',
@@ -48,8 +48,7 @@ let maxin = [
     day: '6',
     dayCount: '六日涨幅情况',
     img: maxin3
-  }
-  ,
+  },
   {
     name: '山西焦化',
     code: '600740',
@@ -68,17 +67,17 @@ let maxin = [
     dayCount: '次日最高涨幅',
     img: maxin1
   }
-]
-//周煜
-let zhouyue = [
+];
+// 周煜
+const zhouyue = [
   {
-    name:'华菱精工',
-    code:'603356',
-    result:'12.62%',
-    daySend:'2018.3.9',
-    day:'次日',
-    dayCount:'次日最高涨幅',
-    img:zhouyue3
+    name: '华菱精工',
+    code: '603356',
+    result: '12.62%',
+    daySend: '2018.3.9',
+    day: '次日',
+    dayCount: '次日最高涨幅',
+    img: zhouyue3
   },
   {
     name: '中船科技 ',
@@ -98,19 +97,19 @@ let zhouyue = [
     dayCount: '五日最高涨幅',
     img: zhouyue1
   }
-]
+];
 
 // hotTeachers的的股票
 export function stocks(name) {
   switch (name) {
     case '吴伟伟':
-      return wuweiwei
+      return wuweiwei;
     case '马鑫':
-      return maxin
+      return maxin;
     case '周煜':
-      return zhouyue
+      return zhouyue;
     default:
-      return []
+      return [];
   }
 }
 
@@ -118,13 +117,13 @@ export function stocks(name) {
 export function ranks(name) {
   switch (name) {
     case '吴伟伟':
-      return 1
+      return 1;
     case '马鑫':
-      return 2
+      return 2;
     case '周煜':
-      return 3
+      return 3;
     default:
-      return 4
+      return 4;
   }
 }
 
@@ -132,12 +131,12 @@ export function ranks(name) {
 export function recordNum(name) {
   switch (name) {
     case '吴伟伟':
-      return 1
+      return 1;
     case '马鑫':
-      return 0
+      return 0;
     case '周煜':
-      return 0
+      return 0;
     default:
-      return 0
+      return 0;
   }
 }

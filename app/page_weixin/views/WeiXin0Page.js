@@ -1,42 +1,39 @@
-import React from 'react'
-import './WeiXin0.less'
-import Footer from '../../component_footer'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import * as wxInfoActionsFromOtherFile from '../actions'
-import {actions as userInfoActionsFromOtherFile} from '../../page_center'
-
+import React from 'react';
+import PropTypes from 'prop-types';
+import './WeiXin0.less';
+import Footer from '../../component_footer';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as wxInfoActionsFromOtherFile from '../actions';
+import {actions as userInfoActionsFromOtherFile} from '../../page_center';
 
 
 class WeiXin0 extends React.Component {
   constructor(props, content) {
-    super(props, content)
+    super(props, content);
     this.state = {
       initDom: false,
       time: null,
       stocks: null
-    }
+    };
   }
 
   render() {
-    let stocks = this.state.stocks;
+    const stocks = this.state.stocks;
     let htmlStocks;
-    if (stocks != null) {
-      htmlStocks = stocks.map((stock, index) => {
-        return (
-          <div className="box" key={index}>
-            <div className="up">
-              <span>{stock[0]}</span><span>{stock[1]}</span>
-            </div>
-            <div className="down">
-              <span className="label">看好理由：</span>
-              <span className="text">{stock[2]}</span>
-            </div>
+    if (stocks !== null) {
+      htmlStocks = stocks.map((stock, index) => (
+        <div className="box" key={index}>
+          <div className="up">
+            <span>{stock[0]}</span><span>{stock[1]}</span>
           </div>
-        )
-      })
-    }
-    else {
+          <div className="down">
+            <span className="label">看好理由：</span>
+            <span className="text">{stock[2]}</span>
+          </div>
+        </div>
+      ));
+    } else {
       htmlStocks = (
         <div className="box">
           <div className="up">
@@ -47,7 +44,7 @@ class WeiXin0 extends React.Component {
             <span className="text">******</span>
           </div>
         </div>
-      )
+      );
     }
     return (
       <div className="wei-xin-0">
@@ -70,157 +67,149 @@ class WeiXin0 extends React.Component {
         </div>
         <Footer footerIndex={0}/>
       </div>
-    )
+    );
   }
 
   componentDidMount() {
-    let openid = this.props.wxinfo.openid
-    let id = this.props.match.params.id
-    this.record(openid,id)
+    const openid = this.props.wxinfo.openid;
+    const id = this.props.match.params.id;
+    this.record(openid, id);
 
-    let userInfoPromise = this.getUserInfo()
+    const userInfoPromise = this.getUserInfo();
 
-    let checkBuyPromise = userInfoPromise
-      .then(userInfo => {
-        return this.checkBuy(userInfo)
-      })
+    const checkBuyPromise = userInfoPromise
+      .then(userInfo => this.checkBuy(userInfo));
 
-    let articlePromise = this.getArticle()
+    const articlePromise = this.getArticle();
 
     Promise
       .all([checkBuyPromise, articlePromise])
-      .then(([checkBuy, article]) => {
-        let stocks = null
-        let _stocks = article[0].strategy.split('---')
-        let time = article[0].create_time.replace(/\//ig, '\-')
+      .then(([article]) => {
+        let stocks = null;
+        const _stocks = article[0].strategy.split('---');
+        const time = article[0].create_time.replace(/\//ig, '\-');
         if (_stocks.length > 0) {
-          stocks = _stocks.map((stock) => {
-            let arr = stock.split(/[*]|[+]|zjw/gi)
-            return arr
-          })
+          stocks = _stocks.map(stock => {
+            const arr = stock.split(/[*]|[+]|zjw/gi);
+            return arr;
+          });
         }
         this.setState({
           initDom: true,
           time: time,
           stocks: stocks
-        })
+        });
       })
-      .catch(err=>{
-        if(err.msg){
-          alert(err.msg)
+      .catch(err => {
+        if (err.msg) {
+          alert(err.msg);
+        } else {
+          alert('数据连接错误');
         }
-        else{
-          alert('数据连接错误')
-        }
-      })
+      });
   }
 
-  record(openid,id){
+  record(openid, id) {
     fetch(`/ashx/Visit_Record.ashx?openid=${openid}&Article_id=${id}`)
-      .then(res=>res.text())
-      .then(text=>{
-        console.log(text)
+      .then(res => res.text())
+      .then(text => {
+        console.log(text);
       })
-      .catch(err=>{
-        console.log('网络连接错误')
-      })
+      .catch(() => {
+        console.log('网络连接错误');
+      });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState)
-    return nextState.initDom
+    console.log(nextState);
+    return nextState.initDom;
   }
 
   getUserInfo() {
     return new Promise((resolve, reject) => {
       if (typeof this.props.userinfo.id !== 'undefined') {
-        resolve(this.props.userinfo)
-      }
-      else if (localStorage.getItem('userinfo')) {
-        resolve(JSON.parse(localStorage.getItem('userinfo')))
-      }
-      else {
-        let openid = this.props.wxinfo.openid;
-        let url = `/ashx/users_id.ashx?openid=${openid}`
+        resolve(this.props.userinfo);
+      } else if (localStorage.getItem('userinfo')) {
+        resolve(JSON.parse(localStorage.getItem('userinfo')));
+      } else {
+        const openid = this.props.wxinfo.openid;
+        const url = `/ashx/users_id.ashx?openid=${openid}`;
         fetch(url)
-          .then((res) => {
-            return res.json()
-          })
-          .then((json) => {
+          .then(res => res.json())
+          .then(json => {
             if (json.length > 0 && json[0].id) {
-              this.props.userInfoActions.load(json[0])
-              resolve(json[0])
-            }
-            else {
+              this.props.userInfoActions.load(json[0]);
+              resolve(json[0]);
+            } else {
               reject({
                 msg: '亲，还未注册哦，注册后需购买后方可查看'
-              })
+              });
             }
           })
           .catch(() => {
             reject({
               msg: '数据出现故障,请稍后再试'
-            })
-          })
+            });
+          });
       }
-    })
+    });
   }
 
   checkBuy(userInfo) {
     return new Promise((resolve, reject) => {
-      let user_id = userInfo.id;
-      let article_id = this.props.match.params.id
-      let url = `/ashx/Article_user_Juris.ashx?user_id=${user_id}&article_id=${article_id}`
+      const user_id = userInfo.id;
+      const article_id = this.props.match.params.id;
+      const url = `/ashx/Article_user_Juris.ashx?user_id=${user_id}&article_id=${article_id}`;
       fetch(url)
-        .then((res) => {
-          return res.json()
-        })
-        .then((json) => {
+        .then(res => res.json())
+        .then(json => {
           if (json.error === '1') {
             reject({
               reason: 'notBuy',
               msg: '你未购买次产品，需购买后方可查看'
-            })
-          }
-          else if (json.error === '0') {
-            resolve(json)
-          }
-          else {
+            });
+          } else if (json.error === '0') {
+            resolve(json);
+          } else {
             reject({
               msg: '数据连接错误请稍后重试'
-            })
+            });
           }
-        })
-    })
+        });
+    });
   }
 
   getArticle() {
-    let article_id = this.props.match.params.id
-    let url = `/ashx/Article_Selce.ashx?article_id=${article_id}`
+    const article_id = this.props.match.params.id;
+    const url = `/ashx/Article_Selce.ashx?article_id=${article_id}`;
     return fetch(url)
-      .then((res) => {
-        return res.json()
-      })
+      .then(res => res.json());
   }
 }
 
-
+WeiXin0.propTypes = {
+  match: PropTypes.object,
+  wxinfo: PropTypes.object,
+  userinfo: PropTypes.object,
+  wxInfoActions: PropTypes.func,
+  userInfoActions: PropTypes.func
+};
 
 function mapStateToProps(state) {
   return {
     wxinfo: state.wxinfo,
     userinfo: state.userinfo
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     wxInfoActions: bindActionCreators(wxInfoActionsFromOtherFile, dispatch),
-    userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch),
-  }
+    userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+  };
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(WeiXin0)
+  mapStateToProps,
+  mapDispatchToProps
+)(WeiXin0);

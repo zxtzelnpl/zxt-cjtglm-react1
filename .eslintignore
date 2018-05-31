@@ -1,1 +1,6 @@
 node_modules
+.idea/
+build/
+app/config/weixin.js
+test/
+mock/

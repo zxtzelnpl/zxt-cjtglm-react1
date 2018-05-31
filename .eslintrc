@@ -13,7 +13,8 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     }
   },
   "extends": [
@@ -110,7 +111,7 @@
     "no-undef": 2,//不能有未定义的变量
     "no-undef-init": 2,//变量初始化时不能直接给它赋值为undefined
     "no-undefined": 2,//不能使用undefined
-    "no-unused-vars": 2,//不能有声明后未被使用的变量或参数
+    "no-unused-vars": 1,//不能有声明后未被使用的变量或参数
     "no-use-before-define": 2,
     "no-var": 2,
     // Stylistic Issues

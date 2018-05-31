@@ -7,7 +7,7 @@ class PopShow extends React.PureComponent {
     this.popClose = this.popClose.bind(this);
     this.state = {
       show: true
-    }
+    };
   }
 
   popClose() {
@@ -17,16 +17,16 @@ class PopShow extends React.PureComponent {
   }
 
   render() {
-    let style={}
-    if(!this.state.show){
-      style={'display':'none'}
+    let style = {};
+    if (!this.state.show) {
+      style = {display: 'none'};
     }
     return (
       <div className="product-pop-show" style={style}>
         <div className="pop-bg" onClick={this.popClose}>
           <div className="pop">
             <img className="pop-img" src="http://public.jyzqsh.com/51huodong/pop.png"/>
-            <a className="pop-link" href="http://new.cjtglm.com/51huodong/src/index.html" />
+            <a className="pop-link" href="http://new.cjtglm.com/51huodong/src/index.html"/>
           </div>
         </div>
       </div>
@@ -34,4 +34,4 @@ class PopShow extends React.PureComponent {
   }
 }
 
-export default PopShow
+export default PopShow;

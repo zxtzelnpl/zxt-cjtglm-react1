@@ -1,6 +1,6 @@
 module.exports = {
-    parser:false,
-    plugins:{
-        'autoprefixer':{}
-    }
-}
+  parser: false,
+  plugins: {
+    autoprefixer: {}
+  }
+};

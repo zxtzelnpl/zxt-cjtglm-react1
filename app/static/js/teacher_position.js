@@ -1,4 +1,4 @@
-export default function (str){
-    let arr = str.split('---')
-    return arr.slice(-3);
+export default function (str) {
+  const arr = str.split('---');
+  return arr.slice(-3);
 }

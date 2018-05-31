@@ -1,31 +1,47 @@
-import * as actionTypes from './actionTypes'
+import * as actionTypes from './actionTypes';
 
-const initialState = new Map()
+const initialState = {
+  ids: [],
+  data: {},
+  isFetching: false,
+  receivedAt: 0,
+  error: null
+};
 
 export default function articlelist(state = initialState, action) {
-    let _state = new Map();
-    switch (action.type) {
+  let nextState;
+  switch (action.type) {
+    case actionTypes.ARTICLELIST_REQUEST:
+      nextState = {
+        ...state,
+        isFetching: true,
+        error: null
+      };
+      return nextState;
 
-        case actionTypes.ARTICLELIST_INIT:
-            action.data.forEach((article)=>{
-                _state.set(article.id,article)
-            })
-            return _state
-        case actionTypes.ARTICLELIST_LOAD:
-            state.forEach((article)=>{
-            _state.set(article.id,article)
-            })
-            action.data.forEach((article)=>{
-                _state.set(article.id,article)
-            })
-            return _state
-        case actionTypes.ARTICLELIST_ADD:
-            state.forEach((article)=>{
-                _state.set(article.id,article)
-            })
-            _state.set(action.data.id,action.data)
-            return _state
-        default:
-            return state
-    }
+    case actionTypes.ARTICLELIST_RECEIVED:
+      nextState = {
+        ...state,
+        receivedAt: action.receivedAt,
+        isFetching: false
+      };
+      action.data.forEach(article => {
+        const id = article.id;
+        if (typeof nextState.data[id] === 'undefined') {
+          nextState.ids.push(id);
+        }
+        nextState.data[id] = article;
+      });
+      return nextState;
+
+    case actionTypes.ARTICLELIST_ERROR:
+      nextState = {
+        ...state,
+        isFetching: false,
+        error: action.error
+      };
+      return nextState;
+    default:
+      return state;
+  }
 }

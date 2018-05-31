@@ -1,3 +1,3 @@
-export const WEIXIN_GET = 'WEIXIN_GET'
-export const WEIXIN_USER_COUNT = 'WEIXIN_USER_COUNT'
-export const WEIXIN_UPDATE = 'WEIXIN_UPDATE'
+export const WEIXIN_GET = 'WEIXIN_GET';
+export const WEIXIN_USER_COUNT = 'WEIXIN_USER_COUNT';
+export const WEIXIN_UPDATE = 'WEIXIN_UPDATE';

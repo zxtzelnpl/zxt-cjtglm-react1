@@ -1,34 +1,34 @@
-import * as actionTypes from './actionTypes'
+import * as actionTypes from './actionTypes';
 
-export const initialState = {}
+export const initialState = {};
 
 export default function userinfo(state = initialState, action) {
-  let _state
+  let nextState;
   switch (action.type) {
     case actionTypes.USERINFO_SCORE:
-      _state = {...state}
-      _state.score = action.score
-      localStorage.setItem('userinfo', JSON.stringify(_state))
-      return _state
+      nextState = {...state};
+      nextState.score = action.score;
+      localStorage.setItem('userinfo', JSON.stringify(nextState));
+      return nextState;
     case actionTypes.USERINFO_NAME:
-      _state = {...state}
-      _state.name = action.name
-      localStorage.setItem('userinfo', JSON.stringify(_state))
-      return _state
+      nextState = {...state};
+      nextState.name = action.name;
+      localStorage.setItem('userinfo', JSON.stringify(nextState));
+      return nextState;
     case actionTypes.USERINFO_ACCOUNT:
-      _state = {...state}
-      _state.account = action.account
-      localStorage.setItem('userinfo', JSON.stringify(_state))
-      return _state
+      nextState = {...state};
+      nextState.account = action.account;
+      localStorage.setItem('userinfo', JSON.stringify(nextState));
+      return nextState;
     case actionTypes.USERINFO_ID:
-      _state = {...state}
-      _state.ID_number = action.ID_number
-      localStorage.setItem('userinfo', JSON.stringify(_state))
-      return _state
+      nextState = {...state};
+      nextState.ID_number = action.ID_number;
+      localStorage.setItem('userinfo', JSON.stringify(nextState));
+      return nextState;
     case actionTypes.USERINFO_LOAD:
-      localStorage.setItem('userinfo', JSON.stringify(action.data))
-      return action.data
+      localStorage.setItem('userinfo', JSON.stringify(action.data));
+      return action.data;
     default:
-      return state
+      return state;
   }
 }

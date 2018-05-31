@@ -1,5 +1,5 @@
-import view from './views/CenterPage'
-import * as actions from './actions'
-import reducer from './reducer'
+import view from './views/CenterPage';
+import * as actions from './actions';
+import reducer from './reducer';
 
-export {view,actions,reducer}
+export {view, actions, reducer};

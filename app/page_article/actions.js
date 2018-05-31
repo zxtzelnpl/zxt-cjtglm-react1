@@ -18,7 +18,7 @@ const errorHandle = error => ({
   error
 });
 
-const shouldFetch = state => !state.articlelist.isFetchingList;
+const shouldFetch = state => !state.articlelist.isFetching;
 
 const fetchList = page => dispatch => {
   dispatch(request());

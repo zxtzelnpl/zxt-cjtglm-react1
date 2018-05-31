@@ -31,8 +31,8 @@ class ArticleListBox extends React.Component {
 }
 
 ArticleListBox.propTypes = {
-  ids: PropTypes.array.isRequired,
-  list: PropTypes.object.isRequired
+  ids: PropTypes.array,
+  list: PropTypes.object
 };
 
 export default ArticleListBox;

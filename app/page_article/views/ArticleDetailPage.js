@@ -69,10 +69,10 @@ class ArticleDetailPage extends React.Component {
 }
 
 ArticleDetailPage.propTypes = {
-  openid: PropTypes.string.isRequired,
-  match: PropTypes.object.isRequired,
-  articlelist: PropTypes.object.isRequired,
-  articleListmentActions: PropTypes.object.isRequired
+  openid: PropTypes.string,
+  match: PropTypes.object,
+  articlelist: PropTypes.object,
+  articleListmentActions: PropTypes.object
 };
 
 

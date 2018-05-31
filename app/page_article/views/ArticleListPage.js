@@ -58,8 +58,8 @@ class ArticleListPage extends React.Component {
 }
 
 ArticleListPage.propTypes = {
-  articlelist: PropTypes.object.isRequired,
-  articleListmentActions: PropTypes.object.isRequired
+  articlelist: PropTypes.object,
+  articleListmentActions: PropTypes.object
 };
 
 

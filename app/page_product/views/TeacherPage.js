@@ -18,12 +18,12 @@ import {bindActionCreators} from 'redux';
 class TeacherPage extends React.Component {
   constructor(props, content) {
     super(props, content);
-    this.index = 0;
   }
 
   render() {
-    console.log(++this.index);
-    let teacher_data = this.teacher_data = this.props.productlist.get(this.props.match.params.id);
+    const data = this.props.productlist.data;
+    const id = this.props.match.params.id;
+    const teacher_data = data[id];
     if (teacher_data) {
       return (
         <div className="teacher-page">
@@ -42,20 +42,23 @@ class TeacherPage extends React.Component {
         </div>
       );
     }
-    else {
-      return <div className="none"/>;
-    }
+
+    return <div className="none"/>;
   }
 
   componentDidMount() {
-    this.getProducts();
-    let wxInfoPromise = this.getWeiXinInfo();
-    let userInfoPromise = this.getUserInfo(wxInfoPromise);
+    const data = this.props.productlist.data;
+    const id = this.props.match.params.id;
+    if (typeof data[id] === 'undefined') {
+      this.props.productListActions.fetchListIfNeeded();
+    }
+    const wxInfoPromise = this.getWeiXinInfo();
+    const userInfoPromise = this.getUserInfo(wxInfoPromise);
 
     userInfoPromise.then(() => {
 
     })
-      .catch((err) => {
+      .catch(err => {
 
       });
   }
@@ -67,29 +70,25 @@ class TeacherPage extends React.Component {
           hasLoad: true,
           openid: this.props.wxinfo.openid
         });
-      }
-      else {
-        let query = getQuery(location.search);
+      } else {
+        const query = getQuery(location.search);
         if (!query.code) {
           getCode();
         } else {
-          fetch('/ashx/wx_openid_user_is.ashx?code=' + query.code)
-            .then((res) => {
-              return res.json();
-            })
-            .then((json) => {
+          fetch(`/ashx/wx_openid_user_is.ashx?code=${query.code}`)
+            .then(res => res.json())
+            .then(json => {
               if (json.openid == null) {
                 reject({
                   reason: 'notSubscribe',
                   msg: '关注微信公众号《君银牛人堂》注册后可进行购买'
                 });
-              }
-              else {
+              } else {
                 this.props.wxInfoActions.get(json);
                 resolve(json);
               }
             })
-            .catch((err) => {
+            .catch(err => {
               reject({
                 reason: 'notSubscribe',
                 msg: '关注微信公众号《君银牛人堂》注册后可进行购买'
@@ -102,7 +101,7 @@ class TeacherPage extends React.Component {
 
   getUserInfo(wxInfoPromise) {
     return new Promise((resolve, reject) => {
-      wxInfoPromise.then((wxinfo) => {
+      wxInfoPromise.then(wxinfo => {
         if (this.props.userinfo.id) {
           resolve(
             {
@@ -110,20 +109,16 @@ class TeacherPage extends React.Component {
               hasLoad: true
             }
           );
-        }
-        else {
-          let openid = wxinfo.openid;
-          let url = `/ashx/users_id.ashx?openid=${openid}`;
+        } else {
+          const openid = wxinfo.openid;
+          const url = `/ashx/users_id.ashx?openid=${openid}`;
           fetch(url)
-            .then((res) => {
-              return res.json();
-            })
-            .then((json) => {
+            .then(res => res.json())
+            .then(json => {
               if (json.length > 0 && json[0].id) {
                 resolve(json[0]);
                 this.props.userInfoActions.load(json[0]);
-              }
-              else {
+              } else {
                 reject({
                   reason: 'notRegister',
                   msg: '你未注册，需购注册后方可查看'
@@ -140,24 +135,11 @@ class TeacherPage extends React.Component {
       });
     });
   }
-
-  getProducts() {
-    if (this.props.productlist.size === 0) {
-      fetch('/ashx/productlist.ashx', {
-        method: 'get'
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((productlist) => {
-          this.props.productListActions.load(productlist);
-          document.body.scrollTop = 0;
-        });
-    }
-  }
 }
 
 TeacherPage.propTypes = {
+  history: PropTypes.string,
+  match: PropTypes.object,
   productlist: PropTypes.object,
   wxinfo: PropTypes.object,
   userinfo: PropTypes.object,

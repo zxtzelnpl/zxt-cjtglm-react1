@@ -36,7 +36,7 @@ const fetchList = () => dispatch => {
 
 const fetchID = id => dispatch => {
   dispatch(request());
-  const url = `${URLS.ARTICLE_ID_DATA}?id=${id}`;
+  const url = `${URLS.PRODUCT_LIST_DATA}?id=${id}`;
 
   return fetch(url)
     .then(res => res.json())

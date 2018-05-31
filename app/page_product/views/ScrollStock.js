@@ -1,7 +1,10 @@
+import './ScrollStock.less';
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ReactSwipe from 'react-swipe';
-import './ScrollStock.less';
+
 
 class ScrollStock extends React.Component {
   constructor(props, context) {
@@ -12,12 +15,11 @@ class ScrollStock extends React.Component {
       curr: 0
     };
     this.index = 0;
-
   }
 
   render() {
-    let me = this;
-    let stocks = this.props.stocks;
+    const me = this;
+    const stocks = this.props.stocks;
     let htmlList, htmlSwipe;
     if (stocks.length > 0) {
       // if(stocks.length===2){
@@ -29,7 +31,7 @@ class ScrollStock extends React.Component {
           className += ' swiper-curr';
         }
         return (
-          <div className={className} key={stock.code + index} ref={(swiper) => {
+          <div className={className} key={stock.code + index} ref={swiper => {
             this.swipers[index] = swiper;
           }}>
             <div className="box">
@@ -87,17 +89,18 @@ class ScrollStock extends React.Component {
           </ReactSwipe>
         </div>
       );
-    }
-    else {
-      htmlSwipe = <div className="none"></div>;
+    } else {
+      htmlSwipe = <div className="none" />;
     }
 
 
     return htmlSwipe;
   }
-
-
 }
+
+ScrollStock.propTypes = {
+  stocks: PropTypes.array
+};
 
 export default ScrollStock;
 

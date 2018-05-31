@@ -1,8 +1,11 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {ChartRiseNum} from '../../../static/js/tools';
-
 import './Charts.less';
+
+import {chartRiseNum} from '../../../static/js/tools';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+
 
 class RiseNum extends React.Component {
   constructor(props, context) {
@@ -11,21 +14,21 @@ class RiseNum extends React.Component {
   }
 
   componentDidMount() {
-    this.showChart(this.main, this.props.record);
+    RiseNum.showChart(this.main, this.props.record);
   }
 
-  showChart(main, record) {
-    ChartRiseNum()(main, record);
+  static showChart(main, record) {
+    chartRiseNum()(main, record);
   }
 
   render() {
-    let record = this.props.record;
-    let data_len = record.data[0] + record.data[1];
-    let date_len = parseInt(data_len / 2);
-    let word = record.title.slice(0, 1);
+    const record = this.props.record;
+    const data_len = record.data[0] + record.data[1];
+    const date_len = parseInt(data_len / 2);
+    const word = record.title.slice(0, 1);
     return (
       <div className="rise-num charts">
-        <div className="main" ref={(main) => {
+        <div className="main" ref={main => {
           this.main = main;
         }}/>
         <div className="text">
@@ -38,5 +41,9 @@ class RiseNum extends React.Component {
     );
   }
 }
+
+RiseNum.propTypes = {
+  record: PropTypes.array
+};
 
 export default RiseNum;

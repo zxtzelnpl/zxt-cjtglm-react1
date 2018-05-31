@@ -1,8 +1,10 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {ChartMaxRise} from '../../../static/js/tools';
-
 import './Charts.less';
+
+import {chartMaxRise} from '../../../static/js/tools';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 class MaxRise extends React.Component {
   constructor(props, context) {
@@ -11,40 +13,38 @@ class MaxRise extends React.Component {
   }
 
   componentDidMount() {
-    this.showChart(this.main, this.props.record);
+    MaxRise.showChart(this.main, this.props.record);
   }
 
-  showChart(main, record) {
-    ChartMaxRise()(main, record);
+  static showChart(main, record) {
+    chartMaxRise()(main, record);
   }
 
   render() {
-    let record = this.props.record;
-    let data = record.data1.concat(record.data2);
-    let data3 = [];
+    const record = this.props.record;
+    const data = record.data1.concat(record.data2);
+    const data3 = [];
     record.data1.forEach((item, index) => {
-      let num = (parseInt(item) + parseInt(record.data2[index])) / 2;
+      const num = (parseInt(item) + parseInt(record.data2[index])) / 2;
       data3.push(num);
     });
-    let date_len = record.date.length;
-    let data_len = data.length;
-    let data_max = Math.max.apply(undefined, data);
+    const date_len = record.date.length;
+    const data_len = data.length;
+    const data_max = Math.max(...data);
     let data_l_5 = 0, data_l_10 = 0, data_o_10 = 0;
-    data.forEach((num) => {
-      let _num = parseInt(num);
+    data.forEach(num => {
+      const _num = parseInt(num);
       if (_num < 5) {
         data_l_5++;
-      }
-      else if (_num <= 10) {
+      } else if (_num <= 10) {
         data_l_10++;
-      }
-      else if (_num > 10) {
+      } else if (_num > 10) {
         data_o_10++;
       }
     });
     return (
       <div className="max-rise charts">
-        <div className="main" ref={(main) => {
+        <div className="main" ref={main => {
           this.main = main;
         }}/>
         <div className="text">
@@ -60,5 +60,9 @@ class MaxRise extends React.Component {
     );
   }
 }
+
+MaxRise.propTypes = {
+  record: PropTypes.array
+};
 
 export default MaxRise;

@@ -65,7 +65,7 @@ export function sum(arr) {
 //   }
 // }
 
-export function ChartAverageRise() {
+export function chartAverageRise() {
   // let distinguish = '平均涨幅',
   // let remark = '注：推出当时价格为核算的基准价',
   const BOX = {
@@ -385,7 +385,7 @@ export function ChartAverageRise() {
   };
 }
 
-export function ChartRiseNum() {
+export function chartRiseNum() {
   const PI = Math.PI,
     sin = Math.sin,
     cos = Math.cos,
@@ -789,7 +789,7 @@ export function ChartRiseNum() {
   };
 }
 
-export function ChartMaxRise() {
+export function chartMaxRise() {
   // const DISTINGGUISH = '最大涨幅';
   const TITLE_EN_END = 'MAXIMUM',
     REMARK = '注：推出当时价格为核算的基准价',
@@ -1081,7 +1081,7 @@ export function ChartMaxRise() {
   };
 }
 
-export function ChartRiseProbablity() {
+export function chartRiseProbablity() {
   // const DISTINGGUISH = '上涨个数',
   // REMARK = '注：推出当时价格为核算的基准价';
   const PI = Math.PI,

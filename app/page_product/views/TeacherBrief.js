@@ -1,7 +1,8 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-
 import './TeacherBrief.less';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 
 class TeacherBrief extends React.Component {
@@ -20,18 +21,16 @@ class TeacherBrief extends React.Component {
         brief: 'text',
         arrow: 'fa fa-chevron-down'
       });
-    }
-    else {
+    } else {
       this.setState({
         brief: 'text close',
         arrow: 'fa fa-chevron-up'
       });
     }
-
   }
 
   render() {
-    let {pic, name, title, brief, special, lables} = this.props.teacher;
+    const {pic, name, /* title,*/ brief, special, lables} = this.props.teacher;
     return (
       <div className="teacher-brief">
         <div className="people">
@@ -55,8 +54,8 @@ class TeacherBrief extends React.Component {
           </div>
           <div
             className={this.state.brief}
-            ref={(brief) => {
-              this.brief = brief;
+            ref={_brief => {
+              this.brief = _brief;
             }}
           >{brief}</div>
           <div className={this.state.arrow}/>
@@ -65,5 +64,9 @@ class TeacherBrief extends React.Component {
     );
   }
 }
+
+TeacherBrief.propTypes = {
+  teacher: PropTypes.object
+};
 
 export default TeacherBrief;

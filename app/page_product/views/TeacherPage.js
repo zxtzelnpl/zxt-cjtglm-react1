@@ -1,6 +1,3 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import {actions as productListActionsFromOtherFile} from '../../page_product';
 import {actions as wxInfoActionsFromOtherFile} from '../../page_weixin';
 import {actions as userInfoActionsFromOtherFile} from '../../page_center';
@@ -13,10 +10,11 @@ import Charts from './Charts';
 import detail from '../../static/img/teacher/detail.jpg';
 import {getQuery, getCode} from '../../static/js/tools';
 
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-/**
- * ********** React Component **********
- */
 class TeacherPage extends React.Component {
   constructor(props, content) {
     super(props, content);
@@ -159,6 +157,14 @@ class TeacherPage extends React.Component {
   }
 }
 
+TeacherPage.propTypes = {
+  productlist: PropTypes.object,
+  wxinfo: PropTypes.object,
+  userinfo: PropTypes.object,
+  productListActions: PropTypes.object,
+  wxInfoActions: PropTypes.object,
+  userInfoActions: PropTypes.object
+};
 
 /**
  * ********** React Redux **********

@@ -1,7 +1,9 @@
+import './DownImage.less';
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-import './DownImage.less';
 
 class DownImage extends React.Component {
   constructor(props, content) {
@@ -14,18 +16,22 @@ class DownImage extends React.Component {
   }
 
   render() {
+    let renderDom = <div className="none"/>;
+
     if (this.props.pic) {
-      return (
+      renderDom = (
         <div className="down-img">
           <img src={this.props.pic} alt=""/>
         </div>
       );
     }
-    else {
-      return (<div className="none"/>);
-    }
 
+    return renderDom;
   }
 }
+
+DownImage.propTypes = {
+  pic: PropTypes.string
+};
 
 export default DownImage;

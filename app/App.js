@@ -7,8 +7,8 @@ import {
 import {list as ArticleListPage} from './page_article'; // 文章列表页面
 import {detail as ArticleDetailPage} from './page_article'; // 文章详情页面
 
-import {view as ProductPage} from './page_product'; // 投顾列表页面
-import {view as TeacherPage} from './page_teacher'; // 投顾详情页面
+import {list as ProductPage} from './page_product'; // 投顾列表页面
+import {detail as TeacherPage} from './page_product'; // 投顾详情页面
 import {view as CenterPage} from './page_center'; // 用户中心页面
 import {view as ProtocolPage} from './page_protocol'; // 用户协议页面
 

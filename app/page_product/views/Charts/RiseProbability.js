@@ -1,8 +1,11 @@
-import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {ChartRiseProbablity} from '../../../static/js/tools';
-
 import './Charts.less';
+
+import {chartRiseProbablity} from '../../../static/js/tools';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+
 
 class RiseProbability extends React.Component {
   constructor(props, context) {
@@ -11,24 +14,24 @@ class RiseProbability extends React.Component {
   }
 
   componentDidMount() {
-    this.showChart(this.main, this.props.record);
+    RiseProbability.showChart(this.main, this.props.record);
   }
 
-  showChart(main, record) {
-    ChartRiseProbablity()(main, record);
+  static showChart(main, record) {
+    chartRiseProbablity()(main, record);
   }
 
   render() {
-    let date_len = this.props.record.date.length;
-    let word = this.props.record.title.slice(0, 1);
-    let totalRise = this.props.record.data.reduce(function (previousValue, currentValue) {
+    const date_len = this.props.record.date.length;
+    const word = this.props.record.title.slice(0, 1);
+    const totalRise = this.props.record.data.reduce((previousValue, currentValue) => {
       currentValue = currentValue < 1 ? 0 : currentValue;
       return Number(previousValue) + Number(currentValue);
     }, 0);
-    let risePercent = parseInt(totalRise * 100 / (this.props.record.data.length * 2)) + '%';
+    const risePercent = `${totalRise * 100 / (this.props.record.data.length * 2)}%`;
     return (
       <div className="rise-probability charts">
-        <div className="main" ref={(main) => {
+        <div className="main" ref={main => {
           this.main = main;
         }}/>
         <div className="text">
@@ -44,5 +47,9 @@ class RiseProbability extends React.Component {
     );
   }
 }
+
+RiseProbability.propTypes = {
+  record: PropTypes.array
+};
 
 export default RiseProbability;

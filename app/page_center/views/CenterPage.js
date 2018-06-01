@@ -1,14 +1,13 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import User from './User'; // 用户中心页面
 import BindWeiXin from './BindWeiXin'; // 注册页面
-import * as userInfoActionsFromOtherFile from '../actions';
+import * as actions from '../actions';
 import {actions as registerStatementActionsFromOtherFile} from '../../page_register_statement';
-import {actions as wxInfoActionsFromOtherFile} from '../../page_weixin0';
 import {actions as productListActionsFromOtherFile} from '../../page_product';
-import {getCode, getQuery} from '../../static/js/tools';
 
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class Center extends React.Component {
   constructor(props, content) {
@@ -17,7 +16,7 @@ class Center extends React.Component {
 
   render() {
     const user_count = this.props.wxinfo.user_count;
-    if (user_count == null) {
+    if (typeof user_count === 'undefined') {
       return <div className="none"/>;
     } else if (user_count === '1') {
       return <User
@@ -30,39 +29,23 @@ class Center extends React.Component {
       return <BindWeiXin
         wxinfo={this.props.wxinfo}
         registerStatementActions={this.props.registerStatementActions}
-        wxInfoActions={this.props.wxInfoActions}
+        userInfoActions={this.props.userInfoActions}
       />;
     }
 
     return <div className="none"/>;
   }
-
-  componentDidMount() {
-    if (this.props.wxinfo.user_count == null) {
-      this.getWeiXinInfo();
-    }
-  }
-
-  getWeiXinInfo() {
-    const query = getQuery(location.search);
-    if (!query.code) {
-      getCode();
-    } else {
-      return fetch(`/ashx/wx_openid_user_is.ashx?code=${query.code}`)
-        .then(res => res.json())
-        .then(json => {
-          if (json.openid == null) {
-            alert('您还未关注《超级投顾联盟》，如已经关注请尝试重新关注微信公众号后再次注册');
-          } else {
-            this.props.wxInfoActions.get(json);
-          }
-        })
-        .catch(err => {
-          alert('您还未关注《超级投顾联盟》，如已经关注请尝试重新关注微信公众号后再次注册');
-        });
-    }
-  }
 }
+
+Center.propTypes = {
+  userinfo: PropTypes.object,
+  registerstatement: PropTypes.object,
+  wxinfo: PropTypes.object,
+  productlist: PropTypes.object,
+  registerStatementActions: PropTypes.object,
+  userInfoActions: PropTypes.object,
+  productListActions: PropTypes.object
+};
 
 
 /**
@@ -80,8 +63,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     registerStatementActions: bindActionCreators(registerStatementActionsFromOtherFile, dispatch),
-    userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch),
-    wxInfoActions: bindActionCreators(wxInfoActionsFromOtherFile, dispatch),
+    userInfoActions: bindActionCreators(actions, dispatch),
     productListActions: bindActionCreators(productListActionsFromOtherFile, dispatch)
   };
 }

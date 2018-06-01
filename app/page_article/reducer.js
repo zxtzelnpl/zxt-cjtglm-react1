@@ -32,7 +32,7 @@ export default function articlelist(state = initialState, action) {
         }
         nextState.data[id] = article;
       });
-      nextState.ids.sort((a, b) => (a - b));
+      nextState.ids.sort((a, b) => (b - a));
       return nextState;
 
     case actionTypes.ARTICLELIST_ERROR:

@@ -16,7 +16,7 @@ class NotFound extends React.Component {
       <div className="not-found">
         <div className="not-found-404">404</div>
         <div className="not-found-404">页面不存在</div>
-        <div className="not-found-show"></div>
+        <div className="not-found-show" />
         <Footer/>
       </div>
     );

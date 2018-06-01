@@ -34,7 +34,7 @@ class BindWeiXin extends React.Component {
     });
   }
 
-  phoneCheck(phone) {
+  static phoneCheck(phone) {
     const partten = /^(13\d{9})|(15\d{9})|(14\d{9})|(16\d{9})|(17\d{9})|(18\d{9})|(0\d{10,11})$/;
     return partten.test(phone);
   }
@@ -42,7 +42,7 @@ class BindWeiXin extends React.Component {
   getCode() {
     const me = this;
     const phone = this.state.phone;
-    const check = this.phoneCheck(phone);
+    const check = BindWeiXin.phoneCheck(phone);
     const url = '/ashx/getCode.ashx?Mobile=';
     if (this.counts > 0) {
       return alert(`请在${this.counts}秒后获取`);
@@ -105,7 +105,7 @@ class BindWeiXin extends React.Component {
     if (this.state.code !== this.secret) {
       alert('验证码错误');
     } else {
-      this.props.wxInfoActions.addUser(user);
+      this.props.userInfoActions.addUser(user);
     }
   }
 
@@ -157,7 +157,7 @@ class BindWeiXin extends React.Component {
 
 BindWeiXin.propTypes = {
   wxinfo: PropTypes.object,
-  wxInfoActions: PropTypes.object,
+  userInfoActions: PropTypes.object,
   registerStatementActions: PropTypes.object
 };
 

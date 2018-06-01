@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {
   Route,
   Redirect,
-  HashRouter
+  HashRouter,
+  Switch
 } from 'react-router-dom';
 
 import {list as ArticleListPage} from './page_article'; // 文章列表页面
@@ -25,23 +26,9 @@ import {view as ErrPage} from './page_err'; // 错误页面
 import {view as WeiXinAuth} from './page_weixin';
 
 class RootRouters extends React.Component {
-
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
-
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
-  }
-
-  componentDidMount() {
-    const {openid, user_count} = this.props.wxinfo;
-    console.log(this.props.wxinfo);
-  }
-
-
   getRoutes() {
     const {openid, user_count} = this.props.wxinfo;
+    console.log(openid, user_count);
     let routesDom;
     if (typeof openid === 'undefined' || typeof user_count === 'undefined') {
       routesDom = <div className="container">
@@ -50,23 +37,23 @@ class RootRouters extends React.Component {
     } else {
       routesDom = (
         <div className="container">
-          <Route exact path="/" render={() => (<Redirect to="/center"/>)}/>
-          <Route path="/articlelist" component={ArticleListPage}/>
-          <Route path="/article/:id" component={ArticleDetailPage}/>
-          <Route path="/product" component={ProductPage}/>
-          <Route path="/teacher/:id" component={TeacherPage}/>
-          <Route path="/usercenter" component={CenterPage}/>
-          <Route path="/center" component={CenterPage}/>
-          <Route path="/protocol" component={ProtocolPage}/>
+          <Switch>
+            <Route exact path="/" render={() => (<Redirect to="/center"/>)}/>
+            <Route path="/articlelist" component={ArticleListPage}/>
+            <Route path="/article/:id" component={ArticleDetailPage}/>
+            <Route path="/product" component={ProductPage}/>
+            <Route path="/teacher/:id" component={TeacherPage}/>
+            <Route path="/usercenter" component={CenterPage}/>
+            <Route path="/center" component={CenterPage}/>
+            <Route path="/protocol" component={ProtocolPage}/>
 
-          <Route path="/mysubscirbe/:id" component={MySubscribePage}/>
-          <Route path="/mysubscribearticle/:id" component={MySubscribeArticlePage}/>
-          <Route path="/weixin0/:id" component={WeiXin0Page}/>
+            <Route path="/mysubscirbe/:id" component={MySubscribePage}/>
+            <Route path="/mysubscribearticle/:id" component={MySubscribeArticlePage}/>
+            <Route path="/weixin0/:id" component={WeiXin0Page}/>
 
-          <Route path="/notfound/:reason" component={NotFound}/>
-
-          <Route path="/test/errpage/:message" component={ErrPage}/>
-          <Route component={NotFound} />
+            <Route path="/test/errpage/:message" component={ErrPage}/>
+            <Route component={NotFound}/>
+          </Switch>
           <RegisterStatement/>
         </div>
       );

@@ -16,24 +16,25 @@ class Center extends React.Component {
 
   render() {
     const user_count = this.props.wxinfo.user_count;
-    if (typeof user_count === 'undefined') {
-      return <div className="none"/>;
-    } else if (user_count === '1') {
-      return <User
-        userinfo={this.props.userinfo}
-        wxinfo={this.props.wxinfo}
-        registerStatementActions={this.props.registerStatementActions}
-        userInfoActions={this.props.userInfoActions}
-      />;
-    } else if (user_count === '0') {
-      return <BindWeiXin
-        wxinfo={this.props.wxinfo}
-        registerStatementActions={this.props.registerStatementActions}
-        userInfoActions={this.props.userInfoActions}
-      />;
+    let dom = <div className="none"/>;
+    if (typeof user_count !== 'undefined') {
+      if (user_count === '1') {
+        dom = <User
+          userinfo={this.props.userinfo}
+          wxinfo={this.props.wxinfo}
+          registerStatementActions={this.props.registerStatementActions}
+          userInfoActions={this.props.userInfoActions}
+        />;
+      } else if (user_count === '0') {
+        dom = <BindWeiXin
+          wxinfo={this.props.wxinfo}
+          registerStatementActions={this.props.registerStatementActions}
+          userInfoActions={this.props.userInfoActions}
+        />;
+      }
     }
 
-    return <div className="none"/>;
+    return dom;
   }
 }
 

@@ -40,9 +40,39 @@ const addUser = user => dispatch => {
     });
 };
 
-const addUserIfNeeded = user => (dispatch, getState) => {
+export const addUserIfNeeded = user => (dispatch, getState) => {
   if (shouldFetch(getState())) {
     return dispatch(addUser(user));
+  }
+};
+
+const fetchUser = openid => dispatch => {
+  dispatch(request());
+  const url = `${URLS.GET_USERINFO}?openid=${openid}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(json => {
+      dispatch(received(json));
+    })
+    .catch(error => {
+      dispatch(errorHandle(error));
+    });
+};
+
+export const fetchUserIfNeeded = openid => (dispatch, getState) => {
+  if (shouldFetch(getState())) {
+    return dispatch(fetchUser(openid));
+  }
+};
+
+const changeUser = (key, value) => dispatch => {
+  dispatch(request());
+  const url = `${URLS.CHANGE_USER}?type=2&${key}=${value}`;
+};
+
+export const changeUserIfNeeded = (key, value) => (dispatch, getState) => {
+  if (shouldFetch(getState())) {
+    return dispatch(changeUser(key, value));
   }
 };
 

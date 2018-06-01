@@ -30,9 +30,8 @@ const addUser = user => dispatch => {
         const _wxinfo = {...this.props.wxinfo};
         _wxinfo.user_count = '1';
         localStorage.setItem('wxinfo', JSON.stringify(_wxinfo));
-        this.props.wxInfoActions.update(_wxinfo);
-      }
-      else {
+        // this.props.wxInfoActions.update(_wxinfo);
+      } else {
         throw new Error(json[0].msg);
       }
     })
@@ -41,6 +40,11 @@ const addUser = user => dispatch => {
     });
 };
 
+const addUserIfNeeded = user => (dispatch, getState) => {
+  if (shouldFetch(getState())) {
+    return dispatch(addUser(user));
+  }
+};
 
 // export function change_score(score) {
 //   return {

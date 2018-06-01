@@ -115,8 +115,9 @@
     "no-use-before-define": 2,
     "no-var": 2,
     // Stylistic Issues
-    "indent": [2, 2, {
-      "SwitchCase": 1
+    "indent": [0, 2, {
+      "SwitchCase": 1,
+      "ObjectExpression": 1
     }],
     "arrow-body-style": [2, "as-needed"],
     "arrow-parens": [2, "as-needed"],

@@ -1,20 +1,35 @@
 import * as actionTypes from './actionTypes';
 
-const initialState = {};
+const initialState = {
+  isFetching: false,
+  receivedAt: 0,
+  error: null
+};
 
 export default function wxinfo(state = initialState, action) {
-  const _state = {...state};
+  let nextState;
   switch (action.type) {
-    case actionTypes.WEIXIN_GET:
-      localStorage.setItem('wxinfo', JSON.stringify(action.data));
-      return action.data;
-    case actionTypes.WEIXIN_USER_COUNT:
-      _state.user_count = action.data;
-      localStorage.setItem('wxinfo', JSON.stringify(_state));
-      return _state;
-    case actionTypes.WEIXIN_UPDATE:
-      localStorage.setItem('wxinfo', JSON.stringify(action.data));
-      return action.data;
+    case actionTypes.WXINFO_REQUEST:
+      nextState = {
+        ...state,
+        isFetching: true,
+        error: null
+      };
+      return nextState;
+    case actionTypes.WXINFO_RECEIVED:
+      nextState = {
+        isFetching: false,
+        receivedAt: action.receivedAt,
+        ...action.data
+      };
+      return nextState;
+    case actionTypes.WXINFO_ERROR:
+      nextState = {
+        ...state,
+        isFetching: false,
+        error: action.error
+      };
+      return nextState;
     default:
       return state;
   }

@@ -1,6 +1,7 @@
+import moment from 'moment/moment';
 import * as actionTypes from './actionTypes';
 import * as URLS from './urls';
-import moment from 'moment/moment';
+import {actions as WxAction} from '../page_weixin';
 
 const request = () => ({
   type: actionTypes.USERINFO_REQUEST
@@ -29,8 +30,7 @@ const addUser = user => dispatch => {
       if (json[0].erro === '1') {
         const _wxinfo = {...this.props.wxinfo};
         _wxinfo.user_count = '1';
-        localStorage.setItem('wxinfo', JSON.stringify(_wxinfo));
-        // this.props.wxInfoActions.update(_wxinfo);
+        WxAction.received(_wxinfo);
       } else {
         throw new Error(json[0].msg);
       }

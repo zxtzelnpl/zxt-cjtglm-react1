@@ -1,5 +1,5 @@
 import {actions as productListActionsFromOtherFile} from '../../page_product';
-import {actions as wxInfoActionsFromOtherFile} from '../../page_weixin';
+import {actions as wxInfoActionsFromOtherFile} from '../../page_weixin0';
 import {actions as userInfoActionsFromOtherFile} from '../../page_center';
 import TeachaerBrief from './TeacherBrief';
 import ScrollStock from './ScrollStock';

@@ -1,24 +1,26 @@
-import './NotFound.less'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import './NotFound.less';
 
-import React from 'react'
-import Footer from '../../component_footer'
+import Footer from '../../component_footer';
 
-class NotFound extends React.Component{
-    constructor(props,context){
-        super(props,context)
-        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-    }
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React from 'react';
 
-    render(){
-        let reason = this.props.match.params.reason;
-        return(
-            <div className="not-found">
-                <div>{reason}</div>
-                <Footer />
-            </div>
-        )
-    }
+class NotFound extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  }
+
+  render() {
+    return (
+      <div className="not-found">
+        <div className="not-found-404">404</div>
+        <div className="not-found-404">页面不存在</div>
+        <div className="not-found-show"></div>
+        <Footer/>
+      </div>
+    );
+  }
 }
 
-export default NotFound
+export default NotFound;

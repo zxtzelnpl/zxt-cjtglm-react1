@@ -7,7 +7,7 @@ import {reducer as productlist} from '../page_product';
 import {reducer as articlelist} from '../page_article';
 import {reducer as subscriblelist} from '../page_my_subscribe';
 import {reducer as newslist} from '../page_my_subscribe_article';
-import {reducer as wxinfo} from '../page_weixin';
+import {reducer as wxinfo} from '../page_weixin0';
 
 
 const rootReducer = combineReducers({

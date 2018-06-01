@@ -1,3 +1,3 @@
-export const WEIXIN_GET = 'WEIXIN_GET';
-export const WEIXIN_USER_COUNT = 'WEIXIN_USER_COUNT';
-export const WEIXIN_UPDATE = 'WEIXIN_UPDATE';
+export const WXINFO_REQUEST = 'WXINFO_REQUEST';
+export const WXINFO_RECEIVED = 'WXINFO_RECEIVED';
+export const WXINFO_ERROR = 'WXINFO_ERROR';

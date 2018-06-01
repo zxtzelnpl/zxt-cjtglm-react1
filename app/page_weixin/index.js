@@ -1,5 +1,5 @@
-import view from './views/WeiXin0Page';
-import * as actions from './actions';
-import reducer from './reducer';
+import view from './views/WeiXin';
+import * as actions from './actions.js';
+import reducer from './reducer.js';
 
-export {view, actions, reducer};
+export {actions, reducer, view};

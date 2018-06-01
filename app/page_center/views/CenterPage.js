@@ -5,14 +5,11 @@ import User from './User'; // 用户中心页面
 import BindWeiXin from './BindWeiXin'; // 注册页面
 import * as userInfoActionsFromOtherFile from '../actions';
 import {actions as registerStatementActionsFromOtherFile} from '../../page_register_statement';
-import {actions as wxInfoActionsFromOtherFile} from '../../page_weixin';
+import {actions as wxInfoActionsFromOtherFile} from '../../page_weixin0';
 import {actions as productListActionsFromOtherFile} from '../../page_product';
 import {getCode, getQuery} from '../../static/js/tools';
 
 
-/**
- * ********** React Component **********
- */
 class Center extends React.Component {
   constructor(props, content) {
     super(props, content);

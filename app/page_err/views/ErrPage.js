@@ -1,7 +1,9 @@
 import './ErrPage.less';
-import React from 'react';
 
-export default class ErrPage extends React.PureComponent {
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class ErrPage extends React.PureComponent {
   render() {
     return (
       <div className="ErrPage">
@@ -18,3 +20,10 @@ export default class ErrPage extends React.PureComponent {
     );
   }
 }
+
+ErrPage.propTypes = {
+  message: PropTypes.string
+};
+
+export default ErrPage;
+

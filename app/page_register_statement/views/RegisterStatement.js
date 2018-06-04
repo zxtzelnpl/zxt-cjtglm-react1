@@ -1,31 +1,35 @@
-import './RegisterStatement.less'
-import React from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import * as registerStatementActionsFromOtherFile from '../actions'
+import './RegisterStatement.less';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as registerStatementActionsFromOtherFile from '../actions';
 
 
-
-/**
- * ********** React Component **********
- */
 class RegisterStatement extends React.Component {
-  constructor(props,context){
-    super(props,context)
+  constructor(props, context) {
+    super(props, context);
   }
 
-  handleClick(){
-    this.props.registerStatementActions.change({show:false})
+  static stop(e) {
+    e.preventDefault();
   }
 
-  render(){
-    let show = this.props.registerstatement.show
+  handleClick() {
+    this.props.registerStatementActions.change({show: false});
+  }
+
+  render() {
+    const show = this.props.registerstatement.show;
     let html_state;
-    if(show){
-      html_state=
+    if (show) {
+      html_state =
         <div
           className="register-state"
-          ref={(div)=>{this.div=div}}
+          ref={div => {
+            this.div = div;
+          }}
           onClick={this.handleClick.bind(this)}
         >
           <div className="content">
@@ -105,19 +109,23 @@ class RegisterStatement extends React.Component {
                 本免责声明以及其修改权、更新权及最终解释权均属君银投顾。
               </p>
 
-              <a href="javascript:void(0)" className="btn-close">关 闭</a>
+              <a onClick={this.stop} className="btn-close">关 闭</a>
             </div>
           </div>
 
-        </div>
+        </div>;
+    } else {
+      html_state = <div className="none"/>;
     }
-    else{
-      html_state = <div className="none"/>
-    }
-    return (html_state)
+    return (html_state);
   }
 }
 
+
+RegisterStatement.propTypes = {
+  registerstatement: PropTypes.object,
+  registerStatementActions: PropTypes.object
+};
 
 
 /**
@@ -126,16 +134,16 @@ class RegisterStatement extends React.Component {
 function mapStateToProps(state) {
   return {
     registerstatement: state.registerstatement
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     registerStatementActions: bindActionCreators(registerStatementActionsFromOtherFile, dispatch)
-  }
+  };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegisterStatement)
+)(RegisterStatement);

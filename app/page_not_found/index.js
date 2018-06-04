@@ -1,3 +1,3 @@
-import view from './views/NotFound'
+import view from './views/NotFound';
 
-export {view}
+export {view};

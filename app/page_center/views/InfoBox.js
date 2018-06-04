@@ -87,14 +87,14 @@ class InfoBox extends React.Component {
 }
 
 InfoBox.propTypes = {
-  data: PropTypes.objectOf({
+  data: PropTypes.shape({
     inputName: PropTypes.string,
     word: PropTypes.string,
     content: PropTypes.string,
     placeholder: PropTypes.string,
     canChange: PropTypes.bool,
     changeUserInfo: PropTypes.func
-  }).required
+  }).isRequired
 };
 
 export default InfoBox;

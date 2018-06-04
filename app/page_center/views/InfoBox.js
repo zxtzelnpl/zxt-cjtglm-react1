@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class InfoBox extends React.Component {
   constructor(props, context) {
@@ -17,65 +18,57 @@ class InfoBox extends React.Component {
   }
 
   handleClick() {
-    let openid = this.props.data.openid;
-    let name = this.props.data.inputName;
-    let value = this.state.value;
-    let url = `/ashx/Add_users.ashx?type=2&openid=${openid}&${name}=${value}`;
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        if (json[0].erro === '1') {
-          this.props.data.userInfoChange(this.state.value);
-          this.moveLeft();
-        }
-        else {
-          alert('数据连接错误，请稍后重试');
-        }
-      });
-
+    const {inputName, content} = this.props.data;
+    const value = this.state.value;
+    if (value !== content) {
+      this.props.data.changeUserInfo(inputName, value);
+    }
   }
 
-  handleChange() {
-    let value = this.input.value;
-    this.setState({value: value});
+  handleChange(e) {
+    this.setState({value: e.target.value});
+  }
+
+  componentDidUpdate(preProps) {
+    const preContent = preProps.data.content;
+    const preFetching = preProps.data.isFetching;
+    const {content, isFetching} = this.props.data;
+    if (preFetching === true &&
+      isFetching === false &&
+      content !== preContent
+    ) {
+      this.box.className = 'box';
+    }
   }
 
   render() {
-    let {content, placeholder, word, canChange, inputName} = this.props.data;
-    let word_arr = word.split('');
+    const {content, placeholder, word, canChange} = this.props.data;
+    const word_arr = word.split('');
     let word_html;
     let button_right, button_left;
     if (word_arr.length === 1) {
       word_html = <span>{word.slice(0, 1)}<span className="hidden">空空空</span></span>;
-    }
-    else if (word_arr.length === 2) {
+    } else if (word_arr.length === 2) {
       word_html = <span>{word.slice(0, 1)}<span className="hidden">空空</span>{word.slice(1)}</span>;
-    }
-    else if (word_arr.length === 3) {
+    } else if (word_arr.length === 3) {
       word_html = <span>{word.slice(0, 1)}<span className="hidden">空</span>{word.slice(1)}</span>;
-    }
-    else if (word_arr.length === 4) {
+    } else if (word_arr.length === 4) {
       word_html = <span>{word.slice(0, 1)}<span className="hidden"/>{word.slice(1)}</span>;
     }
     if (canChange) {
       button_right = <span className="btn fa fa-angle-right" onClick={this.moveRight.bind(this)}/>;
       if (this.state.value !== '') {
         button_left = <span className="btn" onClick={this.handleClick.bind(this)}>确定</span>;
-      }
-      else {
+      } else {
         button_left = <span className="btn fa fa-angle-left" onClick={this.moveLeft.bind(this)}/>;
       }
-
-    }
-    else {
+    } else {
       button_right = <span className="none"/>;
       button_left = <span className="none"/>;
     }
     return (
       <div className="info-box">
-        <div className="box" ref={(box) => {
+        <div className="box" ref={box => {
           this.box = box;
         }}>
           <p className="show">{word_html}<span className="single-word">:</span>{content}{button_right}</p>
@@ -83,9 +76,6 @@ class InfoBox extends React.Component {
             <input
               type="text"
               placeholder={placeholder}
-              ref={(input) => {
-                this.input = input;
-              }}
               value={this.state.value}
               onChange={this.handleChange.bind(this)}
             />{button_left}
@@ -93,8 +83,18 @@ class InfoBox extends React.Component {
         </div>
       </div>
     );
-
   }
 }
+
+InfoBox.propTypes = {
+  data: PropTypes.objectOf({
+    inputName: PropTypes.string,
+    word: PropTypes.string,
+    content: PropTypes.string,
+    placeholder: PropTypes.string,
+    canChange: PropTypes.bool,
+    changeUserInfo: PropTypes.func
+  }).required
+};
 
 export default InfoBox;

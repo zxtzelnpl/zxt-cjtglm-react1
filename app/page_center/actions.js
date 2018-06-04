@@ -18,6 +18,12 @@ const errorHandle = error => ({
   error
 });
 
+const change = data => ({
+  type: actionTypes.USERINFO_CHANGE,
+  receivedAt: moment().format('X'),
+  data: data
+});
+
 const shouldFetch = state => !state.userinfo.isFetching;
 
 const addUser = user => dispatch => {
@@ -52,7 +58,7 @@ const fetchUser = openid => dispatch => {
   fetch(url)
     .then(res => res.json())
     .then(json => {
-      dispatch(received(json));
+      dispatch(received(json[0]));
     })
     .catch(error => {
       dispatch(errorHandle(error));
@@ -65,14 +71,35 @@ export const fetchUserIfNeeded = openid => (dispatch, getState) => {
   }
 };
 
-const changeUser = (key, value) => dispatch => {
+const changeUser = (openid, key, value) => dispatch => {
   dispatch(request());
-  const url = `${URLS.CHANGE_USER}?type=2&${key}=${value}`;
+  const url = `${URLS.CHANGE_USER}?type=2&openid=${openid}&${key}=${value}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(json => {
+      if (json[0].erro === '1') {
+        const data = {};
+        if (key === 'user_name') {
+          data.name = value;
+        } else if (key === 'number') {
+          data.ID_number = value;
+        } else {
+          data[key] = value;
+        }
+        dispatch(change(data));
+      } else {
+        throw new Error('数据连接错误，请稍后重试');
+      }
+    })
+    .catch(error => {
+      dispatch(errorHandle(error));
+    })
+  ;
 };
 
-export const changeUserIfNeeded = (key, value) => (dispatch, getState) => {
+export const changeUserIfNeeded = (openid, key, value) => (dispatch, getState) => {
   if (shouldFetch(getState())) {
-    return dispatch(changeUser(key, value));
+    return dispatch(changeUser(openid, key, value));
   }
 };
 

@@ -31,6 +31,14 @@ export default function userinfo(state = initialState, action) {
         error: action.error
       };
       return nextState;
+    case actionTypes.USERINFO_CHANGE:
+      nextState = {
+        ...state,
+        isFetching: false,
+        receivedAt: action.receivedAt,
+        ...action.data
+      };
+      return nextState;
     default:
       return state;
   }

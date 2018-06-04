@@ -9,12 +9,17 @@ import Footer from '../../component_footer';
 class UserCenterPage extends React.Component {
   constructor(props) {
     super(props);
+    this.changeUserInfo = this.changeUserInfo.bind(this);
+  }
+
+  changeUserInfo(key, value) {
+    const openid = this.props.wxinfo.openid;
+    this.props.userInfoActions.changeUserIfNeeded(openid, key, value);
   }
 
   render() {
-    const {headimgurl, nick_name, openid} = this.props.wxinfo;
-    const {name, phone, /* account,*/ ID_number, id} = this.props.userinfo;
-    const {change_name, change_id, change_account} = this.props.userInfoActions;
+    const {headimgurl, nick_name} = this.props.wxinfo;
+    const {name, phone, /* account,*/ ID_number, id, isFetching} = this.props.userinfo;
     const customer = '13524957316';
     return (
       <div className="usercenter-page">
@@ -29,8 +34,8 @@ class UserCenterPage extends React.Component {
             content: name,
             placeholder: '请输入您新的姓名',
             canChange: true,
-            userInfoChange: change_name,
-            openid: openid
+            changeUserInfo: this.changeUserInfo,
+            isFetching: isFetching
           }}/>
           <InfoBox data={{
             inputName: 'phone',
@@ -47,8 +52,8 @@ class UserCenterPage extends React.Component {
             content: ID_number,
             placeholder: '请输入您新的身份证',
             canChange: true,
-            userInfoChange: change_id,
-            openid: openid
+            changeUserInfo: this.changeUserInfo,
+            isFetching: isFetching
           }}/>
         </section>
         <section>

@@ -1,3 +1,3 @@
-import view from './views/ErrPage'
+import view from './views/ErrPage';
 
-export {view}
+export {view};

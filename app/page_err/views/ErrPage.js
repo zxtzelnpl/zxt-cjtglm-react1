@@ -1,9 +1,8 @@
-'use strict'
-import './ErrPage.less'
-import React from 'react'
+import './ErrPage.less';
+import React from 'react';
 
-export default class ErrPage extends React.PureComponent{
-  render(){
+export default class ErrPage extends React.PureComponent {
+  render() {
     return (
       <div className="ErrPage">
         <div className="innerWrap">
@@ -16,6 +15,6 @@ export default class ErrPage extends React.PureComponent{
           </article>
         </div>
       </div>
-    )
+    );
   }
 }

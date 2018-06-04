@@ -1,3 +1,3 @@
-import view from './views/ProtocolPage'
+import view from './views/ProtocolPage';
 
 export {view};

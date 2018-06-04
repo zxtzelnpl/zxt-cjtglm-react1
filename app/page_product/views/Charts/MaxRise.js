@@ -62,7 +62,7 @@ class MaxRise extends React.Component {
 }
 
 MaxRise.propTypes = {
-  record: PropTypes.array
+  record: PropTypes.object
 };
 
 export default MaxRise;

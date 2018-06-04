@@ -22,8 +22,7 @@ class ArticleDetailPage extends React.Component {
 
     if (typeof data[id] === 'undefined') {
       this.props.articleListmentActions.fetchIDIfNeeded(id);
-    }
-    else {
+    } else {
       this.record();
     }
   }

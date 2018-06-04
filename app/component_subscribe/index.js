@@ -28,14 +28,14 @@ class Subscribe extends React.Component {
       fetch(url, {
         method: 'get'
       })
-        .then((response) => {
+        .then(response => {
           return response.text();
         })
         .then((text) => {
           wxJsApiParam = eval('(' + text + ')');
           callpay(this.props.userinfo.score, this.props.history);
         })
-        .catch((err) => {
+        .catch(err => {
           alert('连接失败，请稍后重试');
         });
     }

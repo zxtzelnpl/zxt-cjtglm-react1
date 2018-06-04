@@ -93,7 +93,8 @@ InfoBox.propTypes = {
     content: PropTypes.string,
     placeholder: PropTypes.string,
     canChange: PropTypes.bool,
-    changeUserInfo: PropTypes.func
+    changeUserInfo: PropTypes.func,
+    isFetching: PropTypes.bool
   }).isRequired
 };
 

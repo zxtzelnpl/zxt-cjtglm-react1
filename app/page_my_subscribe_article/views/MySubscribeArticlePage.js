@@ -1,7 +1,7 @@
 import './MySubscribeArticlePage.less';
 import React from 'react';
 import {bindActionCreators} from 'redux';
-import {actions as subscribeListActionsFromOtherFile} from '../../page_my_subscribe';
+import {actions as subscribeListActionsFromOtherFile} from '../../page_subscribe_teacher';
 import {connect} from 'react-redux';
 
 import SubscribeArticleList from './SubscribeArticleList';

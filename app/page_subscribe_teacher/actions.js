@@ -18,7 +18,7 @@ const errorHandle = error => ({
   error
 });
 
-const shouldFetch = state => !state.subscribleList.isFetching;
+const shouldFetch = state => !state.subscribleTeacher.isFetching;
 
 const fetchTeacherList = user_id => dispatch => {
   dispatch(request());

@@ -1,4 +1,4 @@
-import './SubscribeList.less';
+import './SubscribeTeacherList.less';
 
 import Box from './SubscribeTeacherListBox';
 
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import * as subscribeListActionsFromOtherFile from '../actions';
+import * as actions from '../actions';
 import {actions as productListActionsFromOtherFile} from '../../page_product';
 import Footer from '../../component_footer';
 
@@ -22,7 +22,7 @@ class SubscribeTeacherList extends React.Component {
 
   renderTeacherListDom() {
     let dom;
-    const {data, receivedAt} = this.props.subscriblelist;
+    const {data, receivedAt} = this.props.subscribleTeacher;
     const user_id = this.props.match.params.id;
 
     if (typeof receivedAt === 'undefined') {
@@ -42,7 +42,7 @@ class SubscribeTeacherList extends React.Component {
     return (
       <div className="subscribe-list-page">
         <div className="content">
-          <div className="subscribe-list">
+          <div className="subscribe-teacher-list">
             {listDom}
           </div>
         </div>
@@ -58,7 +58,7 @@ class SubscribeTeacherList extends React.Component {
 }
 
 SubscribeTeacherList.propTypes = {
-  subscriblelist: PropTypes.object,
+  subscribleTeacher: PropTypes.object,
   wxinfo: PropTypes.object,
   subscribeListActions: PropTypes.object,
   productListActions: PropTypes.object,
@@ -71,13 +71,13 @@ SubscribeTeacherList.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    subscriblelist: state.subscribleList
+    subscribleTeacher: state.subscribleList
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    subscribeListActions: bindActionCreators(subscribeListActionsFromOtherFile, dispatch),
+    subscribeListActions: bindActionCreators(actions, dispatch),
     productListActions: bindActionCreators(productListActionsFromOtherFile, dispatch)
   };
 }

@@ -7,7 +7,8 @@
   "globals":{
     "localStorage":true,
     "__DEV__":true,
-    "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__":true
+    "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__":true,
+    "WeixinJSBridge":true
   },
   "parserOptions": {
     "ecmaVersion": 6,
@@ -64,7 +65,7 @@
     "no-div-regex": 2,//不能使用看起来像除法的正则表达式/=foo/
     "no-else-return": 2,//如果if语句里面有return,后面不能跟else语句
     "no-eq-null": 2,//禁止对null使用==或!=运算符
-    "no-eval": 2,//禁止使用eval
+    "no-eval": 1,//禁止使用eval
     "no-extend-native": 2,//禁止扩展native对象
     "no-extra-bind": 2,//禁止不必要的函数绑定
     "no-fallthrough": 2,//禁止switch穿透

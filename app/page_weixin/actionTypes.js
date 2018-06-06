@@ -1,3 +1,4 @@
 export const WXINFO_REQUEST = 'WXINFO_REQUEST';
 export const WXINFO_RECEIVED = 'WXINFO_RECEIVED';
 export const WXINFO_ERROR = 'WXINFO_ERROR';
+export const READ_RECORD = 'READ_RECORD';

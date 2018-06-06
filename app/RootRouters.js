@@ -17,8 +17,8 @@ import {view as CenterPage} from './page_center'; // 用户中心页面
 import {view as ProtocolPage} from './page_protocol'; // 用户协议页面
 
 import {view as SubscribeTeacherListPage} from './page_subscribe_teacher'; // 个人订阅列表页面
-import {view as SubscribeArticlePage} from './page_subscribe_article'; // 个人订阅单个产品页面
-import {view as WeiXin0Page} from './page_weixin0'; // 微信模版推送
+import {list as SubscribeArticlePage} from './page_subscribe_article'; // 个人订阅单个产品页面
+import {detail as SubscribeArticleDetailPage} from './page_subscribe_article'; // 微信模版推送
 import {view as NotFound} from './page_not_found'; // Not Found
 import {view as RegisterStatement} from './page_register_statement'; // 注册声明弹出框
 import {view as ErrPage} from './page_err'; // 错误页面
@@ -48,7 +48,7 @@ class RootRouters extends React.Component {
 
             <Route path="/mysubscirbe/:id" component={SubscribeTeacherListPage}/>
             <Route path="/mysubscribearticle/:id" component={SubscribeArticlePage}/>
-            <Route path="/weixin0/:id" component={WeiXin0Page}/>
+            <Route path="/weixin0/:id" component={SubscribeArticleDetailPage}/>
 
             <Route path="/test/errpage/:message" component={ErrPage}/>
             <Route component={NotFound}/>

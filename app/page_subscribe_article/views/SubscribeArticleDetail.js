@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './WeiXin0.less';
+import './SubscribeArticleDetail.less';
 import Footer from '../../component_footer';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as wxInfoActionsFromOtherFile from '../actions';
 import {actions as userInfoActionsFromOtherFile} from '../../page_center';
 
 
-class WeiXin0 extends React.Component {
+class SubscribeArticleDetail extends React.Component {
   constructor(props, content) {
     super(props, content);
     this.state = {
@@ -187,7 +186,7 @@ class WeiXin0 extends React.Component {
   }
 }
 
-WeiXin0.propTypes = {
+SubscribeArticleDetail.propTypes = {
   match: PropTypes.object,
   wxinfo: PropTypes.object,
   userinfo: PropTypes.object,
@@ -204,7 +203,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    wxInfoActions: bindActionCreators(wxInfoActionsFromOtherFile, dispatch),
     userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
   };
 }
@@ -212,4 +210,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(WeiXin0);
+)(SubscribeArticleDetail);

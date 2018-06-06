@@ -12,16 +12,17 @@ import {bindActionCreators} from 'redux';
 class ProductPage extends React.Component {
   constructor(props) {
     super(props);
-    this.url = '/ashx/productlist.ashx';
   }
 
   componentDidMount() {
-    this.props.productListActions.fetchListIfNeeded();
+    if (typeof this.props.productListActions.receivedAt === 'undefined') {
+      this.props.productListActions.fetchListIfNeeded();
+    }
   }
 
   renderProductList() {
     const WAITING = '数据正在加载中，请稍等';
-    const {ids, data} = this.props.productlist;
+    const {ids, data} = this.props.productList;
     let productListDom;
     if (ids.length === 0) {
       productListDom = (
@@ -56,7 +57,7 @@ class ProductPage extends React.Component {
 }
 
 ProductPage.propTypes = {
-  productlist: PropTypes.object,
+  productList: PropTypes.object,
   productListActions: PropTypes.object
 };
 
@@ -66,7 +67,7 @@ ProductPage.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    productlist: state.productlist
+    productList: state.productList
   };
 }
 

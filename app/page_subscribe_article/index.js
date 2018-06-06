@@ -1,4 +1,4 @@
-import view from './views/SubscribeTeacherList';
+import view from './views/SubscribeArticleList';
 import * as actions from './actions';
 import reducer from './reducer';
 

@@ -19,7 +19,7 @@ class TeacherPage extends React.Component {
   }
 
   render() {
-    const data = this.props.productlist.data;
+    const data = this.props.productList.data;
     const id = this.props.match.params.id;
     const teacher_data = data[id];
     if (teacher_data) {
@@ -44,7 +44,7 @@ class TeacherPage extends React.Component {
   }
 
   componentDidMount() {
-    const data = this.props.productlist.data;
+    const data = this.props.productList.data;
     const id = this.props.match.params.id;
     if (typeof data[id] === 'undefined') {
       this.props.productListActions.fetchListIfNeeded();
@@ -61,7 +61,7 @@ class TeacherPage extends React.Component {
 TeacherPage.propTypes = {
   history: PropTypes.object,
   match: PropTypes.object,
-  productlist: PropTypes.object,
+  productList: PropTypes.object,
   wxinfo: PropTypes.object,
   userinfo: PropTypes.object,
   productListActions: PropTypes.object,
@@ -73,7 +73,7 @@ TeacherPage.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    productlist: state.productlist,
+    productList: state.productList,
     wxinfo: state.wxinfo,
     userinfo: state.userinfo
   };

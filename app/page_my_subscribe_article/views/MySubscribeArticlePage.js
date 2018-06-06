@@ -39,8 +39,8 @@ function callpay() {
 }
 
 class MySubscribeArticlePage extends React.Component {
-  constructor(props, content) {
-    super(props, content)
+  constructor(props) {
+    super(props);
     this.produce_id = this.props.match.params.id.split('a')[0]
     this.user_id = this.props.match.params.id.split('a')[1]
 

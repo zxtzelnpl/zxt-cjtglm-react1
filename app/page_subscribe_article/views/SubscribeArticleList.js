@@ -144,8 +144,16 @@ class SubscribeArticleListPage extends React.Component {
         }
       });
 
-    if (typeof this.props.subscribleTeacher.updateAt === 'undefined') {
+    if (typeof this.props.subscribleArticle.receivedAt === 'undefined') {
+      this.props.subscribeArticleActions.fetchTeacherListIfNeeded(user_id, produce_id);
+    }
+
+    if (typeof this.props.subscribleTeacher.receivedAt === 'undefined') {
       this.props.subscribeTeacherActions.fetchTeacherListIfNeeded(user_id);
+    }
+
+    if (typeof this.props.productList.receivedAt === 'undefined') {
+      this.props.productListActions.fetchList();
     }
   }
 
@@ -193,9 +201,10 @@ SubscribeArticleListPage.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    subscribleArticle: state.subscribleArticle,
     wxinfo: state.wxinfo,
     userinfo: state.userinfo,
+    productList: state.productList,
+    subscribleArticle: state.subscribleArticle,
     subscribleTeacher: state.subscribleTeacher
   };
 }

@@ -26,7 +26,7 @@
     "comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
     "computed-property-spacing": [2, "never"],//是否允许计算后的键名什么的
     "no-cond-assign": 2,//禁止在条件表达式中使用赋值语句
-    "no-console": 1,//禁止使用console
+    "no-console": 0,//禁止使用console
     "no-constant-condition": 2,//禁止在条件中使用常量表达式 if(true) if(1)
     "no-control-regex": 2,//禁止在正则表达式中使用控制字符
     "no-debugger": 2,//禁止使用debugger
@@ -59,13 +59,13 @@
     "dot-notation": 2,//避免不必要的方括号
     "eqeqeq": 2,//必须使用全等
     "guard-for-in": 2,//for in循环要用if语句过滤
-    "no-alert": 1,//禁止使用alert confirm prompt
+    "no-alert": 0,//禁止使用alert confirm prompt
     "no-caller": 2,//禁止使用arguments.caller或arguments.callee
     "no-confusing-arrow": 2,
     "no-div-regex": 2,//不能使用看起来像除法的正则表达式/=foo/
     "no-else-return": 2,//如果if语句里面有return,后面不能跟else语句
     "no-eq-null": 2,//禁止对null使用==或!=运算符
-    "no-eval": 1,//禁止使用eval
+    "no-eval": 0,//禁止使用eval
     "no-extend-native": 2,//禁止扩展native对象
     "no-extra-bind": 2,//禁止不必要的函数绑定
     "no-fallthrough": 2,//禁止switch穿透

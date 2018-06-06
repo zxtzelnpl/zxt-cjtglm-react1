@@ -24,7 +24,7 @@ export default function subscribeList(state = initialState, action) {
     case actionTypes.SUBSCRIBLELIST_ERROR:
       return {
         ...state,
-        isFetching: true,
+        isFetching: false,
         error: action.error
       };
     default:

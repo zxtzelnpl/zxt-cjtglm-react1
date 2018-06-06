@@ -1,2 +1,0 @@
-export const NEWSLIST_INIT = 'NEWSLIST_INIT'
-export const NEWSLIST_ADD = 'NEWSLIST_ADD'

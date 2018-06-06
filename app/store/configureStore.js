@@ -6,7 +6,7 @@ import {reducer as registerstatement} from '../page_register_statement';
 import {reducer as productList} from '../page_product';
 import {reducer as articlelist} from '../page_article';
 import {reducer as subscribleTeacher} from '../page_subscribe_teacher';
-import {reducer as newslist} from '../page_my_subscribe_article';
+import {reducer as subscribleArticle} from '../page_subscribe_article';
 import {reducer as wxinfo} from '../page_weixin';
 
 
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   registerstatement,
   articlelist,
   subscribleTeacher,
-  newslist,
+  subscribleArticle,
   wxinfo
 });
 const middleware = [thunk];

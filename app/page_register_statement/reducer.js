@@ -11,4 +11,4 @@ export default function registerstatement(state = initialState, action) {
     default:
       return state;
   }
-};
+}

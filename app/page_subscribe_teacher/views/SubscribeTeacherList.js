@@ -71,7 +71,7 @@ SubscribeTeacherList.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    subscribleTeacher: state.subscribleList
+    subscribleTeacher: state.subscribleTeacher
   };
 }
 

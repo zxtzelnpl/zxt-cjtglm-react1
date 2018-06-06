@@ -5,7 +5,6 @@ const initialState = {
   ids: [],
   data: {},
   isFetching: false,
-  receivedAt: 0,
   error: null
 };
 

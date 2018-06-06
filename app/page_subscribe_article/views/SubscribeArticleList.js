@@ -3,7 +3,7 @@ import './SubscribeArticleList.less';
 import * as actions from '../actions';
 import {actions as subscribeTeacherActionsFromOtherFile} from '../../page_subscribe_teacher';
 import {actions as productListActionsFromOtherFile} from '../../page_product';
-import SubscribeArticleList from './SubscribeArticleListBox';
+import SubscribeArticleBox from './SubscribeArticleBox';
 import Footer from '../../component_footer';
 import {money, periods} from '../../component_subscribe/buyInfo';
 
@@ -53,29 +53,24 @@ class SubscribeArticleListPage extends React.Component {
     };
   }
 
-  render() {
-    let subscribe = null;
-    const data = this.props.subscriblelist.data;
-    if (Array.isArray(data)) {
-      data.forEach(item => {
-        if (item.produce_id === this.produce_id) {
-          subscribe = item;
-        }
-      });
-    }
-
-
+  renderHeaderDom() {
     let headHtml = (
-        <div className="wrap">
-          <img/>
-          <div>
-            <p>******</p>
-            <p>******</p>
-          </div>
+      <div className="wrap">
+        <img/>
+        <div>
+          <p>******</p>
+          <p>******</p>
         </div>
-      ),
-      buyButton = (<div className="none"/>);
-    if (subscribe) {
+      </div>
+    );
+    let subscribe = null;
+    const data = this.props.subscribleTeacher.data;
+    data.forEach(item => {
+      if (item.produce_id === this.produce_id) {
+        subscribe = item;
+      }
+    });
+    if (subscribe !== null) {
       const {head_log, name, style} = subscribe;
       headHtml = (
         <div className="wrap">
@@ -86,25 +81,44 @@ class SubscribeArticleListPage extends React.Component {
           </div>
         </div>
       );
-      if (this.state.canBuy) {
-        buyButton = (<a onClick={this.getSubscribe.bind(this, name)}>续 费</a>);
+    }
+    return headHtml;
+  }
+
+  renderBuyButtonDom() {
+    let buyButton = <div className="none"/>;
+    const ids = this.props.productList.ids;
+    if (ids.indexOf(this.produce_id)) {
+      buyButton = <a onClick={this.getSubscribe.bind(this, name)}>续 费</a>;
+    }
+    return buyButton;
+  }
+
+  renderArticleList() {
+    const {data, receivedAt} = this.props.subscribleArticle;
+    let articleListDom = <div className="loading">数据加载中，请稍等</div>;
+
+    if (typeof receivedAt !== 'undefined') {
+      if (data.length === 0) {
+        articleListDom = <div className="no-datas">没有数据</div>;
+      } else {
+        articleListDom = data.map(article => <SubscribeArticleBox key={article.id} article={article}/>);
       }
     }
+    return articleListDom;
+  }
 
-
+  render() {
     return (
       <div className="subscribe-article-list-page">
         <div className="content">
           <div className="head">
-            {headHtml}
-            {buyButton}
+            {this.renderHeaderDom()}
+            {this.renderBuyButtonDom()}
           </div>
-          {this.state.initDom ? <SubscribeArticleList
-            product_id={this.produce_id}
-            user_id={this.user_id}
-            list={this.state.newslist}
-          /> : <div className="loading">数据加载中，请稍等</div>}
-
+          <div className="subscribe-article-list">
+            {this.renderArticleList()}
+          </div>
         </div>
         <Footer footerIndex={2}/>
       </div>
@@ -114,38 +128,9 @@ class SubscribeArticleListPage extends React.Component {
   componentDidMount() {
     const user_id = this.user_id;
     const produce_id = this.produce_id;
-    const url = `/ashx/user_analysts_list.ashx?user_id=${user_id}&produce_id=${produce_id}`;
-    const check = `/ashx/productlist.ashx?id=${produce_id}`;
-    const subscribe_url = `/ashx/user_subscribe.ashx?user_id=${user_id}`;
-    fetch(url, {
-      method: 'get'
-    })
-      .then(res => res.text())
-      .then(text => {
-        const json = JSON.parse(text.replace(/\t/ig, ''));
-        this.setState({
-          initDom: true,
-          newslist: json
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    fetch(check, {
-      method: 'get'
-    })
-      .then(res => res.json())
-      .then(json => {
-        if (json.length && json.length !== 0) {
-          this.setState({
-            canBuy: true
-          });
-        }
-      });
 
     if (typeof this.props.subscribleArticle.receivedAt === 'undefined') {
-      this.props.subscribeArticleActions.fetchTeacherListIfNeeded(user_id, produce_id);
+      this.props.subscribeArticleActions.fetchfetchArticleListIfNeeded(user_id, produce_id);
     }
 
     if (typeof this.props.subscribleTeacher.receivedAt === 'undefined') {
@@ -153,7 +138,7 @@ class SubscribeArticleListPage extends React.Component {
     }
 
     if (typeof this.props.productList.receivedAt === 'undefined') {
-      this.props.productListActions.fetchList();
+      this.props.productListActions.fetchListIfNeeded();
     }
   }
 
@@ -175,6 +160,7 @@ class SubscribeArticleListPage extends React.Component {
         })
         .catch(err => {
           alert('连接失败，请稍后重试');
+          console.log(err);
         });
     } else {
       alert('请先完成注册后购买');
@@ -189,9 +175,10 @@ SubscribeArticleListPage.propTypes = {
   wxinfo: PropTypes.object,
   userinfo: PropTypes.object,
   subscribleTeacher: PropTypes.object,
-  subscribleArticle: PropTypes.object,
   subscribeTeacherActions: PropTypes.object,
+  subscribleArticle: PropTypes.object,
   subscribeArticleActions: PropTypes.object,
+  productList: PropTypes.object,
   productListActions: PropTypes.object
 };
 
@@ -211,8 +198,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    subscribeTeacherActions: bindActionCreators(subscribeTeacherActionsFromOtherFile, dispatch),
     subscribeArticleActions: bindActionCreators(actions, dispatch),
+    subscribeTeacherActions: bindActionCreators(subscribeTeacherActionsFromOtherFile, dispatch),
     productListActions: bindActionCreators(productListActionsFromOtherFile, dispatch)
   };
 }

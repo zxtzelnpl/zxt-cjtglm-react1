@@ -36,14 +36,15 @@ class ArticleDetailPage extends React.Component {
   record() {
     const openid = this.props.openid,
       id = this.props.match.params.id;
-    // fetch(`/ashx/Visit_Record.ashx?openid=${openid}&Article_id=${id}`)
-    //   .then(res => res.text())
-    //   .then(text => {
-    //     console.log(text);
-    //   })
-    //   .catch(err => {
-    //     console.log('网络连接错误');
-    //   });
+    fetch(`/ashx/Visit_Record.ashx?openid=${openid}&Article_id=${id}`)
+      .then(res => res.text())
+      .then(text => {
+        console.log(text);
+      })
+      .catch(err => {
+        console.log('网络连接错误');
+        console.log(err);
+      });
   }
 
   render() {

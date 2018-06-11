@@ -1,0 +1,43 @@
+.world-cup-team_one{
+  box-sizing: border-box;
+  padding:0 5px;
+
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width:3rem;
+  height:.6rem;
+  background:#333d46;
+  border-bottom:1px solid #241323;
+  &:last-child{
+    border-bottom:none;
+  }
+  .world-cup-country{
+    display:flex;
+    align-items: center;
+    img{
+      width:.6rem;
+      height:.4rem;
+    }
+    span{
+      padding-left: 5px;
+    }
+  }
+  .world-cup-select{
+    box-sizing: border-box;
+    width:.4rem;
+    height:.4rem;
+    border:1px solid #fff;
+    border-radius:50%;
+  }
+}
+
+.world-cup-team_one.selected{
+  background:#16b13a;
+  .world-cup-selected{
+    display:flex;
+    align-items: center;
+    height:.4rem;
+    font-size:.28rem;
+  }
+}

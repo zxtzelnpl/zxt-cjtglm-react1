@@ -102,13 +102,13 @@ function getInitialState () {
   getWxinfo.then(wxinfo => {
     __render(wxinfo, userinfo)
   })
-      .catch(err => {
-        if (err.message) {
-          render(
-              <ErrPage message={err.message}/>, document.getElementById('root')
-          )
-        }
-      })
+      // .catch(err => {
+      //   if (err.message) {
+      //     render(
+      //         <ErrPage message={err.message}/>, document.getElementById('root')
+      //     )
+      //   }
+      // })
 }
 
 

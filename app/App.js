@@ -39,8 +39,8 @@ const App = () => (
       <Route path="/tg/:date" component={TuiGuang}/>
       <Route path="/notfound/:reason" component={NotFound}/>
 
-      <Route path="/knockout" component={KnockoutPage}/>
       <Route path="/groupcompetition" component={GroupCompetitionPage}/>
+      <Route path="/knockout" component={KnockoutPage}/>
 
       <RegisterStatement/>
     </div>

@@ -1,0 +1,2 @@
+export const TEAM_CHANGE_ADD='TEAM_CHANGE_ADD';
+export const TEAM_CHANGE_DEL='TEAM_CHANGE_DEL';

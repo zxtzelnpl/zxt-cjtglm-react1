@@ -18,6 +18,8 @@ import TuiGuang from './containers/TuiGuang' //推广模版推送
 import NotFound from './components/NotFound' //Not Found
 import RegisterStatement from './containers/RegisterStatement' //注册声明弹出框
 
+import {Knockout as KnockoutPage} from './page_world_cup';
+import {GroupCompetition as GroupCompetitionPage} from './page_world_cup';
 
 const App = () => (
     <div className="container">
@@ -36,6 +38,10 @@ const App = () => (
 
       <Route path="/tg/:date" component={TuiGuang}/>
       <Route path="/notfound/:reason" component={NotFound}/>
+
+      <Route path="/knockout" component={KnockoutPage}/>
+      <Route path="/groupcompetition" component={GroupCompetitionPage}/>
+
       <RegisterStatement/>
     </div>
 )

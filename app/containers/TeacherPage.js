@@ -81,7 +81,7 @@ class TeacherPage extends React.Component {
                 if (json.openid == null) {
                   reject({
                     reason: 'notSubscribe',
-                    msg: '关注微信公众号《君银牛人堂》注册后可进行购买'
+                    msg: '关注微信公众号《超级投顾联盟》注册后可进行购买'
                   })
                 }
                 else {
@@ -92,7 +92,7 @@ class TeacherPage extends React.Component {
               .catch((err) => {
                 reject({
                   reason: 'notSubscribe',
-                  msg: '关注微信公众号《君银牛人堂》注册后可进行购买'
+                  msg: '关注微信公众号《超级投顾联盟》注册后可进行购买'
                 })
               })
         }

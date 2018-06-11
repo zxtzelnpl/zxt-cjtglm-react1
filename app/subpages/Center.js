@@ -50,14 +50,14 @@ class Center extends React.Component {
           })
           .then((json) => {
             if(json.openid==null){
-              alert('您还未关注《天财君银会》，如已经关注请尝试重新关注微信公众号后再次注册')
+              alert('您还未关注《超级投顾联盟》，如已经关注请尝试重新关注微信公众号后再次注册')
             }
             else{
               this.props.wxInfoActions.get(json)
             }
           })
           .catch((err)=>{
-            alert('您还未关注《天财君银会》，如已经关注请尝试重新关注微信公众号后再次注册')
+            alert('您还未关注《超级投顾联盟》，如已经关注请尝试重新关注微信公众号后再次注册')
           })
     }
   }

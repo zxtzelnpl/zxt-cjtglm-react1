@@ -44,7 +44,7 @@ class Subscribe extends React.Component {
       this.props.history.push('/center')
     }
     else {
-      alert('亲，需要有限关注公众号《君银牛人堂》')
+      alert('亲，需要有限关注公众号《超级投顾联盟》')
     }
   }
 }

@@ -80,7 +80,7 @@ class ProtocolDisabled extends React.Component{
         return (
             <div className="protocol-page">
                 <section className="header">
-                    <p className="title">君银牛人堂</p>
+                    <p className="title">超级投顾联盟</p>
                     <p className="attation"><span className="red">*</span>微信公众号一经绑定成功，以下电子协议即为生效，其协议内容与纸质协议具有同等法律效应</p>
                     <p className="links">
                         <a onClick={this.handleClick.bind(this,'a')}><span className="num">1</span><span className="text">投顾用户电子服务协议</span></a>

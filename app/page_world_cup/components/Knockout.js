@@ -5,7 +5,10 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
 
-import groupDate from './groupDate';
+import Group16in8 from './Group16in8';
+import Group8in4 from './Group8in4';
+import Group4in2 from './Group4in2';
+import GroupFinal from './GroupFinal';
 
 import Header from './Header'
 
@@ -15,7 +18,6 @@ class Knockout extends React.Component{
   }
 
   render(){
-
     console.log(this.props);
 
     return (
@@ -23,86 +25,36 @@ class Knockout extends React.Component{
         <Header />
 
         <div className="knockout_content">
-          <div className="group-left-8">
-            <div className="group-8">
-              <div className="team-16">
-                <div className="team">
-                  <div className="team-num">
-                    A1
-                  </div>
-                  <div className="team-icon">
-                    <img src="" />
-                    <span></span>
-                  </div>
-                </div>
-                <div className="link-up" />
-              </div>
-              <div className="team-16">
-                <div className="team">
-                  <div className="team-num">
-                    B1
-                  </div>
-                  <div className="team-icon">
-                    <img src="" />
-                    <span></span>
-                  </div>
-                </div>
-                <div className="link-down" />
-              </div>
-              <div className="link-row" />
-            </div>
-            <div className="group-8">
-              <div className="team-16">
-
-              </div>
-              <div className="team-16">
-
-              </div>
-              <div className="link-row" />
-            </div>
-            <div className="group-8">
-              <div className="team-16">
-
-              </div>
-              <div className="team-16">
-
-              </div>
-              <div className="link-row" />
-            </div>
-            <div className="group-8">
-              <div className="team-16">
-
-              </div>
-              <div className="team-16">
-
-              </div>
-              <div className="link-row" />
-            </div>
+          <div className="groups-left-16in8">
+            <Group16in8 position={'left'} labels={['A1','B2']}/>
+            <Group16in8 position={'left'} labels={['C1','D2']}/>
+            <Group16in8 position={'left'} labels={['E1','F2']}/>
+            <Group16in8 position={'left'} labels={['G1','H2']}/>
           </div>
-          <div className="group-left-4">
-            <div className="group-4"></div>
-            <div className="group-4"></div>
+          <div className='groups-left-8in4'>
+            <Group8in4 position={'left'} labels={[0,1]}/>
+            <Group8in4 position={'left'} labels={[2,3]}/>
           </div>
-          <div className="group-left-2">
-            <div className="group-2"></div>
-            <div className="group-2"></div>
+          <div className='group-left-4in2'>
+            <Group4in2 position={'left'} labels={[0,1]}/>
           </div>
 
-          <div className="group-1-center">
-
+          <div className='group-1-center'>
+            <GroupFinal />
           </div>
 
-          <div className="group-left-2">
-
+          <div className='group-right-4in2'>
+            <Group4in2 position={'right'} labels={[2,3]}/>
           </div>
-          <div className="group-left-4">
-
+          <div className='group-right-8in4'>
+            <Group8in4 position={'right'} labels={[4,5]}/>
+            <Group8in4 position={'right'} labels={[6,7]}/>
           </div>
-          <div className="group-left-8">
-            <div className="group-8"></div>
-            <div className="group-8"></div>
-            <div className="group-8"></div>
-            <div className="group-8"></div>
+          <div className='group-right-16in8'>
+            <Group16in8 position={'right'} labels={['B1','A2']}/>
+            <Group16in8 position={'right'} labels={['D1','C2']}/>
+            <Group16in8 position={'right'} labels={['F1','E2']}/>
+            <Group16in8 position={'right'} labels={['H1','G2']}/>
           </div>
         </div>
       </div>

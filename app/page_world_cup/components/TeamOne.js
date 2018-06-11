@@ -15,23 +15,22 @@ class TeamOne extends React.Component {
   }
 
   add() {
-    const {country} = this.props.team;
-    const {groupName} = this.props;
-    this.props.worldCupActions.add(groupName,country);
+    const {groupName,teamName} = this.props;
+    this.props.worldCupActions.add(groupName,teamName);
   }
 
   del() {
-    const {country} = this.props.team;
-    const {groupName} = this.props;
-    this.props.worldCupActions.del(groupName,country);
+    const {groupName,teamName} = this.props;
+    this.props.worldCupActions.del(groupName,teamName);
   }
 
 
   render() {
     const {country, flag} = this.props.team;
-    const {groupName, world_cup} = this.props;
+    const {teamName, groupName, world_cup} = this.props;
 
-    let index = world_cup[groupName].indexOf(country);
+    let group = world_cup[groupName];
+    let index = group.indexOf(teamName)
     let html;
     if (index > -1) {
       html = (<li className='world-cup-team_one selected' onClick={this.del}>

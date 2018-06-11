@@ -3,7 +3,7 @@ import './GroupCompetition.less';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Group from './Group';
-import groupDate from './groupDate';
+import {groups} from '../groupDate';
 
 import {connect} from 'react-redux'
 
@@ -15,10 +15,11 @@ class GroupCompetition extends React.Component{
   }
 
   renderGroups(){
-    return groupDate.map(group=>{
+    return ['A','B','C','D','E','F','G','H'].map(groupName=>{
       return <Group
-        key={group.name}
-        group={group}
+        key={groupName}
+        group={groups[groupName]}
+        groupName={groupName}
         />
     })
   }

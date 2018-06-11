@@ -1,18 +1,18 @@
 import * as actionTypes from './actionTypes';
 
 const initialState={
-  A:[],
-  B:[],
-  C:[],
-  D:[],
-  E:[],
-  F:[],
-  G:[],
-  H:[],
+  A: ['russia', 'egypt'],
+  B: ['iran', 'morocco'],
+  C: ['australia', 'denmark'],
+  D: ['argentina', 'croatia'],
+  E: ['brazil', 'costa_rica'],
+  F: ['germany', 'korea'],
+  G: ['belgium', 'england'],
+  H: ['columbia', 'japan'],
   in8:[],
   in4:[],
   in2:[],
-  champion:null
+  champion:''
   /*group_4_1:{
     up:'',
     down:''

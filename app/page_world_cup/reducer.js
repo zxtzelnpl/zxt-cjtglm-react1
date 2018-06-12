@@ -13,7 +13,7 @@ const initialState = {
   in4: ['russia', 'brazil', 'egypt', 'costa_rica'],
   in2: ['russia', 'egypt'],
   champion: 'russia',
-  ok:true
+  ok:false
   /*group_4_1:{
     up:'',
     down:''

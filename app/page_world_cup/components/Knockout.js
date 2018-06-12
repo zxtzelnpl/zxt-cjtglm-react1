@@ -13,10 +13,16 @@ import Header from './Header'
 import * as actions from '../actions';
 import {bindActionCreators} from 'redux';
 
+import qr_code from '../images/qr_code.png';
+
 class Knockout extends React.Component{
   constructor(props){
     super(props)
-    this.makePicture = this.makePicture.bind(this)
+    this.makePicture = this.makePicture.bind(this);
+    this.state={
+      show:false,
+      share_img:''
+    }
   }
 
   check(){
@@ -57,9 +63,12 @@ class Knockout extends React.Component{
 
       this.props.worldCupActions.teamAllOK();
 
-      html2canvas(this.page).then(function(canvas) {
-        canvas.style='position:absolute;z-index:2;width:100%;height:100%;'
-        document.body.appendChild(canvas);
+      html2canvas(this.page).then(canvas => {
+        let base64 = canvas.toDataURL('images/png');
+        this.setState({
+          show:true,
+          share_img:base64
+        })
       });
     }
     else{
@@ -111,11 +120,22 @@ class Knockout extends React.Component{
 
         {
           ok?
-            '':
+            <div className="world-cup-share">
+              <img src={qr_code} />
+              <p>长按图片保存分享你的预测吧</p>
+            </div>:
             <div className={`world-cup-finish ${check?'ok':''}`} onClick={this.makePicture}>
               完成
             </div>
         }
+
+        {
+          this.state.show&&
+            <div className="world-cup-knockout-share">
+              <img src={this.state.share_img}/>
+            </div>
+        }
+
       </div>
     )
   }

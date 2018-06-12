@@ -14,7 +14,7 @@
 }
 
 .knockout_content{
-  margin-top:.4rem;
+  margin-top:.2rem;
 
   display:flex;
   justify-content: center;
@@ -82,6 +82,22 @@
   flex-grow:0;
 }
 
+.world-cup-share{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:.4rem;
+  img{
+    display:block;
+    margin:0 auto;
+    width:1.8rem;
+    height:1.8rem;
+  }
+  p{
+    text-align: center;
+  }
+}
+
 .world-cup-finish{
   position:fixed;
   left:0;
@@ -99,5 +115,18 @@
   background:#888;
   &.ok{
     background:#ec6f3d;
+  }
+}
+
+.world-cup-knockout-share{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  img{
+    display:block;
+    width:100%;
+    height:auto;
   }
 }

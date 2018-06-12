@@ -19,7 +19,6 @@ class Group16in8 extends React.Component{
     this.handleClickTwo = this.handleClick.bind(this,1)
   }
 
-
   handleClick(index){
     const {teams,indexDetermin8,worldCupActions} =this.props;
     const teamName = teams[index];
@@ -28,29 +27,46 @@ class Group16in8 extends React.Component{
   }
 
   render(){
-    const {position,teams,labels} =this.props
+    const {position,teams,labels,champion,ok} =this.props
     const [label1,label2] = labels;
     const [teamName1,teamName2] = teams;
     const team1 = teamDetails[teamName1];
     const team2 = teamDetails[teamName2];
 
+    let linkUp = 'link-up',
+      linkDown = 'link-down',
+      linkRow = 'link-row';
+
+    if(ok&&(typeof champion==='string')){
+      let index = teams.indexOf(champion);
+      if(index===0){
+        linkUp+=' winline';
+        linkRow+=' winline';
+      }
+      else if(index===1){
+        linkDown+=' winline';
+        linkRow+=' winline';
+      }
+    }
+
     return <div className={`group-16in8 ${position}`}>
       <div className="team-16">
         <TeamTwo label={label1} team={team1} onClick={this.handleClickOne}/>
-        <div className="link-up" />
+        <div className={linkUp} />
       </div>
       <div className="team-16">
         <TeamTwo label={label2} team={team2} onClick={this.handleClickTwo}/>
-        <div className="link-down" />
+        <div className={linkDown} />
       </div>
-      <div className="link-row" />
+      <div className={linkRow} />
     </div>
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state) {
   return {
-
+    champion: state.world_cup.champion,
+    ok:state.world_cup.ok
   };
 }
 

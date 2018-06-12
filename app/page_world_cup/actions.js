@@ -46,3 +46,9 @@ export const from2inchampion = (teamName) => {
     teamName
   }
 }
+
+export const teamAllOK = ()=>{
+  return {
+    type:actionTypes.TEAM_ALL_OK
+  }
+}

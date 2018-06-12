@@ -12,7 +12,8 @@ const initialState = {
   in8: ['russia', 'australia', 'brazil', 'belgium', 'egypt', 'denmark', 'costa_rica', 'england'],
   in4: ['russia', 'brazil', 'egypt', 'costa_rica'],
   in2: ['russia', 'egypt'],
-  champion: 'russia'
+  champion: 'russia',
+  ok:true
   /*group_4_1:{
     up:'',
     down:''
@@ -124,35 +125,42 @@ export default function world_cup(state = initialState, action) {
         ...state
       };
       let preTeamNameOfIn8 = _state.in8[action.index];
-      _state.in8 = _state.in8.map((country,index)=>{
-        if(index === action.index){
-          return action.teamName
-        }
-        else{
-          return country;
-        }
-      })
 
-      _state.in4 = _state.in4.map(country=>{
-        if(country===preTeamNameOfIn8){
-          return action.teamName;
-        }
-        else{
-          return country;
-        }
-      })
+      if(typeof preTeamNameOfIn8==='undefined'){
+        _state.in8[action.index] = action.teamName;
+        _state.in8 = [..._state.in8];
+      }
+      else{
+        _state.in8 = _state.in8.map((country,index)=>{
+          if(index === action.index){
+            return action.teamName
+          }
+          else{
+            return country;
+          }
+        })
 
-      _state.in2 = _state.in2.map(country=>{
-        if(country===preTeamNameOfIn8){
-          return action.teamName;
-        }
-        else{
-          return country;
-        }
-      })
+        _state.in4 = _state.in4.map(country=>{
+          if(country===preTeamNameOfIn8){
+            return action.teamName;
+          }
+          else{
+            return country;
+          }
+        })
 
-      if (_state.champion === preTeamNameOfIn8) {
-        _state.champion = action.teamName;
+        _state.in2 = _state.in2.map(country=>{
+          if(country===preTeamNameOfIn8){
+            return action.teamName;
+          }
+          else{
+            return country;
+          }
+        })
+
+        if (_state.champion === preTeamNameOfIn8) {
+          _state.champion = action.teamName;
+        }
       }
 
       return _state;
@@ -166,26 +174,32 @@ export default function world_cup(state = initialState, action) {
       };
       let preTeamNameOfIn4 = _state.in4[action.index];
 
-      _state.in4 = _state.in4.map((country,index)=>{
-        if(index === action.index){
-          return action.teamName
-        }
-        else{
-          return country;
-        }
-      })
+      if(typeof preTeamNameOfIn4==='undefined'){
+        _state.in4[action.index] = action.teamName;
+        _state.in4 = [..._state.in4];
+      }
+      else{
+        _state.in4 = _state.in4.map((country,index)=>{
+          if(index === action.index){
+            return action.teamName
+          }
+          else{
+            return country;
+          }
+        })
 
-      _state.in2 = _state.in2.map(country=>{
-        if(country===preTeamNameOfIn4){
-          return action.teamName;
-        }
-        else{
-          return country;
-        }
-      })
+        _state.in2 = _state.in2.map(country=>{
+          if(country===preTeamNameOfIn4){
+            return action.teamName;
+          }
+          else{
+            return country;
+          }
+        })
 
-      if (_state.champion === preTeamNameOfIn4) {
-        _state.champion = action.teamName;
+        if (_state.champion === preTeamNameOfIn4) {
+          _state.champion = action.teamName;
+        }
       }
 
       return _state;
@@ -197,27 +211,40 @@ export default function world_cup(state = initialState, action) {
         ...state
       };
       let preTeamNameOfIn2 = _state.in2[action.index];
-      _state.in2 = _state.in2.map((country,index)=>{
-        if(index === action.index){
-          return action.teamName
-        }
-        else{
-          return country;
-        }
-      })
 
-      if (_state.champion === preTeamNameOfIn2) {
-        _state.champion = action.teamName;
+      if(typeof preTeamNameOfIn2==='undefined'){
+        _state.in2[action.index] = action.teamName;
+        _state.in2 = [..._state.in2];
       }
+      else{
+        _state.in2 = _state.in2.map((country,index)=>{
+          if(index === action.index){
+            return action.teamName
+          }
+          else{
+            return country;
+          }
+        })
+
+        if (_state.champion === preTeamNameOfIn2) {
+          _state.champion = action.teamName;
+        }
+      }
+
       return _state;
 
     /*修改冠军*/
     case actionTypes.TEAM_CHANGE_CHAMPION:
-      _state = {
-        ...state
+      return {
+        ...state,
+        champion:action.teamName
       };
-      _state.champion = action.teamName;
-      return _state;
+    case actionTypes.TEAM_ALL_OK:
+      return {
+        ...state,
+        ok:true
+      }
+
     default:
       return state;
   }

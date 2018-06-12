@@ -24,37 +24,52 @@ class Group4in2 extends React.Component{
     worldCupActions.from4in2(indexDetermin2,teamName)
   }
 
-  renderTeamIcon(flag) {
+  renderTeamIcon(team) {
     let dom = null;
-    if (flag) {
-      dom = <img src={flag}/>;
+    if (typeof team === 'object') {
+      dom = <img src={team.flag}/>;
     }
     return dom;
   }
 
   render(){
-    const {position, indexOf4, in4} = this.props;
+    const {position, indexOf4, in4,champion,ok} = this.props;
     const [index1, index2] = indexOf4;
     const teamName1 = in4[index1];
     const teamName2 = in4[index2];
     const team1 = teamDetails[teamName1];
     const team2 = teamDetails[teamName2];
 
+    let linkUp = 'link-up',
+      linkDown = 'link-down',
+      linkRow = 'link-row';
+
+    if(ok&&(typeof champion==='string')){
+      if(teamName1===champion){
+        linkUp+=' winline';
+        linkRow+=' winline';
+      }
+      else if(teamName2===champion){
+        linkDown+=' winline';
+        linkRow+=' winline';
+      }
+    }
+
     return (
       <div className={`group-4in2 ${position}`}>
         <div className="team-4">
           <div className="team-icon" onClick={this.handleClickOne}>
-            {this.renderTeamIcon(team1.flag)}
+            {this.renderTeamIcon(team1)}
           </div>
-          <div className="link-up"/>
+          <div className={linkUp}/>
         </div>
         <div className="team-4">
-          <div className="link-down"/>
+          <div className={linkDown}/>
           <div className="team-icon" onClick={this.handleClickTwo}>
-            {this.renderTeamIcon(team2.flag)}
+            {this.renderTeamIcon(team2)}
           </div>
         </div>
-        <div className="link-row"/>
+        <div className={linkRow}/>
       </div>
     )
   }
@@ -62,7 +77,9 @@ class Group4in2 extends React.Component{
 
 function mapStateToProps(state) {
   return {
-    in4: state.world_cup.in4
+    in4: state.world_cup.in4,
+    champion: state.world_cup.champion,
+    ok:state.world_cup.ok
   };
 }
 

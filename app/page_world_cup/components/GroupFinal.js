@@ -42,6 +42,7 @@ class GroupFinal extends React.Component{
     else{
       champion_dom = <div className="champion">
         <div className="champion_flag" />
+        <div className="champion_name" />
         <div className="champion_logo">
           <img src={champing_logo} />
         </div>
@@ -51,21 +52,36 @@ class GroupFinal extends React.Component{
     return champion_dom
   }
 
-  renderTeamIcon(flag) {
+  renderTeamIcon(team) {
     let dom = null;
-    if (flag) {
-      dom = <img src={flag}/>;
+    if (typeof team === 'object') {
+      dom = <img src={team.flag}/>;
     }
     return dom;
   }
 
   render(){
-    const {in2,champion} = this.props;
+    const {in2,champion,ok} = this.props;
     const teamName1 = in2[0];
     const teamName2 = in2[1];
     const team1 = teamDetails[teamName1];
     const team2 = teamDetails[teamName2];
     const teamChampion = teamDetails[champion];
+
+    let linkLeft = 'link-left',
+      linkRight = 'link-right',
+      linkRow = 'link-row';
+
+    if(ok&&(typeof champion==='string')){
+      if(teamName1===champion){
+        linkLeft+=' winline';
+        linkRow+=' winline';
+      }
+      else if(teamName2===champion){
+        linkRight+=' winline';
+        linkRow+=' winline';
+      }
+    }
 
     return (
         <div className='group-final'>
@@ -74,18 +90,18 @@ class GroupFinal extends React.Component{
           <div className="final-groups">
             <div className="team-2">
               <div className="team-icon" onClick={this.handleClickOne}>
-                {this.renderTeamIcon(team1.flag)}
+                {this.renderTeamIcon(team1)}
               </div>
-              <div className="link-left"/>
+              <div className={linkLeft}/>
             </div>
 
-            <div className="link-row" />
+            <div className={linkRow} />
 
             <div className="team-2">
               <div className="team-icon" onClick={this.handleClickTwo}>
-                {this.renderTeamIcon(team2.flag)}
+                {this.renderTeamIcon(team2)}
               </div>
-              <div className="link-right"/>
+              <div className={linkRight}/>
             </div>
           </div>
 
@@ -100,7 +116,8 @@ class GroupFinal extends React.Component{
 function mapStateToProps(state) {
   return {
     in2: state.world_cup.in2,
-    champion: state.world_cup.champion
+    champion: state.world_cup.champion,
+    ok:state.world_cup.ok,
   };
 }
 

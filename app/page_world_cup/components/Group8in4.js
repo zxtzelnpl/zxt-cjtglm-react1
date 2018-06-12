@@ -24,16 +24,16 @@ class Group8in4 extends React.Component {
     worldCupActions.from8in4(indexDetermin4,teamName)
   }
 
-  renderTeamIcon(flag) {
+  renderTeamIcon(team) {
     let dom = null;
-    if (flag) {
-      dom = <img src={flag}/>;
+    if (typeof team === 'object') {
+      dom = <img src={team.flag}/>;
     }
     return dom;
   }
 
   render() {
-    const {position, indexOf8, in8} = this.props;
+    const {position, indexOf8, in8,champion,ok} = this.props;
     const [index1, index2] = indexOf8;
 
     const teamName1 = in8[index1];
@@ -41,21 +41,36 @@ class Group8in4 extends React.Component {
     const team1 = teamDetails[teamName1];
     const team2 = teamDetails[teamName2];
 
+    let linkUp = 'link-up',
+      linkDown = 'link-down',
+      linkRow = 'link-row';
+
+    if(ok&&(typeof champion==='string')){
+      if(teamName1===champion){
+        linkUp+=' winline';
+        linkRow+=' winline';
+      }
+      else if(teamName2===champion){
+        linkDown+=' winline';
+        linkRow+=' winline';
+      }
+    }
+
     return (
       <div className={`group-8in4 ${position}`}>
         <div className="team-8">
           <div className="team-icon" onClick={this.handleClickOne}>
-            {this.renderTeamIcon(team1.flag)}
+            {this.renderTeamIcon(team1)}
           </div>
-          <div className="link-up"/>
+          <div className={linkUp}/>
         </div>
         <div className="team-8">
           <div className="team-icon" onClick={this.handleClickTwo}>
-            {this.renderTeamIcon(team2.flag)}
+            {this.renderTeamIcon(team2)}
           </div>
-          <div className="link-down"/>
+          <div className={linkDown}/>
         </div>
-        <div className="link-row"/>
+        <div className={linkRow}/>
       </div>
     );
   }
@@ -63,7 +78,9 @@ class Group8in4 extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    in8:state.world_cup.in8
+    in8:state.world_cup.in8,
+    champion: state.world_cup.champion,
+    ok:state.world_cup.ok
   };
 }
 

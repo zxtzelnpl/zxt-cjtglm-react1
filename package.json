@@ -5,6 +5,7 @@
   "main": "app/index.js",
   "dependencies": {
     "es6-promise": "^4.1.1",
+    "html2canvas": "^1.0.0-alpha.12",
     "immutable": "^3.8.1",
     "moment": "^2.18.1",
     "prop-types": "^15.6.0",

@@ -13,41 +13,46 @@
     position:relative;
     width:1rem;
   }
+  .link-up{
+    position:absolute;
+    top:.2rem;
+    width:.18rem;
+    height:.48rem;
+    border-top:2px solid #333d46;
+  }
+  .link-down{
+    position:absolute;
+    bottom:.44rem;
+    width:.18rem;
+    height:.48rem;
+    border-bottom:2px solid #333d46;
+  }
+  .link-row{
+    position:absolute;
+    top:.2rem + .48rem;
+
+    width:.2rem;
+    height:0;
+    border-top:1px solid #333d46;
+    border-bottom:1px solid #333d46;
+    background:#333d46;
+    transform:translate(-1px);
+  }
   &.left{
     align-items: flex-start;
     .group-16in8-team{
       justify-content: flex-start;
     }
     .link-up{
-      position:absolute;
-      top:.2rem;
       right:0;
-
-      width:.18rem;
-      height:.48rem;
-      border-top:2px solid #333d46;
       border-right:2px solid #333d46;
     }
     .link-down{
-      position:absolute;
-      bottom:.44rem;
       right:0;
-
-      width:.18rem;
-      height:.48rem;
-      border-bottom:2px solid #333d46;
       border-right:2px solid #333d46;
     }
     .link-row{
-      position:absolute;
       right:0;
-      top:.2rem + .48rem;
-
-      width:.2rem;
-      height:2px;
-      background:#333d46;
-
-      transform:translate(-1px);
     }
   }
   &.right{
@@ -56,35 +61,15 @@
       justify-content: flex-end;
     }
     .link-up{
-      position:absolute;
-      top:.2rem;
       left:0;
-
-      width:.18rem;
-      height:.48rem;
-      border-top:2px solid #333d46;
       border-left:2px solid #333d46;
     }
     .link-down{
-      position:absolute;
-      bottom:.44rem;
       left:0;
-
-      width:.18rem;
-      height:.48rem;
-      border-bottom:2px solid #333d46;
       border-left:2px solid #333d46;
     }
     .link-row{
-      position:absolute;
       left:0;
-      top:.2rem + .48rem;
-
-      width:.2rem;
-      height:2px;
-      background:#333d46;
-
-      transform:translate(-1px);
     }
     .team-num{
       order:2;

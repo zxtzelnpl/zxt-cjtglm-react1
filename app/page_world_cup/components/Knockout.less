@@ -1,5 +1,8 @@
 .world-cup-knockout{
+  position:absolute;
+
   color:#fff;
+  width:100%;
   min-height: 100%;
   background:url('../images/part2-bg.jpg');
   background-size:100% auto;
@@ -16,6 +19,27 @@
   display:flex;
   justify-content: center;
   align-items: flex-start;
+
+  .link-up.winline{
+    border-color:green!important;
+    border-width:4px!important;
+  }
+  .link-down.winline{
+    border-color:green!important;
+    border-width:4px!important;
+  }
+  .link-left.winline{
+    border-color:green!important;
+    border-width:2px!important;
+  }
+  .link-right.winline{
+    border-color:green!important;
+    border-width:2px!important;
+  }
+  .link-row.winline{
+    border-color:green!important;
+    border-width:2px!important;
+  }
 }
 
 .groups-left-16in8{
@@ -61,4 +85,24 @@
   flex-basis: .4rem;
   flex-shrink:0;
   flex-grow:0;
+}
+
+.world-cup-finish{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:.4rem;
+
+  margin:0 auto;
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  width:3rem;
+  height:.8rem;
+  background:#888;
+  &.ok{
+    background:#ec6f3d;
+  }
 }

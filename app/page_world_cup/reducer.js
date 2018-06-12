@@ -10,9 +10,9 @@ const initialState = {
   G: ['belgium', 'england'],
   H: ['columbia', 'japan'],
   in8: ['russia', 'australia', 'brazil', 'belgium', 'egypt', 'denmark', 'costa_rica', 'england'],
-  in4: ['A1', 'E1', 'A2', 'E2'],
-  in2: ['A1', 'A2'],
-  champion: 'A1'
+  in4: ['russia', 'brazil', 'egypt', 'costa_rica'],
+  in2: ['russia', 'egypt'],
+  champion: 'russia'
   /*group_4_1:{
     up:'',
     down:''

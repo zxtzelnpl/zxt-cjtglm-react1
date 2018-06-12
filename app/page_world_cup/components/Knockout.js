@@ -36,7 +36,7 @@ class Knockout extends React.Component{
             <Group8in4 position={'left'} indexOf8={[2,3]}/>
           </div>
           <div className='group-left-4in2'>
-            <Group4in2 position={'left'} teams={[0,1]}/>
+            <Group4in2 position={'left'} indexOf4={[0,1]}/>
           </div>
 
           <div className='group-1-center'>
@@ -44,7 +44,7 @@ class Knockout extends React.Component{
           </div>
 
           <div className='group-right-4in2'>
-            <Group4in2 position={'right'} teams={[2,3]}/>
+            <Group4in2 position={'right'} indexOf4={[2,3]}/>
           </div>
           <div className='group-right-8in4'>
             <Group8in4 position={'right'} indexOf8={[4,5]}/>

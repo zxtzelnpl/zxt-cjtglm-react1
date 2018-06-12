@@ -25,10 +25,10 @@ class Group extends React.Component{
   }
 
   render(){
-    const name = this.props.group.name;
+    const groupName = this.props.groupName;
 
     return <div className='world-cup-group'>
-      <p className="world-cup-group-name">{name}组</p>
+      <p className="world-cup-group-name">{groupName}组</p>
       <ul>
         {this.renderTeams()}
       </ul>

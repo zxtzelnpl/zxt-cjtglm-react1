@@ -21,6 +21,7 @@ class Knockout extends React.Component {
     this.makePicture = this.makePicture.bind(this);
     this.onLoad = this.onLoad.bind(this);
     this.state = {
+      tipOver:false,
       making: false,
       show: false,
       share_img: ''
@@ -73,7 +74,7 @@ class Knockout extends React.Component {
       this.props.worldCupActions.teamAllOK();
 
 
-      setTimeout(()=>{
+      setTimeout(() => {
         html2canvas(this.page).then(canvas => {
           let base64 = canvas.toDataURL('images/png');
           this.setState({
@@ -81,7 +82,7 @@ class Knockout extends React.Component {
             share_img: base64
           });
         });
-      })
+      });
 
     }
   }
@@ -89,24 +90,36 @@ class Knockout extends React.Component {
   render() {
     const {A, B, C, D, E, F, G, H, ok} = this.props.world_cup;
 
-    if(A.length===2
-      &&B.length===2
-      &&C.length===2
-      &&D.length===2
-      &&E.length===2
-      &&F.length===2
-      &&G.length===2
-      &&H.length===2
-    ){
+    if (A.length === 2
+      && B.length === 2
+      && C.length === 2
+      && D.length === 2
+      && E.length === 2
+      && F.length === 2
+      && G.length === 2
+      && H.length === 2
+    ) {
       let check = this.check();
-      let btnClass='world-cup-finish';
-      if(check){btnClass+=' ok'}
+      let btnClass = 'world-cup-finish';
+
+      let tipsClass = 'world-cup-knockout-tips';
+      if (this.state.tipOver) {
+        tipsClass += ' over';
+      }
+
+      if (check) {
+        btnClass += ' ok';
+      }
       return (
         <div className="world-cup-knockout-wrap">
           <div className='world-cup-knockout' ref={page => {
             this.page = page;
           }}>
             <Header/>
+
+            <div className={tipsClass}>
+              点击国旗进行操作
+            </div>
 
             <div className="knockout_content">
               <div className="groups-left-16in8">
@@ -170,24 +183,32 @@ class Knockout extends React.Component {
 
       );
     }
-    else{
+    else {
       return null;
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const {A, B, C, D, E, F, G, H} = this.props.world_cup;
-    if(A.length!==2
-      ||B.length!==2
-      ||C.length!==2
-      ||D.length!==2
-      ||E.length!==2
-      ||F.length!==2
-      ||G.length!==2
-      ||H.length!==2
-    ){
-      this.props.history.replace('/groupcompetition')}
+    if (A.length !== 2
+      || B.length !== 2
+      || C.length !== 2
+      || D.length !== 2
+      || E.length !== 2
+      || F.length !== 2
+      || G.length !== 2
+      || H.length !== 2
+    ) {
+      this.props.history.replace('/groupcompetition');
     }
+
+    setTimeout(() => {
+      this.setState({
+        tipOver:true
+      })
+    }, 2000);
+  }
+
 
 }
 

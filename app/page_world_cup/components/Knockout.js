@@ -26,10 +26,10 @@ class Knockout extends React.Component{
 
         <div className="knockout_content">
           <div className="groups-left-16in8">
-            <Group16in8 position={'left'} indexDeter8={0} teams={[A[0],B[1]]} labels={['A1','B2']}/>
-            <Group16in8 position={'left'} indexDeter8={1} teams={[C[0],D[1]]} labels={['C1','D2']}/>
-            <Group16in8 position={'left'} indexDeter8={2} teams={[E[0],F[1]]} labels={['E1','F2']}/>
-            <Group16in8 position={'left'} indexDeter8={3} teams={[G[0],H[1]]} labels={['G1','H2']}/>
+            <Group16in8 position={'left'} indexDetermin8={0} teams={[A[0],B[1]]} labels={['A1','B2']}/>
+            <Group16in8 position={'left'} indexDetermin8={1} teams={[C[0],D[1]]} labels={['C1','D2']}/>
+            <Group16in8 position={'left'} indexDetermin8={2} teams={[E[0],F[1]]} labels={['E1','F2']}/>
+            <Group16in8 position={'left'} indexDetermin8={3} teams={[G[0],H[1]]} labels={['G1','H2']}/>
           </div>
           <div className='groups-left-8in4'>
             <Group8in4 position={'left'} indexOf8={[0,1]}/>
@@ -51,10 +51,10 @@ class Knockout extends React.Component{
             <Group8in4 position={'right'} indexOf8={[6,7]}/>
           </div>
           <div className='group-right-16in8'>
-            <Group16in8 position={'right'} indexDeter8={4} teams={[B[0],A[1]]} labels={['B1','A2']}/>
-            <Group16in8 position={'right'} indexDeter8={5} teams={[D[0],C[1]]} labels={['D1','C2']}/>
-            <Group16in8 position={'right'} indexDeter8={6} teams={[F[0],E[1]]} labels={['F1','E2']}/>
-            <Group16in8 position={'right'} indexDeter8={7} teams={[H[0],G[1]]} labels={['H1','G2']}/>
+            <Group16in8 position={'right'} indexDetermin8={4} teams={[B[0],A[1]]} labels={['B1','A2']}/>
+            <Group16in8 position={'right'} indexDetermin8={5} teams={[D[0],C[1]]} labels={['D1','C2']}/>
+            <Group16in8 position={'right'} indexDetermin8={6} teams={[F[0],E[1]]} labels={['F1','E2']}/>
+            <Group16in8 position={'right'} indexDetermin8={7} teams={[H[0],G[1]]} labels={['H1','G2']}/>
           </div>
         </div>
       </div>
@@ -75,13 +75,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    worldCupActions: bindActionCreators(actions, dispatch)
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Knockout);

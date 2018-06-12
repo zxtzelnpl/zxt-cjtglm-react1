@@ -6,38 +6,53 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import {teamDetails} from '../groupDate';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 class Group8in4 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate;
+    this.handleClickOne = this.handleClick.bind(this,0)
+    this.handleClickTwo = this.handleClick.bind(this,1)
+  }
 
+  handleClick(index){
+    const {indexOf8, worldCupActions,in8} = this.props;
+    const teamIndex = indexOf8[index];
+    const teamName = in8[teamIndex];
+    const indexDetermin4 = indexOf8[0] / 2;
+    worldCupActions.from8in4(indexDetermin4,teamName)
+  }
 
   renderTeamIcon(flag) {
-    let dom = <div className="team-icon"/>;
+    let dom = null;
     if (flag) {
-      dom = <div className="team-icon">
-        <img src={flag}/>
-      </div>;
+      dom = <img src={flag}/>;
     }
     return dom;
   }
 
   render() {
-    const {position, indexOf8, A, B, C, D, E, F, G, H, in8} = this.props;
+    const {position, indexOf8, in8} = this.props;
     const [index1, index2] = indexOf8;
-    const indexDetermin4 = (index2 + 1) / 2;
+
     const teamName1 = in8[index1];
     const teamName2 = in8[index2];
     const team1 = teamDetails[teamName1];
     const team2 = teamDetails[teamName2];
 
-
     return (
       <div className={`group-8in4 ${position}`}>
         <div className="team-8">
-          {this.renderTeamIcon(team1.flag)}
+          <div className="team-icon" onClick={this.handleClickOne}>
+            {this.renderTeamIcon(team1.flag)}
+          </div>
           <div className="link-up"/>
         </div>
         <div className="team-8">
-          {this.renderTeamIcon(team2.flag)}
+          <div className="team-icon" onClick={this.handleClickTwo}>
+            {this.renderTeamIcon(team2.flag)}
+          </div>
           <div className="link-down"/>
         </div>
         <div className="link-row"/>
@@ -48,15 +63,7 @@ class Group8in4 extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    A: state.world_cup.A,
-    B: state.world_cup.B,
-    C: state.world_cup.C,
-    D: state.world_cup.D,
-    E: state.world_cup.E,
-    F: state.world_cup.F,
-    G: state.world_cup.G,
-    H: state.world_cup.H,
-    in8: state.world_cup.in8
+    in8:state.world_cup.in8
   };
 }
 

@@ -1,6 +1,7 @@
 import './Group16in8.less'
 
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from "react-redux";
 import * as actions from "../actions";
 import {bindActionCreators} from "redux";
@@ -11,6 +12,20 @@ import {teamDetails} from '../groupDate';
 
 
 class Group16in8 extends React.Component{
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate;
+    this.handleClickOne = this.handleClick.bind(this,0)
+    this.handleClickTwo = this.handleClick.bind(this,1)
+  }
+
+
+  handleClick(index){
+    const {teams,indexDetermin8,worldCupActions} =this.props;
+    const teamName = teams[index];
+
+    worldCupActions.from16in8(indexDetermin8,teamName)
+  }
 
   render(){
     const {position,teams,labels} =this.props
@@ -21,11 +36,11 @@ class Group16in8 extends React.Component{
 
     return <div className={`group-16in8 ${position}`}>
       <div className="team-16">
-        <TeamTwo label={label1} team={team1}/>
+        <TeamTwo label={label1} team={team1} onClick={this.handleClickOne}/>
         <div className="link-up" />
       </div>
       <div className="team-16">
-        <TeamTwo label={label2} team={team2}/>
+        <TeamTwo label={label2} team={team2} onClick={this.handleClickTwo}/>
         <div className="link-down" />
       </div>
       <div className="link-row" />
@@ -33,16 +48,9 @@ class Group16in8 extends React.Component{
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {
-    A: state.world_cup.A,
-    B: state.world_cup.B,
-    C: state.world_cup.C,
-    D: state.world_cup.D,
-    E: state.world_cup.E,
-    F: state.world_cup.F,
-    G: state.world_cup.G,
-    H: state.world_cup.H
+
   };
 }
 

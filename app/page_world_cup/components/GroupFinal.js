@@ -8,9 +8,22 @@ import {teamDetails} from '../groupDate';
 import champing_logo from '../images/champions.png'
 import champing_logo_a from '../images/champions_a.png'
 import world_cup_img from '../images/cup.png'
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 
 class GroupFinal extends React.Component{
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate;
+    this.handleClickOne = this.handleClick.bind(this,0)
+    this.handleClickTwo = this.handleClick.bind(this,1)
+  }
+
+  handleClick(index){
+    const {worldCupActions,in2} = this.props;
+    const teamName = in2[index];
+    worldCupActions.from2inchampion(teamName)
+  }
 
   renderChampion(champion){
     let champion_dom=null;
@@ -39,17 +52,15 @@ class GroupFinal extends React.Component{
   }
 
   renderTeamIcon(flag) {
-    let dom = <div className="team-icon"/>;
+    let dom = null;
     if (flag) {
-      dom = <div className="team-icon">
-        <img src={flag}/>
-      </div>;
+      dom = <img src={flag}/>;
     }
     return dom;
   }
 
   render(){
-    const {position, A, B, C, D, E, F, G, H, in2,champion} = this.props;
+    const {in2,champion} = this.props;
     const teamName1 = in2[0];
     const teamName2 = in2[1];
     const team1 = teamDetails[teamName1];
@@ -62,14 +73,18 @@ class GroupFinal extends React.Component{
 
           <div className="final-groups">
             <div className="team-2">
-              {this.renderTeamIcon(team1.flag)}
+              <div className="team-icon" onClick={this.handleClickOne}>
+                {this.renderTeamIcon(team1.flag)}
+              </div>
               <div className="link-left"/>
             </div>
 
             <div className="link-row" />
 
             <div className="team-2">
-              {this.renderTeamIcon(team2.flag)}
+              <div className="team-icon" onClick={this.handleClickTwo}>
+                {this.renderTeamIcon(team2.flag)}
+              </div>
               <div className="link-right"/>
             </div>
           </div>
@@ -84,14 +99,6 @@ class GroupFinal extends React.Component{
 
 function mapStateToProps(state) {
   return {
-    A: state.world_cup.A,
-    B: state.world_cup.B,
-    C: state.world_cup.C,
-    D: state.world_cup.D,
-    E: state.world_cup.E,
-    F: state.world_cup.F,
-    G: state.world_cup.G,
-    H: state.world_cup.H,
     in2: state.world_cup.in2,
     champion: state.world_cup.champion
   };

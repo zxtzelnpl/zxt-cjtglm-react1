@@ -123,21 +123,38 @@ export default function world_cup(state = initialState, action) {
       _state = {
         ...state
       };
-      let prelabelOfIn8 = _state.in8[action.index];
-      _state.in8[action.index] = action.label;
-      let indexOfIn4 = _state.in4.indexOf(prelabelOfIn8);
-      if (indexOfIn4 > -1) {
-        _state.in4.splice(indexOfIn4, 1, action.label);
-
-        let indexOfIn2 = _state.in2.indexOf(prelabelOfIn8);
-        if (indexOfIn2 > -1) {
-          _state.in2.splice(indexOfIn2, 1, action.label);
-
-          if (_state.champion === prelabelOfIn8) {
-            _state.champion = action.label;
-          }
+      let preTeamNameOfIn8 = _state.in8[action.index];
+      _state.in8 = _state.in8.map((country,index)=>{
+        if(index === action.index){
+          return action.teamName
         }
+        else{
+          return country;
+        }
+      })
+
+      _state.in4 = _state.in4.map(country=>{
+        if(country===preTeamNameOfIn8){
+          return action.teamName;
+        }
+        else{
+          return country;
+        }
+      })
+
+      _state.in2 = _state.in2.map(country=>{
+        if(country===preTeamNameOfIn8){
+          return action.teamName;
+        }
+        else{
+          return country;
+        }
+      })
+
+      if (_state.champion === preTeamNameOfIn8) {
+        _state.champion = action.teamName;
       }
+
       return _state;
 
     /*8in4*/
@@ -147,17 +164,30 @@ export default function world_cup(state = initialState, action) {
       _state = {
         ...state
       };
-      let prelabelOfIn4 = _state.in4[action.index];
-      _state.in4[action.index] = action.label;
+      let preTeamNameOfIn4 = _state.in4[action.index];
 
-      let indexOfIn2 = _state.in2.indexOf(prelabelOfIn4);
-      if (indexOfIn2 > -1) {
-        _state.in2.splice(indexOfIn2, 1, action.label);
-
-        if (_state.champion === prelabelOfIn4) {
-          _state.champion = action.label;
+      _state.in4 = _state.in4.map((country,index)=>{
+        if(index === action.index){
+          return action.teamName
         }
+        else{
+          return country;
+        }
+      })
+
+      _state.in2 = _state.in2.map(country=>{
+        if(country===preTeamNameOfIn4){
+          return action.teamName;
+        }
+        else{
+          return country;
+        }
+      })
+
+      if (_state.champion === preTeamNameOfIn4) {
+        _state.champion = action.teamName;
       }
+
       return _state;
 
     /*4in2*/
@@ -166,10 +196,18 @@ export default function world_cup(state = initialState, action) {
       _state = {
         ...state
       };
-      let prelabelOfIn2 = _state.in2[action.index];
-      _state.in2[action.index] = action.label;
-      if (_state.champion === prelabelOfIn2) {
-        _state.champion = action.label;
+      let preTeamNameOfIn2 = _state.in2[action.index];
+      _state.in2 = _state.in2.map((country,index)=>{
+        if(index === action.index){
+          return action.teamName
+        }
+        else{
+          return country;
+        }
+      })
+
+      if (_state.champion === preTeamNameOfIn2) {
+        _state.champion = action.teamName;
       }
       return _state;
 
@@ -178,7 +216,7 @@ export default function world_cup(state = initialState, action) {
       _state = {
         ...state
       };
-      _state.champion = action.label;
+      _state.champion = action.teamName;
       return _state;
     default:
       return state;

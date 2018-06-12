@@ -21,7 +21,10 @@ class Group4in2 extends React.Component{
     const teamIndex = indexOf4[index];
     const teamName = in4[teamIndex];
     const indexDetermin2 = indexOf4[0] / 2;
-    worldCupActions.from4in2(indexDetermin2,teamName)
+
+    if(teamName){
+      worldCupActions.from4in2(indexDetermin2,teamName)
+    }
   }
 
   renderTeamIcon(team) {

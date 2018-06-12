@@ -11,7 +11,6 @@ class TeamTwo extends React.Component{
 
   render(){
     const {label,team,onClick} = this.props
-    console.log(team)
     return <div className="group-16in8-team" onClick={onClick}>
       <div className="team-num">
         {label}

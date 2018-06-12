@@ -22,7 +22,10 @@ class GroupFinal extends React.Component{
   handleClick(index){
     const {worldCupActions,in2} = this.props;
     const teamName = in2[index];
-    worldCupActions.from2inchampion(teamName)
+
+    if(teamName){
+      worldCupActions.from2inchampion(teamName)
+    }
   }
 
   renderChampion(champion){

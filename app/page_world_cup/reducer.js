@@ -1,18 +1,18 @@
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-  A: ['russia', 'egypt'],
-  B: ['iran', 'morocco'],
-  C: ['australia', 'denmark'],
-  D: ['argentina', 'croatia'],
-  E: ['brazil', 'costa_rica'],
-  F: ['germany', 'korea'],
-  G: ['belgium', 'england'],
-  H: ['columbia', 'japan'],
-  in8: ['russia', 'australia', 'brazil', 'belgium', 'egypt', 'denmark', 'costa_rica', 'england'],
-  in4: ['russia', 'brazil', 'egypt', 'costa_rica'],
-  in2: ['russia', 'egypt'],
-  champion: 'russia',
+  A: [/*'russia', 'egypt'*/],
+  B: [/*'iran', 'morocco'*/],
+  C: [/*'australia', 'denmark'*/],
+  D: [/*'argentina', 'croatia'*/],
+  E: [/*'brazil', 'costa_rica'*/],
+  F: [/*'germany', 'korea'*/],
+  G: [/*'belgium', 'england'*/],
+  H: [/*'columbia', 'japan'*/],
+  in8: [/*'russia', 'australia', 'brazil', 'belgium', 'egypt', 'denmark', 'costa_rica', 'england'*/],
+  in4: [/*'russia', 'brazil', 'egypt', 'costa_rica'*/],
+  in2: [/*'russia', 'egypt'*/],
+  champion: null,
   ok:false
   /*group_4_1:{
     up:'',

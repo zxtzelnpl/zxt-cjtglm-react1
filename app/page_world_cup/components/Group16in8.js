@@ -23,7 +23,9 @@ class Group16in8 extends React.Component{
     const {teams,indexDetermin8,worldCupActions} =this.props;
     const teamName = teams[index];
 
-    worldCupActions.from16in8(indexDetermin8,teamName)
+    if(teamName){
+      worldCupActions.from16in8(indexDetermin8,teamName)
+    }
   }
 
   render(){

@@ -58,6 +58,7 @@ class Knockout extends React.Component{
       this.props.worldCupActions.teamAllOK();
 
       html2canvas(this.page).then(function(canvas) {
+        canvas.style='position:absolute;z-index:2;width:100%;height:100%;'
         document.body.appendChild(canvas);
       });
     }
@@ -68,7 +69,7 @@ class Knockout extends React.Component{
   }
 
   render(){
-    const {A,B,C,D,E,F,G,H} = this.props.world_cup;
+    const {A,B,C,D,E,F,G,H,ok} = this.props.world_cup;
     let check = this.check()
     return (
       <div className='world-cup-knockout' ref={page => {this.page = page}}>
@@ -108,9 +109,13 @@ class Knockout extends React.Component{
           </div>
         </div>
 
-        <div className={`world-cup-finish ${check?'ok':''}`} onClick={this.makePicture}>
-          完成
-        </div>
+        {
+          ok?
+            '':
+            <div className={`world-cup-finish ${check?'ok':''}`} onClick={this.makePicture}>
+              完成
+            </div>
+        }
       </div>
     )
   }

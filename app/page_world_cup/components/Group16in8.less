@@ -16,13 +16,17 @@
   .link-up{
     position:absolute;
     top:.2rem;
+
+    box-sizing: border-box;
     width:.18rem;
-    height:.48rem;
+    height:.485rem;
     border-top:2px solid #333d46;
   }
   .link-down{
     position:absolute;
     bottom:.44rem;
+
+    box-sizing: border-box;
     width:.18rem;
     height:.48rem;
     border-bottom:2px solid #333d46;
@@ -36,7 +40,6 @@
     border-top:1px solid #333d46;
     border-bottom:1px solid #333d46;
     background:#333d46;
-    transform:translate(-1px);
   }
   &.left{
     align-items: flex-start;
@@ -53,6 +56,7 @@
     }
     .link-row{
       right:0;
+      transform:translate(-2px,-1px);
     }
   }
   &.right{
@@ -70,6 +74,7 @@
     }
     .link-row{
       left:0;
+      transform:translate(2px,-1px);
     }
     .team-num{
       order:2;

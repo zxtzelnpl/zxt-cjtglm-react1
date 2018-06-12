@@ -3,7 +3,7 @@ import './Group.less';
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import TeamOne from './TeamOne';
-import {details} from '../groupDate';
+import {teamDetails} from '../groupDate';
 
 class Group extends React.Component{
   constructor(props){
@@ -14,7 +14,7 @@ class Group extends React.Component{
   renderTeams(){
     const group =  this.props.group;
     return group.map(teamName=>{
-      const team = details[teamName];
+      const team = teamDetails[teamName];
       return <TeamOne
         key={team.country}
         team={team}

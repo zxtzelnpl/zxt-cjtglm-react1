@@ -3,48 +3,25 @@
 
   display:flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
 
-  margin-bottom:.3rem;
+  justify-content: space-between;
+  margin:.4rem 0;
 
   width:1.2rem;
   height:1.6rem;
   .team-16{
     position:relative;
-
-    width:1.2rem;
-  }
-  .group-16in8-team{
     width:1rem;
-
-    display:flex;
-    justify-content: center;
-    align-items: flex-start;
-    font-size:.20rem;
-    .team-num{
-      line-height:.24rem;
-    }
-    img{
-      width:.36rem;
-      height:.24rem;
-    }
-    .team-icon{
-      width:.72rem;
-
-      display:flex;
-      flex-direction: column;
-      align-items: center;
-
-      line-height:2;
-      white-space: nowrap;
-    }
   }
   &.left{
+    align-items: flex-start;
+    .group-16in8-team{
+      justify-content: flex-start;
+    }
     .link-up{
       position:absolute;
       top:.2rem;
-      left:1rem;
+      right:0;
 
       width:.18rem;
       height:.48rem;
@@ -54,7 +31,7 @@
     .link-down{
       position:absolute;
       bottom:.44rem;
-      left:1rem;
+      right:0;
 
       width:.18rem;
       height:.48rem;
@@ -63,7 +40,7 @@
     }
     .link-row{
       position:absolute;
-      right:-.2rem;
+      right:0;
       top:.2rem + .48rem;
 
       width:.2rem;
@@ -74,10 +51,14 @@
     }
   }
   &.right{
+    align-items: flex-end;
+    .group-16in8-team{
+      justify-content: flex-end;
+    }
     .link-up{
       position:absolute;
       top:.2rem;
-      right:1rem;
+      left:0;
 
       width:.18rem;
       height:.48rem;
@@ -87,7 +68,7 @@
     .link-down{
       position:absolute;
       bottom:.44rem;
-      right:1rem;
+      left:0;
 
       width:.18rem;
       height:.48rem;
@@ -96,7 +77,7 @@
     }
     .link-row{
       position:absolute;
-      left:-.2rem;
+      left:0;
       top:.2rem + .48rem;
 
       width:.2rem;
@@ -104,6 +85,39 @@
       background:#333d46;
 
       transform:translate(-1px);
+    }
+    .team-num{
+      order:2;
+    }
+    .team-icon{
+      order:1;
+    }
+  }
+}
+
+.group-16in8-team{
+  width:1rem;
+
+  display:flex;
+  align-items: flex-start;
+  font-size:.16rem;
+  .team-num{
+    width:.2rem;
+    line-height:.24rem;
+  }
+  .team-icon{
+    width:.6rem;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    line-height:2;
+    white-space: nowrap;
+
+    img{
+      width:.36rem;
+      height:.24rem;
     }
   }
 }

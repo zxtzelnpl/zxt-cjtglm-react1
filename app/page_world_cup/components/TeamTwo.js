@@ -11,7 +11,7 @@ class TeamTwo extends React.Component{
 
   render(){
     const {label,team} = this.props
-
+    console.log(team)
     return <div className="group-16in8-team">
       <div className="team-num">
         {label}

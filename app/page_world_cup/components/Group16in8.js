@@ -7,66 +7,29 @@ import {bindActionCreators} from "redux";
 
 import TeamTwo from './TeamTwo'
 
-import {groups,details} from '../groupDate';
+import {teamDetails} from '../groupDate';
 
 
 class Group16in8 extends React.Component{
 
-  renderLeft(){
-    const {labels}=this.props;
-    const [label1,label2] = labels;
-    const groupNameOne = label1.slice(0,1);
-    const indexOne = label1.slice(1,2)-1;
-    const groupNameTwo = label2.slice(0,1);
-    const indexTwo = label2.slice(1,2)-1;
-
-
-    return <div className="group-16in8 left">
-      <div className="team-16">
-        <TeamTwo label={labels[0]} team={details[this.props[groupNameOne][indexOne]]}/>
-        <div className="link-up" />
-      </div>
-      <div className="team-16">
-        <TeamTwo label={labels[1]} team={details[this.props[groupNameTwo][indexTwo]]}/>
-        <div className="link-down" />
-      </div>
-      <div className="link-row" />
-    </div>
-  }
-
-  renderRight(){
-    const {labels}=this.props;
-    const [label1,label2] = labels;
-    const groupNameOne = label1.slice(0,1);
-    const indexOne = label1.slice(1,2)-1;
-    const groupNameTwo = label2.slice(0,1);
-    const indexTwo = label2.slice(1,2)-1;
-
-    return <div className="group-16in8 right">
-      <div className="team-16">
-        <TeamTwo label={labels[0]} team={details[this.props[groupNameOne][indexOne]]}/>
-        <div className="link-up" />
-      </div>
-      <div className="team-16">
-        <TeamTwo label={labels[1]} team={details[this.props[groupNameTwo][indexTwo]]}/>
-        <div className="link-down" />
-      </div>
-      <div className="link-row" />
-    </div>
-  }
-
-
   render(){
-    const {position} =this.props
-    let html;
-    if(position==='left'){
-      html=this.renderLeft()
-    }
-    if(position==='right'){
-      html=this.renderRight()
-    }
+    const {position,teams,labels} =this.props
+    const [label1,label2] = labels;
+    const [teamName1,teamName2] = teams;
+    const team1 = teamDetails[teamName1];
+    const team2 = teamDetails[teamName2];
 
-    return html;
+    return <div className={`group-16in8 ${position}`}>
+      <div className="team-16">
+        <TeamTwo label={label1} team={team1}/>
+        <div className="link-up" />
+      </div>
+      <div className="team-16">
+        <TeamTwo label={label2} team={team2}/>
+        <div className="link-down" />
+      </div>
+      <div className="link-row" />
+    </div>
   }
 }
 

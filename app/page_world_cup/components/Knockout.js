@@ -18,7 +18,7 @@ class Knockout extends React.Component{
   }
 
   render(){
-    console.log(this.props);
+    const {A,B,C,D,E,F,G,H} = this.props;
 
     return (
       <div className='world-cup-knockout'>
@@ -26,17 +26,17 @@ class Knockout extends React.Component{
 
         <div className="knockout_content">
           <div className="groups-left-16in8">
-            <Group16in8 position={'left'} labels={['A1','B2']}/>
-            <Group16in8 position={'left'} labels={['C1','D2']}/>
-            <Group16in8 position={'left'} labels={['E1','F2']}/>
-            <Group16in8 position={'left'} labels={['G1','H2']}/>
+            <Group16in8 position={'left'} indexDeter8={0} teams={[A[0],B[1]]} labels={['A1','B2']}/>
+            <Group16in8 position={'left'} indexDeter8={1} teams={[C[0],D[1]]} labels={['C1','D2']}/>
+            <Group16in8 position={'left'} indexDeter8={2} teams={[E[0],F[1]]} labels={['E1','F2']}/>
+            <Group16in8 position={'left'} indexDeter8={3} teams={[G[0],H[1]]} labels={['G1','H2']}/>
           </div>
           <div className='groups-left-8in4'>
-            <Group8in4 position={'left'} labels={[0,1]}/>
-            <Group8in4 position={'left'} labels={[2,3]}/>
+            <Group8in4 position={'left'} indexOf8={[0,1]}/>
+            <Group8in4 position={'left'} indexOf8={[2,3]}/>
           </div>
           <div className='group-left-4in2'>
-            <Group4in2 position={'left'} labels={[0,1]}/>
+            <Group4in2 position={'left'} teams={[0,1]}/>
           </div>
 
           <div className='group-1-center'>
@@ -44,17 +44,17 @@ class Knockout extends React.Component{
           </div>
 
           <div className='group-right-4in2'>
-            <Group4in2 position={'right'} labels={[2,3]}/>
+            <Group4in2 position={'right'} teams={[2,3]}/>
           </div>
           <div className='group-right-8in4'>
-            <Group8in4 position={'right'} labels={[4,5]}/>
-            <Group8in4 position={'right'} labels={[6,7]}/>
+            <Group8in4 position={'right'} indexOf8={[4,5]}/>
+            <Group8in4 position={'right'} indexOf8={[6,7]}/>
           </div>
           <div className='group-right-16in8'>
-            <Group16in8 position={'right'} labels={['B1','A2']}/>
-            <Group16in8 position={'right'} labels={['D1','C2']}/>
-            <Group16in8 position={'right'} labels={['F1','E2']}/>
-            <Group16in8 position={'right'} labels={['H1','G2']}/>
+            <Group16in8 position={'right'} indexDeter8={4} teams={[B[0],A[1]]} labels={['B1','A2']}/>
+            <Group16in8 position={'right'} indexDeter8={5} teams={[D[0],C[1]]} labels={['D1','C2']}/>
+            <Group16in8 position={'right'} indexDeter8={6} teams={[F[0],E[1]]} labels={['F1','E2']}/>
+            <Group16in8 position={'right'} indexDeter8={7} teams={[H[0],G[1]]} labels={['H1','G2']}/>
           </div>
         </div>
       </div>
@@ -64,7 +64,14 @@ class Knockout extends React.Component{
 
 function mapStateToProps(state) {
   return {
-    world_cup: state.world_cup
+    A: state.world_cup.A,
+    B: state.world_cup.B,
+    C: state.world_cup.C,
+    D: state.world_cup.D,
+    E: state.world_cup.E,
+    F: state.world_cup.F,
+    G: state.world_cup.G,
+    H: state.world_cup.H
   };
 }
 

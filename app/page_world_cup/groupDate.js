@@ -50,7 +50,9 @@ import senegal from './images/H/senegal.jpg';
 import china from './images/H/china.jpg';
 import usa from './images/H/usa.jpg';
 
-export const groups = {
+export const groups = ['A','B','C','D','E','F','G','H',];
+
+export const groupDetails = {
   A: ['russia', 'egypt', 'saudi_arabia', 'uruguay'],
   B: ['iran', 'morocco', 'portugal', 'spain'],
   C: ['australia', 'denmark', 'france', 'peru'],
@@ -60,7 +62,7 @@ export const groups = {
   G: ['belgium', 'england', 'panama', 'tunisia', 'netherlands', 'italy'],
   H: ['columbia', 'japan', 'poland', 'senegal', 'china', 'usa']
 }
-export const details = {
+export const teamDetails = {
   russia: {
     country: '俄罗斯',
     flag: russia,

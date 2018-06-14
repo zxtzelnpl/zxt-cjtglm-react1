@@ -59,8 +59,8 @@ export const groupDetails = {
   D: ['argentina', 'croatia', 'iceland', 'nigeria'],
   E: ['brazil', 'costa_rica', 'switzerland', 'serbia'],
   F: ['germany', 'korea', 'mexico', 'sweden'],
-  G: ['belgium', 'england', 'panama', 'tunisia', 'netherlands', 'italy'],
-  H: ['columbia', 'japan', 'poland', 'senegal', 'china', 'usa']
+  G: ['belgium', 'england', 'panama', 'tunisia'/*, 'netherlands', 'italy'*/],
+  H: ['columbia', 'japan', 'poland', 'senegal', 'china'/*, 'usa'*/]
 }
 export const teamDetails = {
   russia: {

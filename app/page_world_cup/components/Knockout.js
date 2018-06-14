@@ -13,7 +13,7 @@ import Header from './Header';
 import * as actions from '../actions';
 import {bindActionCreators} from 'redux';
 
-import qr_code from '../images/qr_code.png';
+import qr_code from '../images/qr_code_1.png';
 
 class Knockout extends React.Component {
   constructor(props) {

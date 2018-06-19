@@ -40,9 +40,7 @@ class Banner extends React.Component {
             <img src={banner2} />
           </div>
           <div>
-            <Link to="/teacher/10000046">
-              <img src={banner6} />
-            </Link>
+              <img src={banner3} />
           </div>
         </ReactSwipe>
     );

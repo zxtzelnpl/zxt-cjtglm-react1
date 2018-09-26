@@ -3,14 +3,26 @@ import './PopShow.less';
 import {public_resource} from "../constants/urls";
 
 const link = "http://new.cjtglm.com/mother_day/index.html"
-const pop_img_url = `${public_resource}/motherday/pop.png`
+const pop_img_url = `${public_resource}/national-festival/pop.png`
+
+function ifShow(){
+  var showMark = sessionStorage.getItem('national');
+  if(showMark === '1'){
+    return false;
+  }
+  else{
+    sessionStorage.setItem('national','1');
+    return true;
+  }
+}
 
 class PopShow extends React.PureComponent {
   constructor() {
     super();
     this.popClose = this.popClose.bind(this);
+
     this.state = {
-      show: true
+      show: ifShow()
     }
   }
 
@@ -30,7 +42,6 @@ class PopShow extends React.PureComponent {
         <div className="pop-bg" onClick={this.popClose}>
           <div className="pop">
             <img className="pop-img" src={pop_img_url}/>
-            <a className="pop-link" href={link} />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ import banner1 from '../static/img/banner/banner1.jpg'
 import banner2 from '../static/img/banner/banner2.jpg'
 import banner3 from '../static/img/banner/banner3.jpg'
 
-let banner6 = `${public_resource}/the-dragon-boat-festival/banner.jpg`
+let banner6 = `${public_resource}/national-festival/banner.jpg`
 
 class Banner extends React.Component {
   constructor (props, context) {
@@ -40,7 +40,7 @@ class Banner extends React.Component {
             <img src={banner2} />
           </div>
           <div>
-              <img src={banner3} />
+              <img src={banner6} />
           </div>
         </ReactSwipe>
     );

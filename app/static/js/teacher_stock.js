@@ -1,53 +1,55 @@
-// import wuweiwei2 from '../img/stocks/wuweiwei2.jpg'
-// import maxin1 from '../img/stocks/maxin1.jpg'
-// import maxin3 from '../img/stocks/maxin3.jpg'
-// import zhouyue3 from '../img/stocks/zhouyue3.jpg'
-//
-// import wuweiwei20180510 from '../img/stocks/wuweiwei20180510.jpg'
-// import zhouyue20180510 from '../img/stocks/zhouyue20180510.jpg'
-//
-// import maxin20180518 from '../img/stocks/maxin20180518.jpg'
-// import wuweiwei20180518 from '../img/stocks/wuweiwei20180518.jpg'
-// import zhouyue20180518 from '../img/stocks/zhouyue20180518.jpg'
-
-import wuweiwei20180911 from '../img/stocks/绿色动力.jpg';
-import maxin20180911 from '../img/stocks/联诚精密.jpg';
-import zhouyue20180911 from '../img/stocks/药明康德.jpg';
+import wuweiwei20181109 from '../img/stocks/吴伟伟3日.jpg';
+import maxin20181109 from '../img/stocks/马鑫三日.jpg';
+import dongqian20181109 from '../img/stocks/董齐安两日.jpg';
 
 //吴伟伟
 let wuweiwei = [
   {
-    name: '绿色动力',
-    code: '601330',
-    result: '50.67%',
-    daySend: '2018.08.17',
-    day: '阶段',
-    dayCount: '阶段最高涨幅',
-    img: wuweiwei20180911
+    name: '捷昌驱动',
+    code: '603583',
+    result: '22.61%',
+    daySend: '2018.10.25',
+    day: '3',
+    dayCount: '三日最高涨幅',
+    img: wuweiwei20181109
   }
 ]
 //马鑫
 let maxin = [
   {
-    name: '联诚精密', //股票名称
-    code: '002921', //股票代码
-    result: '20.52%',//涨幅
-    daySend: '2018.08.27',//哪一天推送的
-    day: '阶段',
-    dayCount: '阶段最高涨幅',
-    img:maxin20180911
+    name: '兴瑞科技', //股票名称
+    code: '002937', //股票代码
+    result: '17.17%',//涨幅
+    daySend: '2018.11.01',//哪一天推送的
+    day: '3',
+    dayCount: '三日最高涨幅',
+    img:maxin20181109
   }
 ]
+
 //周煜
-let zhouyue = [
+// let zhouyue = [
+//   {
+//     name: '药明康德',
+//     code: '603259',
+//     result: '22.15%',
+//     daySend: '2018.08.17',//哪一天推送的
+//     day: '阶段',
+//     dayCount: '阶段最高涨幅',
+//     img: dongqian20181109
+//   }
+// ]
+
+// 董齐安
+let dongqian = [
   {
-    name: '药明康德',
-    code: '603259',
-    result: '22.15%',
-    daySend: '2018.08.17',//哪一天推送的
-    day: '阶段',
-    dayCount: '阶段最高涨幅',
-    img: zhouyue20180911
+    name: '蠡湖股份',
+    code: '300694',
+    result: '14.38%',
+    daySend: '2018.10.31',//哪一天推送的
+    day: '2',
+    dayCount: '两日最高涨幅',
+    img: dongqian20181109
   }
 ]
 
@@ -58,8 +60,10 @@ export function stocks(name) {
       return wuweiwei
     case '马鑫':
       return maxin
-    case '周煜':
-      return zhouyue
+    // case '周煜':
+    //   return zhouyue
+    case '董齐安':
+      return dongqian
     default:
       return []
   }
@@ -69,11 +73,11 @@ export function stocks(name) {
 export function ranks(name) {
   switch (name) {
     case '吴伟伟':
-      return 1
+      return 2
     case '马鑫':
       return 2
-    case '周煜':
-      return 3
+    case '董齐安':
+      return 1
     default:
       return 4
   }
@@ -86,7 +90,7 @@ export function recordNum(name) {
       return 1
     case '马鑫':
       return 0
-    case '周煜':
+    case '董齐安':
       return 0
     default:
       return 0

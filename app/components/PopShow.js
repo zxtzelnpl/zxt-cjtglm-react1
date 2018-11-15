@@ -3,7 +3,7 @@ import './PopShow.less';
 import {public_resource} from "../constants/urls";
 
 const link = "http://new.cjtglm.com/mother_day/index.html"
-const pop_img_url = `${public_resource}/national-festival/pop.png`
+const pop_img_url = `${public_resource}/double11/pop.png`
 
 function ifShow(){
   var showMark = sessionStorage.getItem('national');

@@ -3,14 +3,14 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ReactSwipe from 'react-swipe'
 // import {Link} from 'react-router-dom'
 
-// import {public_resource} from "../constants/urls";
+import {public_resource} from "../constants/urls";
 import './Banner.less'
 
 import banner1 from '../static/img/banner/banner1.jpg'
 import banner2 from '../static/img/banner/banner2.jpg'
 import banner3 from '../static/img/banner/banner3.jpg'
 
-// let banner6 = `${public_resource}/national-festival/banner.jpg`
+// let banner6 = `${public_resource}/double11/banner.jpg`
 
 class Banner extends React.Component {
   constructor (props, context) {
@@ -27,7 +27,7 @@ class Banner extends React.Component {
             className="carousel"
             swipeOptions={
               {
-                startSlide:2,
+                startSlide:0,
                 speed: 400,
                 continuous: true,
               }

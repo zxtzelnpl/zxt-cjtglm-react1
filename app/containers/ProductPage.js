@@ -7,7 +7,7 @@ import Banner from '../components/Banner';
 import ProductList from '../components/ProductList';
 import ProductListHot from '../components/ProductListHot';
 import Footer from '../components/Footer';
-// import PopShow from '../components/PopShow';
+import PopShow from '../components/PopShow';
 
 class ProductPage extends React.Component {
   constructor(props) {
@@ -55,6 +55,7 @@ class ProductPage extends React.Component {
             <Banner/>
             <ProductListHot list={hot}/>
             <ProductList list={normal}/>
+            {/*<PopShow />*/}
             <Footer footerIndex={1}/>
           </div>
       )
